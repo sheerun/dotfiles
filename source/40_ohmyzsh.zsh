@@ -11,20 +11,18 @@ plugins=(bundler gem git git-flow lol nanoc nyan osx rails3 sprunge vim)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/Cellar/postgresql/9.2.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=/usr/local/Cellar/postgresql/9.2.1/bin:$PATH
+export PATH=$PATH:/Users/sheerun/Library/play-2.0.2
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 source ~/.zsh_profile
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export PATH=$PATH:/Users/sheerun/Library/play-2.0.2
-
 export RUBYMINE_HOME="/Applications/RubyMine.app"
 
 export GNUTERM=x11
-
-export PATH="$HOME/.rbenv/bin:$PATH"
 
 eval "$(rbenv init - --no-rehash)"
 

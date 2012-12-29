@@ -10,3 +10,7 @@ function path_remove() {
   # output the new array
   echo "${t[*]}"
 }
+
+function map() {
+  xargs -n1 $@
+}

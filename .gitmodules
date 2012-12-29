@@ -7,3 +7,6 @@
 [submodule "libs/git-extras"]
 	path = libs/git-extras
 	url = git://github.com/visionmedia/git-extras.git
+[submodule "libs/rbenv"]
+	path = libs/rbenv
+	url = git://github.com/sstephenson/rbenv.git

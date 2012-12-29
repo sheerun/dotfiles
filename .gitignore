@@ -1,4 +1,5 @@
 !bin/
+!link/.*
 caches/
 backups/
 link/.ssh/authorized_keys

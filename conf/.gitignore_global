@@ -1,0 +1,10 @@
+# Ruby development
+zeus.json
+.rbenv-version
+/config/database.yml
+
+# CTags files
+.tags*
+GPATH
+GTAGS
+GRTAGS

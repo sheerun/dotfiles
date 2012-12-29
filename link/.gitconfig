@@ -5,7 +5,7 @@
 	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
 	excludesfile = ~/.gitignore_global
 [alias]
-	st = status
+	st = status -sb
 	ci = commit
 	br = branch
 	co = checkout

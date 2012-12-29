@@ -28,21 +28,6 @@ eval "$(rbenv init - --no-rehash)"
 
 cdpath=( . ~/Projects )
 
-# for fast auto completion
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
-zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
-zstyle -e ':completion:*:approximate:*' \
-        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
-zstyle ':completion:*:functions' ignored-patterns '_*'
-
-
-# for highlighted prefixes on autocompletion
-zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
-zstyle ':completion:*' squeeze-slashes true
-
 EDITOR=vim
 
 launchctl setenv PATH $PATH

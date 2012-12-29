@@ -15,8 +15,6 @@ export PATH=/usr/local/Cellar/postgresql/9.2.1/bin:$PATH
 export PATH=$PATH:/Users/sheerun/Library/play-2.0.2
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-source ~/.zsh_profile
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 

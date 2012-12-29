@@ -20,12 +20,7 @@ export LANG=en_US.UTF-8
 
 export RUBYMINE_HOME="/Applications/RubyMine.app"
 
-export GNUTERM=x11
-
 eval "$(rbenv init - --no-rehash)"
 
 cdpath=( . ~/Projects )
 
-EDITOR=vim
-
-launchctl setenv PATH $PATH

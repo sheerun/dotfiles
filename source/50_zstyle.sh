@@ -14,7 +14,7 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 # ignore completion functions for commands you don't have
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-# highlight prefixes on autocompletion
+# allow one error for every three characters typed
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
 zstyle ':completion:*' squeeze-slashes true
 

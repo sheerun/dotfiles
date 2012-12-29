@@ -15,4 +15,3 @@ bash -c "$(curl -fsSL https://raw.github.com/sheerun/dotfiles/master/bin/dotfile
 ## Thanks!
 
 * [cowboy/dotfiles](https://github.com/cowboy/dotfiles) for installation script and framework
-* [eduardolundgren/dotfiles](https://github.com/eduardolundgren/dotfiles) for awesome prompt 

@@ -10,8 +10,8 @@ DISABLE_AUTO_TITLE="false"
 plugins=(bundler gem git git-flow lol nanoc nyan osx rails3 sprunge vim)
 source $ZSH/oh-my-zsh.sh
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 export RUBYMINE_HOME="/Applications/RubyMine.app"
 

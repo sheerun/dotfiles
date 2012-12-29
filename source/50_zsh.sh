@@ -1,3 +1,9 @@
+# set locale variables to en_US
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="C"
+
 # ensure /usr/local/bin has the highest precedence
 PATH=/usr/local/bin:$PATH
 

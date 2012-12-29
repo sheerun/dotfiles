@@ -1,0 +1,24 @@
+[user]
+	name = Adam Stankiewicz
+	email = sheerun@sher.pl
+[core]
+	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	excludesfile = ~/.gitignore_global
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	ui = true
+[push]
+	default = current
+[git-up "bundler"]
+	check = true
+	autoinstall = true
+[git-up "fetch"]
+	all = true
+[git-up "rebase"]
+	arguments = --preserve-merges

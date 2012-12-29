@@ -1,3 +1,6 @@
+# ensure /usr/local/bin has the highest precedence
+PATH=/usr/local/bin:$PATH
+
 # disable autocorrection as it's extremely annoying
 unsetopt correct_all
 

@@ -1,7 +1,7 @@
-# disable autocorrection (it's extremely annoying)
+# disable autocorrection as it's extremely annoying
 unsetopt correct_all
 
-# make autocompletion faster
+# make autocompletion faster by caching and prefix-only matching
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -14,3 +14,6 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 # highlight prefixes on autocompletion
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
 zstyle ':completion:*' squeeze-slashes true
+
+# make rbenv init faster by disabling auto rehash
+eval "$(rbenv init - --no-rehash)"

@@ -13,14 +13,11 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/Cellar/postgresql/9.2.1/bin:$PATH
 export PATH=$PATH:/Users/sheerun/Library/play-2.0.2
-export PATH="$HOME/.rbenv/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export RUBYMINE_HOME="/Applications/RubyMine.app"
-
-eval "$(rbenv init - --no-rehash)"
 
 cdpath=( . ~/Projects )
 

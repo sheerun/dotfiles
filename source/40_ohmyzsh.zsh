@@ -45,6 +45,4 @@ zstyle ':completion:*' squeeze-slashes true
 
 EDITOR=vim
 
-eval "$(hub alias -s)"
-
 launchctl setenv PATH $PATH

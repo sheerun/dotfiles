@@ -4,3 +4,6 @@
 [submodule "libs/gitignore"]
 	path = libs/gitignore
 	url = git://github.com/github/gitignore.git
+[submodule "libs/git-extras"]
+	path = libs/git-extras
+	url = git://github.com/visionmedia/git-extras.git

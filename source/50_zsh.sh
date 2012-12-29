@@ -34,3 +34,6 @@ zstyle ':completion:*' squeeze-slashes true
 
 # make rbenv init faster by disabling auto rehash
 eval "$(rbenv init - --no-rehash)"
+
+# set cdpath to contents of ~/.dotfiles/conf/cdpath
+cdpath=( ${${~$(cat ~/.dotfiles/conf/cdpath | grep -v '^#' | grep -v '^$')}} )

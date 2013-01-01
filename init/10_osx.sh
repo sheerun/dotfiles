@@ -18,9 +18,10 @@ if [[ "$(type -P brew)" ]]; then
   e_header "Updating Homebrew"
   brew update
 
-  # Install Homebrew recipes.
-  recipes=(git tree lesspipe htop-osx git-flow hub wget vim ssh-copy-id ctags)
+  e_header "Upgrading Homebrew"
+  brew upgrade
 
+  source ~/.dotfiles/conf/recipes
   list="$(to_install "${recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
     e_header "Installing Homebrew recipes: $list"

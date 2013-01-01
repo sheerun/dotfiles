@@ -14,6 +14,7 @@ export LC_CTYPE="C"
 
 # ensure /usr/local/bin has the highest precedence
 export PATH=/usr/local/bin:$PATH
+export PATH="$(brew --prefix coreutils)/libexec/gnubin":$PATH
 
 # disable autocorrection as it's extremely annoying
 unsetopt correct_all

@@ -55,3 +55,6 @@
 [submodule "link/.vim/bundle/vim-haml"]
 	path = link/.vim/bundle/vim-haml
 	url = git://github.com/tpope/vim-haml
+[submodule "link/.vim/bundle/vim-rsi"]
+	path = link/.vim/bundle/vim-rsi
+	url = git://github.com/tpope/vim-rsi

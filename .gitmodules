@@ -19,3 +19,6 @@
 [submodule "link/.vim/bundle/vim-fugitive"]
 	path = link/.vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "libs/wombat256"]
+	path = libs/wombat256
+	url = git://github.com/vim-scripts/wombat256.vim.git

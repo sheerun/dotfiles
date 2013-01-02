@@ -27,7 +27,7 @@ set undolevels=1000
 set title
 set nobackup
 set noswapfile
-"colorscheme wombat256
+colorscheme wombat256
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j

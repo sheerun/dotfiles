@@ -5,5 +5,5 @@ cdpath=( ~/Projects )
 homebrew_recipes=(
   coreutils findutils
   git git-flow zsh htop-osx tree lesspipe wget
-  vim ssh-copy-id ctags
+  vim ssh-copy-id ctags mobile-shell
 )

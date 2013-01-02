@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+git --git-dir="$HOME/.dotfiles/.git" submodule add git://github.com/$1 "link/.vim/bundle/$1"

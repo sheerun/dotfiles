@@ -22,3 +22,6 @@
 [submodule "libs/wombat256"]
 	path = libs/wombat256
 	url = git://github.com/vim-scripts/wombat256.vim.git
+[submodule "link/.vim/bundle/tpope/vim-rails"]
+	path = link/.vim/bundle/tpope/vim-rails
+	url = git://github.com/tpope/vim-rails

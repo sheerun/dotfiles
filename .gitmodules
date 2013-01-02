@@ -58,3 +58,9 @@
 [submodule "link/.vim/bundle/vim-rsi"]
 	path = link/.vim/bundle/vim-rsi
 	url = git://github.com/tpope/vim-rsi
+[submodule "link/.vim/bundle/splitjoin"]
+	path = link/.vim/bundle/splitjoin
+	url = git://github.com/AndrewRadev/splitjoin
+[submodule "libs/git-submodule-tools"]
+	path = libs/git-submodule-tools
+	url = git://github.com/kollerma/git-submodule-tools.git

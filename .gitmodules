@@ -13,3 +13,12 @@
 [submodule "link/.zprezto"]
 	path = link/.zprezto
 	url = git://github.com/sorin-ionescu/prezto.git
+[submodule "libs/vim-pathogen"]
+	path = libs/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule "link/.vim/bundle/vim-fugitive"]
+	path = link/.vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "libs/wombat256"]
+	path = libs/wombat256
+	url = git://github.com/vim-scripts/wombat256.vim.git

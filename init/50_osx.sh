@@ -8,6 +8,14 @@ if [[ ! -d "$('xcode-select' -print-path 2>/dev/null)" ]]; then
   sudo xcode-select -switch /usr/bin
 fi
 
+# fix path loading of libexec tools.
+# https://github.com/sorin-ionescu/prezto
+ls -la /usr/libexec/path_helper | grep rwx &> /dev/null
+if [ $? -eq 0 ]; then
+  sudo chmod ugo-x /usr/libexec/path_helper
+fi
+
+
 # Install Homebrew.
 if [[ ! "$(type -P brew)" ]]; then
   e_header "Installing Homebrew"
@@ -21,8 +29,7 @@ if [[ "$(type -P brew)" ]]; then
   e_header "Upgrading Homebrew"
   brew upgrade
 
-  source ~/.dotfiles/conf/recipes
-  list="$(to_install "${recipes[*]}" "$(brew list)")"
+  list="$(to_install "${homebrew_recipes[*]}" "$(brew list)")"
   if [[ "$list" ]]; then
     e_header "Installing Homebrew recipes: $list"
     (brew list | grep ^$list$ > /dev/null) || brew install $list

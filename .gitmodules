@@ -1,6 +1,3 @@
-[submodule "libs/oh-my-zsh"]
-	path = libs/oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule "libs/gitignore"]
 	path = libs/gitignore
 	url = git://github.com/github/gitignore.git
@@ -13,3 +10,6 @@
 [submodule "libs/ruby-build"]
 	path = libs/ruby-build
 	url = https://github.com/sstephenson/ruby-build
+[submodule "link/.zprezto"]
+	path = link/.zprezto
+	url = git://github.com/sorin-ionescu/prezto.git

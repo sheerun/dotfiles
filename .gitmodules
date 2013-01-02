@@ -22,3 +22,12 @@
 [submodule "libs/wombat256"]
 	path = libs/wombat256
 	url = git://github.com/vim-scripts/wombat256.vim.git
+[submodule "link/.vim/bundle/vim-rails"]
+	path = link/.vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails
+[submodule "link/.vim/bundle/nerdtree --force"]
+	path = link/.vim/bundle/nerdtree --force
+	url = git://github.com/scrooloose/nerdtree
+[submodule "link/.vim/bundle/nerdtree"]
+	path = link/.vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git

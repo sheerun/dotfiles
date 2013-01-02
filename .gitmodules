@@ -31,3 +31,27 @@
 [submodule "link/.vim/bundle/nerdtree"]
 	path = link/.vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "link/.vim/bundle/vim-repeat"]
+	path = link/.vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat
+[submodule "link/.vim/bundle/vim-commentary"]
+	path = link/.vim/bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary
+[submodule "link/.vim/bundle/vim-surround"]
+	path = link/.vim/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround
+[submodule "link/.vim/bundle/vim-endwise"]
+	path = link/.vim/bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise
+[submodule "link/.vim/bundle/vim-rake"]
+	path = link/.vim/bundle/vim-rake
+	url = git://github.com/tpope/vim-rake
+[submodule "link/.vim/bundle/vim-sleuth"]
+	path = link/.vim/bundle/vim-sleuth
+	url = git://github.com/tpope/vim-sleuth
+[submodule "link/.vim/bundle/vim-eunuch"]
+	path = link/.vim/bundle/vim-eunuch
+	url = git://github.com/tpope/vim-eunuch
+[submodule "link/.vim/bundle/vim-haml"]
+	path = link/.vim/bundle/vim-haml
+	url = git://github.com/tpope/vim-haml

@@ -21,11 +21,20 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt'
+  'prompt' \
+  'gpg-agent' \
+  'ssh-agent' \
+  'archive' 
+
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'cursor' \
+  'root'
 
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' keymap 'emacs'
-
 
 # Set the prompt theme to load.
 zstyle ':prezto:module:prompt' theme 'sorin'

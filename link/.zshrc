@@ -5,6 +5,7 @@ export PATH
 # Source all files in ~/.dotfiles/source/
 function src() {
   local file
+  source "$HOME/.dotfiles/config.sh"
   if (( $# == 1 )); then
     source "$HOME/.dotfiles/source/$1.sh"
   else

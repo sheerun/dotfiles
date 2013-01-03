@@ -67,3 +67,6 @@
 [submodule "link/.vim/bundle/vim-unimpaired"]
 	path = link/.vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired
+[submodule "link/.vim/bundle/ZoomWin"]
+	path = link/.vim/bundle/ZoomWin
+	url = git://github.com/vim-scripts/ZoomWin

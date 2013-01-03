@@ -11,6 +11,7 @@ packages=(
   git-core
   tree
   htop
+  zsh
 )
 
 list=()

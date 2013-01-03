@@ -64,3 +64,6 @@
 [submodule "libs/git-submodule-tools"]
 	path = libs/git-submodule-tools
 	url = git://github.com/kollerma/git-submodule-tools.git
+[submodule "link/.vim/bundle/vim-unimpaired"]
+	path = link/.vim/bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired

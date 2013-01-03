@@ -133,3 +133,6 @@
 [submodule "link/.vim/bundle/NrrwRgn"]
 	path = link/.vim/bundle/NrrwRgn
 	url = git://github.com/chrisbra/NrrwRgn
+[submodule "link/.vim/bundle/change-inside-surroundings.vim"]
+	path = link/.vim/bundle/change-inside-surroundings.vim
+	url = git://github.com/briandoll/change-inside-surroundings.vim

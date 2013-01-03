@@ -136,3 +136,6 @@
 [submodule "link/.vim/bundle/change-inside-surroundings.vim"]
 	path = link/.vim/bundle/change-inside-surroundings.vim
 	url = git://github.com/briandoll/change-inside-surroundings.vim
+[submodule "link/.vim/bundle/vim-indent-guides"]
+	path = link/.vim/bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides

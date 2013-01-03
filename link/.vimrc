@@ -12,6 +12,7 @@ syntax enable
 
 " Use wombat256 as default color scheme.
 colorscheme wombat256
+set background=dark
 
 " Set default encoding to UTF-8.
 set encoding=utf-8    
@@ -71,10 +72,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-" Open NERDTree by default.
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
 
 let NERDTreeCaseSensitiveSort = 1
 let NERDTreeChDirMode = 2

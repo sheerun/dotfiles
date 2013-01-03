@@ -73,3 +73,63 @@
 [submodule "link/.vim/bundle/vim-vroom"]
 	path = link/.vim/bundle/vim-vroom
 	url = git://github.com/skalnik/vim-vroom
+[submodule "link/.vim/bundle/vimwiki"]
+	path = link/.vim/bundle/vimwiki
+	url = git://github.com/vim-scripts/vimwiki
+[submodule "link/.vim/bundle/vim-addon-mw-utils"]
+	path = link/.vim/bundle/vim-addon-mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils
+[submodule "link/.vim/bundle/tagbar"]
+	path = link/.vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "link/.vim/bundle/syntastic"]
+	path = link/.vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic
+[submodule "link/.vim/bundle/splitjoin.vim"]
+	path = link/.vim/bundle/splitjoin.vim
+	url = git://github.com/AndrewRadev/splitjoin.vim
+[submodule "link/.vim/bundle/neocomplcache"]
+	path = link/.vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache
+[submodule "link/.vim/bundle/supertab"]
+	path = link/.vim/bundle/supertab
+	url = git://github.com/ervandew/supertab
+[submodule "link/.vim/bundle/snipmate-snippets"]
+	path = link/.vim/bundle/snipmate-snippets
+	url = git://github.com/honza/snipmate-snippets
+[submodule "link/.vim/bundle/vim-snipmate"]
+	path = link/.vim/bundle/vim-snipmate
+	url = git://github.com/garbas/vim-snipmate
+[submodule "link/.vim/bundle/tlib_vim"]
+	path = link/.vim/bundle/tlib_vim
+	url = git://github.com/tomtom/tlib_vim
+[submodule "link/.vim/bundle/vim-matchit"]
+	path = link/.vim/bundle/vim-matchit
+	url = git://github.com/edsono/vim-matchit
+[submodule "link/.vim/bundle/ack.vim"]
+	path = link/.vim/bundle/ack.vim
+	url = git://github.com/mileszs/ack.vim
+[submodule "link/.vim/bundle/vim-buffergator"]
+	path = link/.vim/bundle/vim-buffergator
+	url = git://github.com/jeetsukumaran/vim-buffergator
+[submodule "link/.vim/bundle/vim-css-color"]
+	path = link/.vim/bundle/vim-css-color
+	url = git://github.com/ap/vim-css-color
+[submodule "link/.vim/bundle/ctrlp.vim"]
+	path = link/.vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim
+[submodule "link/.vim/bundle/vim-easymotion"]
+	path = link/.vim/bundle/vim-easymotion
+	url = git://github.com/Lokaltog/vim-easymotion
+[submodule "link/.vim/bundle/gundo.vim"]
+	path = link/.vim/bundle/gundo.vim
+	url = git://github.com/sjl/gundo.vim
+[submodule "link/.vim/bundle/vim-indent-object"]
+	path = link/.vim/bundle/vim-indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object
+[submodule "link/.vim/bundle/Kwbd.vim"]
+	path = link/.vim/bundle/Kwbd.vim
+	url = git://github.com/rgarver/Kwbd.vim
+[submodule "link/.vim/bundle/NrrwRgn"]
+	path = link/.vim/bundle/NrrwRgn
+	url = git://github.com/chrisbra/NrrwRgn

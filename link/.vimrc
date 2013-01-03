@@ -38,6 +38,10 @@ set title
 set nobackup
 set noswapfile
 set autowrite         " Automatically save before commands like :next and :make
+set showcmd
+set hidden
+
+let mapleader = ","
 
 " List chars
 set listchars=""                  " Reset the listchars
@@ -72,3 +76,6 @@ map <C-l> <C-w>l
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 
+let NERDTreeCaseSensitiveSort = 1
+let NERDTreeChDirMode = 2
+let NERDTreeHijackNetrw = 1

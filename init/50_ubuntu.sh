@@ -11,6 +11,7 @@ packages=(
   git-core
   tree
   htop
+  zsh
 )
 
 list=()
@@ -35,3 +36,5 @@ if [[ ! "$(type -P git-extras)" ]]; then
     sudo make install
   )
 fi
+
+sudo chsh -s $(which zsh) $USER

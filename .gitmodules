@@ -139,3 +139,6 @@
 [submodule "link/.vim/bundle/vim-indent-guides"]
 	path = link/.vim/bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides
+[submodule "link/.vim/bundle/vim-ruby-debugger"]
+	path = link/.vim/bundle/vim-ruby-debugger
+	url = git://github.com/astashov/vim-ruby-debugger

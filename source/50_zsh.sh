@@ -18,9 +18,6 @@ fi
 # disable autocorrection as it's extremely annoying
 unsetopt correct_all
 
-# make rbenv init faster by disabling auto rehash
-eval "$(rbenv init - --no-rehash)"
-
 # Enable ls colors
 if [ "$DISABLE_LS_COLORS" != "true" ]
 then

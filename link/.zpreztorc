@@ -24,7 +24,9 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'gpg-agent' \
   'ssh-agent' \
-  'archive' 
+  'archive' \
+  'git' \
+  'ruby'
 
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \

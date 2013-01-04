@@ -7,14 +7,6 @@ export LANGUAGE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="C"
 
-# ensure /usr/local/bin has the highest precedence
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.dotfiles/libs/git-submodule-tools
-
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin":$PATH
-fi
-
 # disable autocorrection as it's extremely annoying
 unsetopt correct_all
 

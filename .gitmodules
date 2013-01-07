@@ -142,3 +142,6 @@
 [submodule "link/.vim/bundle/vim-ruby-debugger"]
 	path = link/.vim/bundle/vim-ruby-debugger
 	url = git://github.com/astashov/vim-ruby-debugger
+[submodule "link/.vim/bundle/vim-coffee-script"]
+	path = link/.vim/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script

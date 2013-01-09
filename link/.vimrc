@@ -75,4 +75,4 @@ map <C-l> <C-w>l
 
 let NERDTreeCaseSensitiveSort = 1
 let NERDTreeChDirMode = 2
-let NERDTreeHijackNetrw = 1
+let NERDTreeQuitOnOpen = 1

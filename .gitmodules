@@ -151,3 +151,9 @@
 [submodule "link/.vim/bundle/setcolors/plugin"]
 	path = link/.vim/bundle/setcolors/plugin
 	url = https://gist.github.com/2315248.git
+[submodule "link/.vim/bundle/bufkill.vim"]
+	path = link/.vim/bundle/bufkill.vim
+	url = git://github.com/vim-scripts/bufkill.vim
+[submodule "link/.vim/bundle/vim-command-w.git"]
+	path = link/.vim/bundle/vim-command-w.git
+	url = git://github.com/nathanaelkane/vim-command-w.git

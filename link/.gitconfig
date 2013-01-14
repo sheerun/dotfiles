@@ -3,7 +3,7 @@
 	email = sheerun@sher.pl
 [core]
 	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.cvsignore
 [alias]
 	st = status -sb
 	ci = commit

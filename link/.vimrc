@@ -1,34 +1,18 @@
-" Use vim and disable vi defaults.
-set nocompatible
-
 " Use pathogen as package manager.
 call pathogen#infect()
 
-" Turn on filetype plugins (:help filetype-plugin)
-filetype plugin indent on
-
-" Enable syntax highlighting.
-syntax enable          
+" Load reasonable defaults.
+runtime! plugin/sensible.vim
 
 " Use wombat256 as default color scheme.
 colorscheme wombat256
-set background=dark
 
-" Set default encoding to UTF-8.
-set encoding=utf-8    
-
-" Backspace through everything in insert mode.
-set backspace=indent,eol,start
-
-set t_Co=256          " Use 256 color palette.
 set nowrap            " Do not wrap lines.
 set hlsearch          " Highlight all matches on search.
-set incsearch         " Enable incremential search.
 set ignorecase        " Ignore case when searching.
-set smartcase         " Unless search contain capital letter.
 set tabstop=2         " Indent using two spaces.
 set backspace=2
-set shiftwidth=2 
+set shiftwidth=2
 set ai                " Autoindent.
 set ruler             " Show line and column number.
 set number            " Show line numbers.
@@ -39,19 +23,9 @@ set title
 set nobackup
 set noswapfile
 set autowrite         " Automatically save before commands like :next and :make
-set showcmd
 set hidden
 
 let mapleader = ","
-
-" List chars
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
 
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem

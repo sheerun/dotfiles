@@ -27,6 +27,7 @@ set hidden
 set noerrorbells
 set visualbell
 set nomodeline
+set ttyfast
 
 let mapleader = ","
 

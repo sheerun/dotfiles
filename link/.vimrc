@@ -26,6 +26,7 @@ set autowrite         " Automatically save before commands like :next and :make
 set hidden
 set noerrorbells
 set visualbell
+set nomodeline
 
 let mapleader = ","
 

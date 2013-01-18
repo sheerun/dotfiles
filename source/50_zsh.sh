@@ -1,3 +1,14 @@
+source ~/.dotfiles/libs/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen-lib
+antigen-bundle git
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle zsh-users/zaw
+antigen-bundle zsh-users/zsh-history-substring-search
+antigen-theme robbyrussell
+antigen-apply
+
 # set locale variables to en_US and UTF-8
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"

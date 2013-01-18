@@ -157,3 +157,6 @@
 [submodule "link/.vim/bundle/vim-sensible"]
 	path = link/.vim/bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible
+[submodule "libs/antigen"]
+	path = libs/antigen
+	url = git://github.com/zsh-users/antigen.git

@@ -1,6 +1,3 @@
-# make prezto a base for zsh configuration
-source ~/.zprezto/init.zsh
-
 # set locale variables to en_US and UTF-8
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"

@@ -154,9 +154,6 @@
 [submodule "link/.vim/bundle/vim-command-w.git"]
 	path = link/.vim/bundle/vim-command-w.git
 	url = git://github.com/nathanaelkane/vim-command-w.git
-[submodule "libs/zprezto"]
-	path = libs/zprezto
-	url = git@github.com:sheerun/prezto.git
 [submodule "link/.vim/bundle/vim-sensible"]
 	path = link/.vim/bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible

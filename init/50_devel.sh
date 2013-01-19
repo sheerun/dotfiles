@@ -29,3 +29,6 @@ if [[ "$(type -P gem)" ]]; then
     gem install $list
   fi
 fi
+
+# install vim plugins
+vim +BundleInstall +qall

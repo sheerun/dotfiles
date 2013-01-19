@@ -10,153 +10,24 @@
 [submodule "libs/ruby-build"]
 	path = libs/ruby-build
 	url = https://github.com/sstephenson/ruby-build
-[submodule "libs/vim-pathogen"]
-	path = libs/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
-[submodule "link/.vim/bundle/vim-fugitive"]
-	path = link/.vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule "libs/wombat256"]
-	path = libs/wombat256
-	url = git://github.com/vim-scripts/wombat256.vim.git
 [submodule "link/.vim/bundle/vim-rails"]
 	path = link/.vim/bundle/vim-rails
 	url = git://github.com/tpope/vim-rails
 [submodule "link/.vim/bundle/nerdtree --force"]
 	path = link/.vim/bundle/nerdtree --force
 	url = git://github.com/scrooloose/nerdtree
-[submodule "link/.vim/bundle/nerdtree"]
-	path = link/.vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-[submodule "link/.vim/bundle/vim-repeat"]
-	path = link/.vim/bundle/vim-repeat
-	url = git://github.com/tpope/vim-repeat
-[submodule "link/.vim/bundle/vim-commentary"]
-	path = link/.vim/bundle/vim-commentary
-	url = git://github.com/tpope/vim-commentary
-[submodule "link/.vim/bundle/vim-surround"]
-	path = link/.vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround
-[submodule "link/.vim/bundle/vim-endwise"]
-	path = link/.vim/bundle/vim-endwise
-	url = git://github.com/tpope/vim-endwise
-[submodule "link/.vim/bundle/vim-rake"]
-	path = link/.vim/bundle/vim-rake
-	url = git://github.com/tpope/vim-rake
-[submodule "link/.vim/bundle/vim-sleuth"]
-	path = link/.vim/bundle/vim-sleuth
-	url = git://github.com/tpope/vim-sleuth
-[submodule "link/.vim/bundle/vim-eunuch"]
-	path = link/.vim/bundle/vim-eunuch
-	url = git://github.com/tpope/vim-eunuch
-[submodule "link/.vim/bundle/vim-haml"]
-	path = link/.vim/bundle/vim-haml
-	url = git://github.com/tpope/vim-haml
-[submodule "link/.vim/bundle/vim-rsi"]
-	path = link/.vim/bundle/vim-rsi
-	url = git://github.com/tpope/vim-rsi
 [submodule "link/.vim/bundle/splitjoin"]
 	path = link/.vim/bundle/splitjoin
 	url = git://github.com/AndrewRadev/splitjoin
 [submodule "libs/git-submodule-tools"]
 	path = libs/git-submodule-tools
 	url = git://github.com/kollerma/git-submodule-tools.git
-[submodule "link/.vim/bundle/vim-unimpaired"]
-	path = link/.vim/bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired
-[submodule "link/.vim/bundle/ZoomWin"]
-	path = link/.vim/bundle/ZoomWin
-	url = git://github.com/vim-scripts/ZoomWin
-[submodule "link/.vim/bundle/vim-vroom"]
-	path = link/.vim/bundle/vim-vroom
-	url = git://github.com/skalnik/vim-vroom
-[submodule "link/.vim/bundle/vimwiki"]
-	path = link/.vim/bundle/vimwiki
-	url = git://github.com/vim-scripts/vimwiki
-[submodule "link/.vim/bundle/vim-addon-mw-utils"]
-	path = link/.vim/bundle/vim-addon-mw-utils
-	url = git://github.com/MarcWeber/vim-addon-mw-utils
-[submodule "link/.vim/bundle/tagbar"]
-	path = link/.vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar
-[submodule "link/.vim/bundle/syntastic"]
-	path = link/.vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic
-[submodule "link/.vim/bundle/splitjoin.vim"]
-	path = link/.vim/bundle/splitjoin.vim
-	url = git://github.com/AndrewRadev/splitjoin.vim
-[submodule "link/.vim/bundle/neocomplcache"]
-	path = link/.vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache
-[submodule "link/.vim/bundle/supertab"]
-	path = link/.vim/bundle/supertab
-	url = git://github.com/ervandew/supertab
-[submodule "link/.vim/bundle/snipmate-snippets"]
-	path = link/.vim/bundle/snipmate-snippets
-	url = git://github.com/honza/snipmate-snippets
-[submodule "link/.vim/bundle/vim-snipmate"]
-	path = link/.vim/bundle/vim-snipmate
-	url = git://github.com/garbas/vim-snipmate
-[submodule "link/.vim/bundle/tlib_vim"]
-	path = link/.vim/bundle/tlib_vim
-	url = git://github.com/tomtom/tlib_vim
-[submodule "link/.vim/bundle/vim-matchit"]
-	path = link/.vim/bundle/vim-matchit
-	url = git://github.com/edsono/vim-matchit
-[submodule "link/.vim/bundle/ack.vim"]
-	path = link/.vim/bundle/ack.vim
-	url = git://github.com/mileszs/ack.vim
-[submodule "link/.vim/bundle/vim-buffergator"]
-	path = link/.vim/bundle/vim-buffergator
-	url = git://github.com/jeetsukumaran/vim-buffergator
-[submodule "link/.vim/bundle/vim-css-color"]
-	path = link/.vim/bundle/vim-css-color
-	url = git://github.com/ap/vim-css-color
-[submodule "link/.vim/bundle/ctrlp.vim"]
-	path = link/.vim/bundle/ctrlp.vim
-	url = git://github.com/kien/ctrlp.vim
-[submodule "link/.vim/bundle/vim-easymotion"]
-	path = link/.vim/bundle/vim-easymotion
-	url = git://github.com/Lokaltog/vim-easymotion
-[submodule "link/.vim/bundle/gundo.vim"]
-	path = link/.vim/bundle/gundo.vim
-	url = git://github.com/sjl/gundo.vim
-[submodule "link/.vim/bundle/vim-indent-object"]
-	path = link/.vim/bundle/vim-indent-object
-	url = git://github.com/michaeljsmith/vim-indent-object
-[submodule "link/.vim/bundle/Kwbd.vim"]
-	path = link/.vim/bundle/Kwbd.vim
-	url = git://github.com/rgarver/Kwbd.vim
-[submodule "link/.vim/bundle/NrrwRgn"]
-	path = link/.vim/bundle/NrrwRgn
-	url = git://github.com/chrisbra/NrrwRgn
-[submodule "link/.vim/bundle/change-inside-surroundings.vim"]
-	path = link/.vim/bundle/change-inside-surroundings.vim
-	url = git://github.com/briandoll/change-inside-surroundings.vim
-[submodule "link/.vim/bundle/vim-indent-guides"]
-	path = link/.vim/bundle/vim-indent-guides
-	url = git://github.com/nathanaelkane/vim-indent-guides
-[submodule "link/.vim/bundle/vim-ruby-debugger"]
-	path = link/.vim/bundle/vim-ruby-debugger
-	url = git://github.com/astashov/vim-ruby-debugger
-[submodule "link/.vim/bundle/vim-coffee-script"]
-	path = link/.vim/bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script
-[submodule "link/.vim/bundle/vim-colorschemes"]
-	path = link/.vim/bundle/vim-colorschemes
-	url = git://github.com/flazz/vim-colorschemes
 [submodule "link/.vim/bundle/setcolors/plugin"]
 	path = link/.vim/bundle/setcolors/plugin
 	url = https://gist.github.com/2315248.git
-[submodule "link/.vim/bundle/bufkill.vim"]
-	path = link/.vim/bundle/bufkill.vim
-	url = git://github.com/vim-scripts/bufkill.vim
-[submodule "link/.vim/bundle/vim-command-w.git"]
-	path = link/.vim/bundle/vim-command-w.git
-	url = git://github.com/nathanaelkane/vim-command-w.git
-[submodule "link/.vim/bundle/vim-sensible"]
-	path = link/.vim/bundle/vim-sensible
-	url = git://github.com/tpope/vim-sensible
 [submodule "libs/antigen"]
 	path = libs/antigen
 	url = git://github.com/zsh-users/antigen.git
+[submodule "libs/vundle"]
+	path = libs/vundle
+	url = git://github.com/gmarik/vundle.git

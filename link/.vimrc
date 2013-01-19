@@ -1,8 +1,56 @@
-" Use pathogen as package manager.
-call pathogen#infect()
+set nocompatible
+filetype off       
 
-" Load reasonable defaults.
-runtime! plugin/sensible.vim
+set rtp+=~/.dotfiles/libs/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-sensible'
+
+Bundle 'rgarver/Kwbd.vim'
+Bundle 'chrisbra/NrrwRgn'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'mileszs/ack.vim'
+Bundle 'vim-scripts/bufkill.vim'
+Bundle 'briandoll/change-inside-surroundings.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'honza/snipmate-snippets'
+Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'jeetsukumaran/vim-buffergator'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'nathanaelkane/vim-command-w.git'
+Bundle 'tpope/vim-commentary'
+Bundle 'ap/vim-css-color'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-haml'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'edsono/vim-matchit'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-rsi'
+Bundle 'astashov/vim-ruby-debugger'
+Bundle 'tpope/vim-sleuth'
+Bundle 'garbas/vim-snipmate'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'skalnik/vim-vroom'
+Bundle 'vim-scripts/vimwiki'
+
+filetype plugin indent on
 
 " Use wombat256 as default color scheme.
 colorscheme wombat256

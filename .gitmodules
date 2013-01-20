@@ -1,21 +1,21 @@
-[submodule "libs/gitignore"]
-	path = libs/gitignore
+[submodule "lib/gitignore"]
+	path = lib/gitignore
 	url = git://github.com/github/gitignore.git
-[submodule "libs/git-extras"]
-	path = libs/git-extras
+[submodule "lib/git-extras"]
+	path = lib/git-extras
 	url = git://github.com/visionmedia/git-extras.git
-[submodule "libs/rbenv"]
-	path = libs/rbenv
+[submodule "lib/rbenv"]
+	path = lib/rbenv
 	url = git://github.com/sstephenson/rbenv.git
-[submodule "libs/ruby-build"]
-	path = libs/ruby-build
+[submodule "lib/ruby-build"]
+	path = lib/ruby-build
 	url = https://github.com/sstephenson/ruby-build
-[submodule "libs/git-submodule-tools"]
-	path = libs/git-submodule-tools
+[submodule "lib/git-submodule-tools"]
+	path = lib/git-submodule-tools
 	url = git://github.com/kollerma/git-submodule-tools.git
-[submodule "libs/antigen"]
-	path = libs/antigen
+[submodule "lib/antigen"]
+	path = lib/antigen
 	url = git://github.com/zsh-users/antigen.git
-[submodule "libs/vundle"]
-	path = libs/vundle
+[submodule "lib/vundle"]
+	path = lib/vundle
 	url = git://github.com/gmarik/vundle.git

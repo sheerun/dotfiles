@@ -1,6 +1,6 @@
 # install ruby-build
-mkdir -p $HOME/.dotfiles/libs/rbenv/plugins
-cd $HOME/.dotfiles/libs/rbenv/plugins
+mkdir -p $HOME/.dotfiles/lib/rbenv/plugins
+cd $HOME/.dotfiles/lib/rbenv/plugins
 
 if [[ ! -h ./ruby-build ]]; then
   ln -s ../../ruby-build;

@@ -1,18 +1,10 @@
 # Add binaries into the path
-PATH=~/.dotfiles/bin:$PATH
-export PATH
+export PATH=~/.dotfiles/bin:$PATH
 
-# Source all files in ~/.dotfiles/source/
 function src() {
-  local file
-  source "$HOME/.dotfiles/config.sh"
-  if (( $# == 1 )); then
-    source "$HOME/.dotfiles/source/$1.sh"
-  else
-    for file in ~/.dotfiles/source/*; do
-      source "$file"
-    done
-  fi
+  for file in ~/.zsh.d/*; do
+    source "$file"
+  done
 }
 
 # Run dotfiles script, then source.

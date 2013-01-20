@@ -150,7 +150,7 @@ else
 fi
 
 # Utilities, helpers.
-source ~/.dotfiles/source/10_misc.sh
+source ~/.dotfiles/zsh.d/10_misc.sh
 
 # Add binaries into the path
 PATH=~/.dotfiles/bin:$PATH

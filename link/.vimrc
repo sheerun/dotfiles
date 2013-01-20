@@ -2,7 +2,7 @@ set nocompatible
 
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+let vundle_readme=expand('~/.vim/bundle/vim-sensible/README.markdown')
 if !filereadable(vundle_readme)
     echo "Installing Vundle..."
     echo ""
@@ -13,7 +13,7 @@ endif
 
 filetype off
 
-set rtp+=~/.dotfiles/libs/vundle/
+set rtp+=~/.dotfiles/lib/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'

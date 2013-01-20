@@ -10,21 +10,9 @@
 [submodule "libs/ruby-build"]
 	path = libs/ruby-build
 	url = https://github.com/sstephenson/ruby-build
-[submodule "link/.vim/bundle/vim-rails"]
-	path = link/.vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails
-[submodule "link/.vim/bundle/nerdtree --force"]
-	path = link/.vim/bundle/nerdtree --force
-	url = git://github.com/scrooloose/nerdtree
-[submodule "link/.vim/bundle/splitjoin"]
-	path = link/.vim/bundle/splitjoin
-	url = git://github.com/AndrewRadev/splitjoin
 [submodule "libs/git-submodule-tools"]
 	path = libs/git-submodule-tools
 	url = git://github.com/kollerma/git-submodule-tools.git
-[submodule "link/.vim/bundle/setcolors/plugin"]
-	path = link/.vim/bundle/setcolors/plugin
-	url = https://gist.github.com/2315248.git
 [submodule "libs/antigen"]
 	path = libs/antigen
 	url = git://github.com/zsh-users/antigen.git

@@ -1,5 +1,17 @@
 set nocompatible
-filetype off       
+
+" Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+filetype off
 
 set rtp+=~/.dotfiles/libs/vundle/
 call vundle#rc()
@@ -8,7 +20,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-sensible'
 
-Bundle 'rgarver/Kwbd.vim'
+Bundle 'vim-scripts/wombat256.vim'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'mileszs/ack.vim'
@@ -50,10 +62,18 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'skalnik/vim-vroom'
 Bundle 'vim-scripts/vimwiki'
 
+" Installing plugins the first time
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall!
+    :quit 
+endif
+
 filetype plugin indent on
 
 " Use wombat256 as default color scheme.
-colorscheme wombat256
+colorscheme wombat256mod
 
 set nowrap            " Do not wrap lines.
 set hlsearch          " Highlight all matches on search.

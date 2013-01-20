@@ -2,6 +2,8 @@ set nocompatible
 
 source ~/.vim/bundles.vim
 
+let g:ctrlp_clear_cache_on_exit = 1
+
 " Use wombat256 as default color scheme.
 colorscheme wombat256mod
 

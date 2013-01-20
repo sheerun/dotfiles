@@ -1,0 +1,31 @@
+{
+	"common": {
+		"dividers": {
+			"left": {
+				"hard": "",
+				"soft": ""
+			},
+			"right": {
+				"hard": "",
+				"soft": ""
+			}
+		}
+	},
+	"ext": {
+		"terminal": {
+			"colorscheme": "default",
+			"theme": "default"
+		},
+		"tmux": {
+			"colorscheme": "default",
+			"theme": "default"
+		},
+		"vim": {
+			"colorscheme": "default",
+			"theme": "default",
+			"local_themes": {
+				"help": "help"
+			}
+		}
+	}
+}

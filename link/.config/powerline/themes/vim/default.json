@@ -1,0 +1,56 @@
+{
+	"segments": {
+		"left": [
+			{
+				"name": "readonly_indicator",
+				"draw_divider": false
+			},
+			{
+				"name": "mode",
+				"exclude_modes": ["nc"]
+			},
+			{
+				"name": "paste_indicator",
+				"exclude_modes": ["nc"],
+				"priority": 10
+			},
+			{
+				"name": "branch",
+				"exclude_modes": ["nc"],
+				"priority": 60,
+				"before": " "
+			},
+			{
+				"name": "file_directory",
+				"priority": 40,
+				"draw_divider": false,
+				"before": "> "
+			},
+			{
+				"name": "file_name",
+				"draw_divider": false
+			},
+			{
+				"name": "file_vcs_status",
+				"draw_divider": false,
+				"before": " "
+			},
+			{
+				"name": "modified_indicator",
+				"args": { "text": "+" },
+				"before": " "
+			},
+			{
+				"type": "filler",
+				"highlight": ["background"]
+			}
+		],
+		"right": [
+			{
+				"name": "file_type",
+				"exclude_modes": ["nc"],
+				"priority": 50
+			}
+		]
+	}
+}

@@ -1,11 +1,12 @@
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vim-sensible/README.markdown')
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    silent !pip install --user https://github.com/Lokaltog/powerline/tarball/develop
     let iCanHazVundle=0
 endif
 
@@ -19,6 +20,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-sensible'
 
 Bundle 'vim-scripts/wombat256.vim'
+Bundle 'christoomey/vim-space'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'mileszs/ack.vim'
@@ -46,7 +48,6 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-haml'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'edsono/vim-matchit'
 Bundle 'tpope/vim-rake'
@@ -68,6 +69,8 @@ if iCanHazVundle == 0
     :BundleClean
     :quit 
 endif
+
+source ~/.dotfiles/lib/powerline/powerline/bindings/vim/source_plugin.vim
 
 filetype plugin indent on
 

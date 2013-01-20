@@ -19,3 +19,6 @@
 [submodule "lib/vundle"]
 	path = lib/vundle
 	url = git://github.com/gmarik/vundle.git
+[submodule "lib/powerline"]
+	path = lib/powerline
+	url = git://github.com/Lokaltog/powerline.git

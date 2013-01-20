@@ -2,7 +2,7 @@
 export PATH=~/.dotfiles/bin:$PATH
 
 function src() {
-  for file in ~/.zsh.d/*; do
+  for file in ~/.zsh/*; do
     source "$file"
   done
 }

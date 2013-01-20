@@ -20,4 +20,4 @@ bash -c "$(curl -fsSL https://raw.github.com/sheerun/dotfiles/master/bin/dotfile
 
 ## License
 
-This repository is MIT-licensed. Do whatever you want, but pull-requests are welcome!
+This repository is MIT-licensed.

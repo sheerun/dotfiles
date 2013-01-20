@@ -23,8 +23,7 @@
 			{
 				"name": "file_directory",
 				"priority": 40,
-				"draw_divider": false,
-				"before": "> "
+				"draw_divider": false
 			},
 			{
 				"name": "file_name",

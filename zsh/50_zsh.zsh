@@ -4,6 +4,7 @@ source ~/.dotfiles/lib/antigen/antigen.zsh
 antigen-lib
 antigen-bundle git
 antigen-bundle rbenv
+antigen-bundle sprunge
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zaw
 antigen-bundle zsh-users/zsh-history-substring-search

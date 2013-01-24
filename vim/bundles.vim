@@ -81,7 +81,8 @@ Bundle 'mutewinter/vim-markdown'
 Bundle 'wavded/vim-stylus'
 Bundle 'tpope/vim-cucumber'
 Bundle 'kana/vim-textobj-user'
-Bundle 'vim-textobj-rubyblock'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'vim-scripts/SmartCase'
 
 " Installing plugins the first time
 if iCanHazVundle == 0

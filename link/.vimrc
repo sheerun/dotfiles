@@ -100,3 +100,6 @@ map <Down> <c-e>
 map <Up> <c-y>
 map <Left> z<Left>
 map <Right> z<Right>
+
+" Automatically strip whitespace on exit.
+autocmd BufWritePre *.rb :%s/\s\+$//e:

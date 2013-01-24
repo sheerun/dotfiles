@@ -85,6 +85,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'vim-scripts/SmartCase'
 Bundle 'tpope/vim-scriptease'
 Bundle 'vim-scripts/AutoTag'
+Bundle 'vim-scripts/AutoComplPop'
 
 " Installing plugins the first time
 if iCanHazVundle == 0

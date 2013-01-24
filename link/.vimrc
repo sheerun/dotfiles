@@ -91,3 +91,7 @@ function WrapForTmux(s)
 
   return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
 endfunction
+
+" Use dash as word separator.
+set iskeyword+=-
+

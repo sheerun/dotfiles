@@ -95,3 +95,8 @@ endfunction
 " Use dash as word separator.
 set iskeyword+=-
 
+" Use arrows for scrolling instead of moving cursor.
+map <Down> <c-e>
+map <Up> <c-y>
+map <Left> z<Left>
+map <Right> z<Right>

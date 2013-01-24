@@ -83,6 +83,8 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'vim-scripts/SmartCase'
+Bundle 'tpope/vim-scriptease'
+Bundle 'vim-scripts/AutoTag'
 
 " Installing plugins the first time
 if iCanHazVundle == 0

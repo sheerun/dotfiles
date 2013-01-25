@@ -86,6 +86,8 @@ Bundle 'vim-scripts/SmartCase'
 Bundle 'tpope/vim-scriptease'
 Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/AutoComplPop'
+Bundle 'vim-scripts/UnconditionalPaste'
+Bundle 'vim-scripts/taglist.vim'
 
 " Installing plugins the first time
 if iCanHazVundle == 0

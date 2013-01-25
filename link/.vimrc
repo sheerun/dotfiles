@@ -59,6 +59,10 @@ let NERDTreeQuitOnOpen = 1
 " Add gems.tags to files searched for tags.
 set tags+=gems.tags
 
+" Options for taglist.vim plugin
+nnoremap <silent> <F8> :TlistToggle<CR>
+let Tlist_GainFocus_On_ToggleOpen = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This enables iterm cursor changes from vim. In .tmux.conf you'll need:
 " set-option -g terminal-overrides '*88col*:colors=88,*256col*:colors=256,xterm*:XT:Ms=\E]52;%p1%s;%p2%s\007:Cc=\E]12;%p1%s\007:Cr=\E]112\007:Cs=\E]50;CursorShape=%?%p1%{3}%<%t%{0}%e%p1%{2}%-%;%d\007'

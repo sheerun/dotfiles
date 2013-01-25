@@ -55,6 +55,7 @@ map <C-l> <C-w>l
 let NERDTreeCaseSensitiveSort = 1
 let NERDTreeChDirMode = 2
 let NERDTreeQuitOnOpen = 1
+let NERDTreeHijackNetrw = 1
 
 " Add gems.tags to files searched for tags.
 set tags+=gems.tags

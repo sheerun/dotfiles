@@ -17,7 +17,7 @@ set shiftwidth=2
 set ai                " Autoindent.
 set ruler             " Show line and column number.
 set number            " Show line numbers.
-set expandtab         " Expand tabs to two spaces. 
+set expandtab         " Expand tabs to two spaces.
 set history=1000
 set undolevels=1000
 set title
@@ -111,4 +111,4 @@ map <Left> z<Left>
 map <Right> z<Right>
 
 " Automatically strip whitespace on exit.
-autocmd BufWritePre *.rb :%s/\s\+$//e:
+autocmd BufWritePre *.rb :%s/\s\+$//e

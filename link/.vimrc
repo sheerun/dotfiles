@@ -56,7 +56,7 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.swp,*~,._*
 
 " Disable swap to prevent annoying messages.
-set noswap
+set noswapfile
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j

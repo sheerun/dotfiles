@@ -133,10 +133,8 @@ Bundle 'vim-scripts/gitignore'
 " Installing plugins the first time
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall!
-    :BundleClean
-    :quit 
+    :BundleInstall
+    :quit
 endif
 
 source ~/.dotfiles/lib/powerline/powerline/bindings/vim/source_plugin.vim

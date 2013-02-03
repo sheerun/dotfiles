@@ -1,51 +1,59 @@
-set nocompatible
+" Map `<Leader>` key to `,` before loading any plugins.
+let mapleader = ","
 
-let g:ctrlp_clear_cache_on_exit=1
-let NERDTreeChDirMode=2
+" This function is executed after loading all plugins.
+function AfterConfig()
 
-source ~/.vim/bundles.vim
+" Load Vim defaults everyone agrees on.
+runtime! plugin/sensible.vim
 
 " Use wombat256 as default color scheme.
 colorscheme wombat256mod
 
-set nowrap            " Do not wrap lines.
-set hlsearch          " Highlight all matches on search.
-set ignorecase        " Ignore case when searching.
-set tabstop=2         " Indent using two spaces.
+" Do not wrap lines.
+set nowrap
+
+" Highlight all search matches and ignore case.
+set hlsearch
+set ignorecase
+
+" Indent using two spaces.
+set tabstop=2
 set backspace=2
 set shiftwidth=2
-set ai                " Autoindent.
-set ruler             " Show line and column number.
-set number            " Show line numbers.
-set expandtab         " Expand tabs to two spaces.
-set history=1000
-set undolevels=1000
-set title
-set nobackup
-set noswapfile
-set autowrite         " Automatically save before commands like :next and :make
+set expandtab
+
+" Enable autoindentation.
+set autoindent
+
+" Show line numbers on sidebar and statusbar.
+set number
+
+" Don't ask if to safe buffers on close. 
+set autowrite
 set hidden
+
+" Disable anoying beeps on errors.
 set noerrorbells
 set visualbell
+
+" Don't parse modelines (for security reasons).
 set nomodeline
-set ttyfast
 
-let mapleader = ","
+" Disable auto folding on open.
+set nofoldenable
 
-" Disable output and VCS files
+" Enable mouse for scrolling and window resizing.
+set mouse=nicr
+
+" For autocompletion, complete as much as you can.
+set wildmode=longest,full
+
+" Disable output, vcs, archive, rails, temp and backup files.
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-
-" Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-
-" Ignore bundler and sass cache
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-
-" Disable temp and backup files
 set wildignore+=*.swp,*~,._*
-
-set backupdir^=~/.vim/_backup//    " where to put backup files.
-set directory^=~/.vim/_temp//      " where to put swap files.
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -111,4 +119,19 @@ map <Left> z<Left>
 map <Right> z<Right>
 
 " Automatically strip whitespace on exit.
-autocmd BufWritePre *.rb :%s/\s\+$//e
+" autocmd BufWritePre *.rb :%s/\s\+$//e
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" Expand %% to path of current buffer in command mode.
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Auto center on matched string.
+noremap <Leader>n nzz 
+noremap <Leader>N Nzz
+
+" Map CTRL+L to piece-wise copying of the line above.
+imap <C-L> @@@<ESC>hhkywjl?@@@<CR>P/@@@<CR>3s
+
+endfunction

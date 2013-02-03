@@ -1,3 +1,6 @@
+set nocompatible
+filetype off
+
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
@@ -10,25 +13,54 @@ if !filereadable(vundle_readme)
     let iCanHazVundle=0
 endif
 
-filetype off
-
 set rtp+=~/.dotfiles/lib/vundle/
 call vundle#rc()
 
+" Plugin manager.
 Bundle 'gmarik/vundle'
 
+" Defaults everyone agrees on.
 Bundle 'tpope/vim-sensible'
 
+" An awesome dark theme.
 Bundle 'vim-scripts/wombat256.vim'
+
+" Repeat motions using space key.
 Bundle 'christoomey/vim-space'
+
+" Edit only specific region of the file.
 Bundle 'chrisbra/NrrwRgn'
+
+" Zoom and restore window using `<Ctrl-w>o`.
 Bundle 'vim-scripts/ZoomWin'
+
+" Populate quicklist using ack search tool.
 Bundle 'mileszs/ack.vim'
+
+" Close buffers instead of windows. Browse them.
 Bundle 'vim-scripts/bufkill.vim'
+
+" `,ci` instead of `c{`, `c"`, etc.
 Bundle 'briandoll/change-inside-surroundings.vim'
+
+" Ctrl-p to go to any file. Enable index caching.
 Bundle 'kien/ctrlp.vim'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+
+" `,u` for undo tree.
 Bundle 'sjl/gundo.vim'
+nnoremap <silent> <Leader>u :GundoToggle<CR> 
+
+" Better autocompletion system.
 Bundle 'Shougo/neocomplcache'
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_max_list = 5
+let g:neocomplcache_auto_completion_start_length = 3
+
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'honza/snipmate-snippets'
 Bundle 'AndrewRadev/splitjoin.vim'
@@ -77,7 +109,6 @@ Bundle 'timcharper/textile.vim'
 Bundle 'mutewinter/vim-css3-syntax'
 Bundle 'acustodioo/vim-tmux'
 Bundle 'groenewege/vim-less'
-Bundle 'mutewinter/vim-markdown'
 Bundle 'wavded/vim-stylus'
 Bundle 'tpope/vim-cucumber'
 Bundle 'kana/vim-textobj-user'
@@ -88,6 +119,11 @@ Bundle 'vim-scripts/AutoTag'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-scripts/UnconditionalPaste'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'spolu/dwm.vim'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'thisivan/vim-bufexplorer'
+Bundle 'vim-scripts/gitignore'
+
 
 " Installing plugins the first time
 if iCanHazVundle == 0
@@ -102,3 +138,4 @@ source ~/.dotfiles/lib/powerline/powerline/bindings/vim/source_plugin.vim
 
 filetype plugin indent on
 
+:call AfterConfig()

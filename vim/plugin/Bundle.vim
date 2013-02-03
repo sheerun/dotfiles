@@ -8,6 +8,11 @@ if !filereadable(vundle_readme)
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
+    if has("mac")
+        silent !mkdir -p ~/Library/Vim/{swap,backup,undo}
+    else
+        silent !mkdir -p ~/.local/share/{swap,backup,undo}
+    endif
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     silent !pip install --user https://github.com/Lokaltog/powerline/tarball/develop
     let iCanHazVundle=0

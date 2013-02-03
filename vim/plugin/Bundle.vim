@@ -128,7 +128,7 @@ Bundle 'spolu/dwm.vim'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/gitignore'
-
+Bundle 'jistr/vim-nerdtree-tabs'
 
 " Installing plugins the first time
 if iCanHazVundle == 0

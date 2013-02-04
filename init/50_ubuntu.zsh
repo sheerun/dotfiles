@@ -1,10 +1,6 @@
 # Ubuntu-only stuff. Abort if not Ubuntu.
 [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
 
-# Update APT.
-e_header "Updating APT"
-sudo apt-get -qq update
-
 # Install APT packages.
 packages=(
   build-essential libssl-dev
@@ -22,6 +18,10 @@ for package in "${packages[@]}"; do
 done
 
 if (( ${#list[@]} > 0 )); then
+  # Update APT.
+  e_header "Updating APT"
+  sudo apt-get -qq update
+
   e_header "Installing APT packages: ${list[*]}"
   for package in "${list[@]}"; do
     sudo apt-get -qq install "$package"

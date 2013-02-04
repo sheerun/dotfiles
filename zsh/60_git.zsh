@@ -13,5 +13,5 @@ alias push='git push'
 alias pull='git pull'
 alias cached='git diff --cached'
 alias staged='git diff --cached'
-alias up="RBENV_VERSION=$(rbenv global) git up"
+alias up="git up"
 alias stash='git stash'

@@ -28,4 +28,7 @@ if (( ${#list[@]} > 0 )); then
   done
 fi
 
-sudo chsh -s $(which zsh) $USER
+cat /etc/passwd | grep $USER | grep zsh >& /dev/null
+if [ $? -eq 0 ]; then
+  sudo chsh -s $(which zsh) $USER
+fi

@@ -137,4 +137,6 @@ noremap <Leader>N Nzz
 " Map CTRL+L to piece-wise copying of the line above.
 imap <C-L> @@@<ESC>hhkywjl?@@@<CR>P/@@@<CR>3s
 
+source ~/.dotfiles/lib/powerline/powerline/bindings/vim/source_plugin.vim
+
 endfunction

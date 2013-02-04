@@ -1,21 +1,23 @@
 set nocompatible
 filetype off
 
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
+function SetupBackupDirectories()
     if has("mac")
         silent !mkdir -p ~/Library/Vim/{swap,backup,undo}
     else
         silent !mkdir -p ~/.local/share/{swap,backup,undo}
     endif
+endfunction
+
+" Setting up Vundle - the vim plugin bundler
+let vundle_just_installed = 0
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     silent !pip install --user https://github.com/Lokaltog/powerline/tarball/develop
-    let iCanHazVundle=0
+    call SetupBackupDirectories()
+    let vundle_just_installed = 1
 endif
 
 set rtp+=~/.dotfiles/lib/vundle/
@@ -130,15 +132,11 @@ Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/gitignore'
 Bundle 'jistr/vim-nerdtree-tabs'
 
-" Installing plugins the first time
-if iCanHazVundle == 0
+if vundle_just_installed == 1
     echo "Installing Bundles, please ignore key map error messages"
+    let g:vundle_default_git_proto = 'git'
     :BundleInstall
     :quit
 endif
-
-source ~/.dotfiles/lib/powerline/powerline/bindings/vim/source_plugin.vim
-
-filetype plugin indent on
 
 :call AfterConfig()

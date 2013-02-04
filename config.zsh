@@ -6,4 +6,5 @@ homebrew_recipes=(
   coreutils findutils
   git git-extras git-flow zsh htop-osx tree lesspipe wget
   vim ssh-copy-id ctags mobile-shell ack
+  source-highlight
 )

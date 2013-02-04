@@ -28,13 +28,4 @@ if (( ${#list[@]} > 0 )); then
   done
 fi
 
-# Install Git Extras
-if [[ ! "$(type -P git-extras)" ]]; then
-  e_header "Installing Git Extras"
-  (
-    cd ~/.dotfiles/libs/git-extras &&
-    sudo make install
-  )
-fi
-
 sudo chsh -s $(which zsh) $USER

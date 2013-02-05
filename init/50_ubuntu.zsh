@@ -7,6 +7,7 @@ packages=(
   git-core
   tree
   htop
+  ctags
   zsh
 )
 

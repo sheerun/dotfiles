@@ -1,7 +1,7 @@
 # Make 1.9.3 default ruby installation.
 rbenv global 1.9.3-stable
 
-# install gems
+# Install most important ruby gems.
 if [[ "$(type -P gem)" ]]; then
   gems=(bundler awesome_print git-up)
 

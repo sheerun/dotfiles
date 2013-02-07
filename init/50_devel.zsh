@@ -21,7 +21,7 @@ fi
 
 # install gems
 if [[ "$(type -P gem)" ]]; then
-  gems=(bundler awesome_print git-up ruby-debug-ide)
+  gems=(bundler awesome_print git-up)
 
   list="$(to_install "${gems[*]}" "$(gem list | awk '{print $1}')")"
   if [[ "$list" ]]; then

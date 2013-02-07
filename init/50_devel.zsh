@@ -1,8 +1,5 @@
-# install ruby-build
-mkdir -p $HOME/.dotfiles/lib/rbenv/plugins
-cd $HOME/.dotfiles/lib/rbenv/plugins
-
-[[ -h ./ruby-build ]] || ln -s ../../ruby-build
+# Make 1.9.3 default ruby installation.
+rbenv global 1.9.3-stable
 
 # install gems
 if [[ "$(type -P gem)" ]]; then

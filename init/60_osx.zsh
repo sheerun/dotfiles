@@ -40,3 +40,5 @@ if [[ "$(type -P brew)" ]]; then
     brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
   fi
 fi
+
+cd $HOME/.rbenv/versions && ln -s /usr/local/opt/ruby "1.9.3-stable"

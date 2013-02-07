@@ -2,6 +2,7 @@
 [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
 
 cat /etc/passwd | grep $USER | grep zsh >& /dev/null
-if [ $? -eq 0 ]; then
-  sudo chsh -s $(which zsh) $USER
+if [ $? -ne 0 ]; then
+  echo "Changing your shell to zsh..."
+  sudo chsh -s $(which zsh)
 fi

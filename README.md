@@ -9,7 +9,7 @@
 ## Installation
 
 ```sh
-bash -c "$(curl -fsSL https://raw.github.com/sheerun/dotfiles/master/bin/dotfiles)"
+zsh <(curl -fsSL https://raw.github.com/sheerun/dotfiles/master/bin/dotfiles) sheerun
 ```
 
 ## Thanks!

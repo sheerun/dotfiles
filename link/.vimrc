@@ -1,8 +1,7 @@
 " Map `<Leader>` key to `,` before loading any plugins.
 let mapleader = ","
 
-" This function is executed after loading all plugins.
-function AfterConfig()
+source ~/.vim/vundle.vim
 
 " Load Vim defaults everyone agrees on.
 runtime! plugin/sensible.vim
@@ -138,5 +137,3 @@ noremap <Leader>N Nzz
 imap <C-L> @@@<ESC>hhkywjl?@@@<CR>P/@@@<CR>3s
 
 source ~/.dotfiles/lib/powerline/powerline/bindings/vim/source_plugin.vim
-
-endfunction

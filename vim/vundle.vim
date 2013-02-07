@@ -131,6 +131,7 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/gitignore'
 Bundle 'jistr/vim-nerdtree-tabs'
+map <F5> <plug>NERDTreeTabsToggle<CR>
 
 if vundle_just_installed == 1
     echo "Installing Bundles, please ignore key map error messages"
@@ -138,5 +139,3 @@ if vundle_just_installed == 1
     :BundleInstall
     :quit
 endif
-
-:call AfterConfig()

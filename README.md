@@ -5,7 +5,7 @@
 The only requirements are `zsh` and `curl` installed.
 
 ```shell
-zsh <(curl dotfiles.sher.pl)
+zsh <(curl -s dotfiles.sher.pl)
 ```
 
 ## Updating

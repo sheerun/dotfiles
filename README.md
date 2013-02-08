@@ -4,9 +4,11 @@
 
 The only requirements are `zsh` and `curl` installed.
 
-```shell
-zsh <(curl -s dotfiles.sher.pl)
-```
+    zsh <(curl -s dotfiles.sher.pl)
+
+You can also setup remote host in one step:
+
+    ssh remote@host.com 'zsh <(curl -s dotfiles.sher.pl)'
 
 ## Updating
 

@@ -1,12 +1,6 @@
 #!/usr/bin/env zsh
 
-LOGIN=$1
 DOTHOME=$HOME/.dotfiles
-
-if [[ -z $LOGIN ]]; then
-  echo 'Usage: dotfiles LOGIN'
-  exit 1
-fi
 
 function run() {
   ensure_git
@@ -43,12 +37,15 @@ function ensure_git() {
 
 function get_dotfiles() {
   if [[ ! -d $DOTHOME ]]; then
+    echo -n "Please enter your Github username: "
+    read LOGIN
+
     e_header "Downloading dotfiles"
     e_arrow git://github.com/${LOGIN}/dotfiles.git
     git clone --recursive git://github.com/${LOGIN}/dotfiles.git $DOTHOME
 
     if [[ ! -d $DOTHOME ]]; then
-      e_error "Cannot fetch your dotfiles. Aborting."
+      e_error "Cannot fetch your dotfiles. Did you fork them?"
       exit 1
     fi
 

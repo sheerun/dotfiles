@@ -95,7 +95,7 @@ function print_messages() {
   fi
 
   if [[ $first_run == 1 ]]; then
-    echo "\nInstallation complete! Run source ~/.zshrc"
+    echo "\nInstallation complete! You can relogin now."
   fi
 }
 

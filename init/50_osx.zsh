@@ -10,35 +10,32 @@ fi
 
 # fix path loading of libexec tools.
 # https://github.com/sorin-ionescu/prezto
-ls -la /usr/libexec/path_helper | grep rwx &> /dev/null
-if [ $? -eq 0 ]; then
+ls -la /usr/libexec/path_helper | grep rwx || {
   sudo chmod ugo-x /usr/libexec/path_helper
+}
+
+if [[ -z $commands[brew] ]]; then
+  e_header "Installing Homebrew..."
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 fi
 
-
-# Install Homebrew.
-if [[ ! "$(type -P brew)" ]]; then
-  e_header "Installing Homebrew"
-  true | /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
-fi
-
-if [[ "$(type -P brew)" ]]; then
-  e_header "Updating Homebrew"
+if [[ -n $commands[brew] ]]; then
+  e_header "Updating Homebrew..."
   brew update
 
-  e_header "Upgrading Homebrew"
+  e_header "Upgrading Homebrew..."
   brew upgrade
 
-  list="$(to_install "${homebrew_recipes[*]}" "$(brew list)")"
-  if [[ "$list" ]]; then
+  list="$(to_install "${homebrew_recipe}" "$(brew list)")"
+  if [[ -n "$list" ]]; then
     e_header "Installing Homebrew recipes: $list"
     (brew list | grep ^$list$ > /dev/null) || brew install $list
   fi
 
-  if [[ ! "$(type -P gcc-4.2)" ]]; then
+  if [[ -z $commands[gcc-4.2] ]]; then
     e_header "Installing Homebrew dupe recipe: apple-gcc42"
     brew install https://raw.github.com/Homebrew/homebrew-dupes/master/apple-gcc42.rb
   fi
 fi
 
-cd $HOME/.rbenv/versions && ln -s /usr/local/opt/ruby "1.9.3-stable"
+cd $HOME/.rbenv/versions && ln -sf /usr/local/opt/ruby "1.9.3-stable"

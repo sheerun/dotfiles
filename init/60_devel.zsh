@@ -2,7 +2,7 @@
 rbenv global 1.9.3-stable
 
 # Install most important ruby gems.
-if [[ "$(type -P gem)" ]]; then
+if [[ -z $commands[gem] ]]; then
   gems=(bundler awesome_print git-up)
 
   list="$(to_install "${gems[*]}" "$(gem list | awk '{print $1}')")"

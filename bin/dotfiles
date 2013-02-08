@@ -7,6 +7,7 @@ function run() {
   ensure_git
   get_dotfiles
   link_dotfiles
+  run_init_scripts
   print_messages
 }
 
@@ -21,6 +22,11 @@ function e_arrow()    { echo -e " \033[1;33m➜\033[0m  $@"; }
 
 function ensure_git() {
   if [[ -z $commands[git] && "$OSTYPE" =~ ^darwin ]]; then
+    if [[ -n $commands[brew] ]]; then
+      e_header "Installing Homebrew..."
+      ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    fi
+
     if [[ -n $commands[brew] ]]; then
       e_header "Updating Homebrew..."
       brew update
@@ -87,6 +93,15 @@ function link_dotfiles() {
   done
 }
 
+function run_init_scripts() {
+  e_header "Executing init scripts..."
+
+  for file in $DOTHOME/init/*; do
+    source $file
+    e_success $(basename $file)
+  done
+}
+
 function print_messages() {
   if [[ $inform_about_backup == 1 ]]; then
     echo "\nBackups were moved to $HOME/${backup_dir#$HOME/}\n"
@@ -94,6 +109,8 @@ function print_messages() {
 
   if [[ $first_run == 1 ]]; then
     echo "\nInstallation complete! You can relogin now."
+  else
+    echo # it's visually better ;)
   fi
 }
 

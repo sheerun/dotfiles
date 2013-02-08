@@ -51,7 +51,7 @@ function get_dotfiles() {
     fi
     
     sed -i.bak 's/git:\/\/\github.com\/\(.*\)dotfiles/git@github\.com\:\1dotfiles/' \
-    .git/config
+     $DOTHOME/.git/config
 
     cd $DOTHOME
   else

@@ -45,7 +45,8 @@ function get_dotfiles() {
 
     e_header "Downloading dotfiles..."
     e_arrow git://github.com/${LOGIN}/dotfiles.git
-    git clone --recursive git://github.com/${LOGIN}/dotfiles.git $DOTHOME
+    git clone --quiet --recursive \
+     git://github.com/${LOGIN}/dotfiles.git $DOTHOME
 
     if [[ ! -d $DOTHOME ]]; then
       e_error "Cannot fetch your dotfiles. Did you fork them?"

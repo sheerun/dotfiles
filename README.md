@@ -2,13 +2,15 @@
 
 ## Requirements and installation
 
-The only requirement are `zsh` and `curl` installed.
+The only requirements are `zsh` and `curl` installed.
 
 ```shell
-zsh <(curl --location dotfiles.sher.pl/sheerun)
+zsh <(curl dotfiles.sher.pl)
 ```
 
-I encourage you to fork this repo and replace `sheerun` with your login. 
+## Updating
+
+Just run `dotfiles` command. It will appply changes from your fork.
 
 ## Thanks!
 

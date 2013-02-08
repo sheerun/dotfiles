@@ -45,18 +45,18 @@ function get_dotfiles() {
 
     e_header "Downloading dotfiles..."
     e_arrow git://github.com/${LOGIN}/dotfiles.git
-    git clone --quiet --recursive \
-     git://github.com/${LOGIN}/dotfiles.git $DOTHOME
+    git clone git://github.com/${LOGIN}/dotfiles.git $DOTHOME
 
     if [[ ! -d $DOTHOME ]]; then
       e_error "Cannot fetch your dotfiles. Did you fork them?"
       exit 1
     fi
-    
+
     sed -i.bak 's/git:\/\/\github.com\/\(.*\)dotfiles/git@github\.com\:\1dotfiles/' \
      $DOTHOME/.git/config
 
-    cd $DOTHOME
+    e_header "Downloading submodules..."
+    cd $DOTHOME && git submodule update --init --recursive --quiet
   else
     e_header "Updating dotfiles..."
     cd $DOTHOME && git pull

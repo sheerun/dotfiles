@@ -4,9 +4,11 @@
 
 The only requirement are `zsh` and `curl` installed.
 
-```sh
-zsh <(curl -fsSL https://raw.github.com/sheerun/dotfiles/master/bin/dotfiles) sheerun
+```shell
+zsh <(curl --location dotfiles.sher.pl/sheerun)
 ```
+
+I encourage you to fork this repo and replace `sheerun` with your login. 
 
 ## Thanks!
 

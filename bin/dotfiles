@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+set -e
 
 DOTHOME=$HOME/.dotfiles
 

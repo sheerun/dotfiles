@@ -22,9 +22,9 @@ function e_arrow()    { echo -e " \033[1;33m➜\033[0m  $@"; }
 function ensure_git() {
   if [[ -z $commands[git] && "$OSTYPE" =~ ^darwin ]]; then
     if [[ -n $commands[brew] ]]; then
-      e_header "Updating Homebrew"
+      e_header "Updating Homebrew..."
       brew update
-      e_header "Installing Git"
+      e_header "Installing Git..."
       brew install git
     fi
   fi
@@ -41,7 +41,7 @@ function get_dotfiles() {
     echo -n "Please enter your Github username: "
     read LOGIN
 
-    e_header "Downloading dotfiles"
+    e_header "Downloading dotfiles..."
     e_arrow git://github.com/${LOGIN}/dotfiles.git
     git clone --recursive git://github.com/${LOGIN}/dotfiles.git $DOTHOME
 
@@ -55,7 +55,7 @@ function get_dotfiles() {
 
     cd $DOTHOME
   else
-    e_header "Updating dotfiles"
+    e_header "Updating dotfiles..."
     cd $DOTHOME && git pull
     git submodule update --init --recursive --quiet
   fi
@@ -89,7 +89,9 @@ function link_dotfiles() {
 
 function print_messages() {
   if [[ $inform_about_backup == 1 ]]; then
-    echo -e "\nBackups were moved to $HOME/${backup_dir#$HOME/}"
+    echo -e "\nBackups were moved to $HOME/${backup_dir#$HOME/}\n"
+  else
+    echo # so it looks better ;)
   fi
 }
 

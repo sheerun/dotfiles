@@ -44,10 +44,10 @@ function get_dotfiles() {
     e_arrow git://github.com/${LOGIN}/dotfiles.git
 
     e_header "Downloading dotfiles..."
-    if [[ -z =(git clone git://github.com/${LOGIN}/dotfiles.git $DOTHOME) ]]; then
+    git clone git://github.com/${LOGIN}/dotfiles.git $DOTHOME || {
       e_error "Cannot fetch your dotfiles. Did you fork them?"
       exit 1
-    fi
+    }
 
     e_header "Downloading submodules..."
     cd $DOTHOME && git submodule update --init --recursive --quiet

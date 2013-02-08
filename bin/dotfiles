@@ -49,6 +49,9 @@ function get_dotfiles() {
       e_error "Cannot fetch your dotfiles. Did you fork them?"
       exit 1
     fi
+    
+    sed -i.bak 's/git:\/\/\github.com\/\(.*\)dotfiles/git@github\.com\:\1dotfiles/' \
+    .git/config
 
     cd $DOTHOME
   else

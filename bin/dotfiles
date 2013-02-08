@@ -38,6 +38,8 @@ function ensure_git() {
 
 function get_dotfiles() {
   if [[ ! -d $DOTHOME ]]; then
+    first_run=1
+
     echo -n "Please enter your Github username: "
     read LOGIN
 
@@ -89,9 +91,11 @@ function link_dotfiles() {
 
 function print_messages() {
   if [[ $inform_about_backup == 1 ]]; then
-    echo -e "\nBackups were moved to $HOME/${backup_dir#$HOME/}\n"
-  else
-    echo # so it looks better ;)
+    echo "\nBackups were moved to $HOME/${backup_dir#$HOME/}\n"
+  fi
+
+  if [[ $first_run == 1 ]]; then
+    echo "\nInstallation complete! Run source ~/.zshrc"
   fi
 }
 

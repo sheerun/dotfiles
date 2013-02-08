@@ -1,10 +1,8 @@
 # Sheerun's dotfiles
 
-## Requirements
+## Requirements and installation
 
-* You need to have `curl` tool installed.
-
-## Installation
+The only requirement are `zsh` and `curl` installed.
 
 ```sh
 zsh <(curl -fsSL https://raw.github.com/sheerun/dotfiles/master/bin/dotfiles) sheerun

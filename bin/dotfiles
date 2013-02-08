@@ -40,11 +40,10 @@ function get_dotfiles() {
   if [[ ! -d $DOTHOME ]]; then
     first_run=1
 
-    echo -n "Please enter your Github username: "
-    read LOGIN
+    echo -n "Please enter your Github username: " && read LOGIN
+    e_arrow git://github.com/${LOGIN}/dotfiles.git
 
     e_header "Downloading dotfiles..."
-    e_arrow git://github.com/${LOGIN}/dotfiles.git
     git clone git://github.com/${LOGIN}/dotfiles.git $DOTHOME
 
     if [[ ! -d $DOTHOME ]]; then

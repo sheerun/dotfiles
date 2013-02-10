@@ -8,12 +8,6 @@ if [[ ! -d "$('xcode-select' -print-path 2>/dev/null)" ]]; then
   sudo xcode-select -switch /usr/bin
 fi
 
-# fix path loading of libexec tools.
-# https://github.com/sorin-ionescu/prezto
-ls -la /usr/libexec/path_helper | grep rwx || {
-  sudo chmod ugo-x /usr/libexec/path_helper
-}
-
 if [[ -z $commands[brew] ]]; then
   e_header "Installing Homebrew..."
   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"

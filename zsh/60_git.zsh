@@ -15,3 +15,4 @@ alias cached='git diff --cached'
 alias staged='git diff --cached'
 alias up="git up"
 alias stash='git stash'
+alias clone='git clone'

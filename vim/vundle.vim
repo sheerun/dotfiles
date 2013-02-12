@@ -27,7 +27,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Defaults everyone agrees on.
-Bundle 'tpope/vim-sensible'
+Bundle 'sheerun/vim-sensible'
 
 " An awesome dark theme.
 Bundle 'vim-scripts/wombat256.vim'

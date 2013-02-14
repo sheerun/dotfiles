@@ -1,5 +1,5 @@
 # Ubuntu-only stuff. Abort if not Ubuntu.
-[[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
+[[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 0
 
 # Install python environment to ~/.python
 python -B $HOME/.dotfiles/lib/virtualenv.py $HOME/.python

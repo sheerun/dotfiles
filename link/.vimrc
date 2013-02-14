@@ -9,54 +9,6 @@ runtime! plugin/sensible.vim
 " Use wombat256 as default color scheme.
 colorscheme wombat256mod
 
-" Do not wrap lines.
-set nowrap
-
-" Highlight all search matches and ignore case.
-set hlsearch
-set ignorecase
-
-" Indent using two spaces.
-set tabstop=2
-set backspace=2
-set shiftwidth=2
-set expandtab
-
-" Enable autoindentation.
-set autoindent
-
-" Show line numbers on sidebar and statusbar.
-set number
-
-" Don't ask if to safe buffers on close. 
-set autowrite
-set hidden
-
-" Disable anoying beeps on errors.
-set noerrorbells
-set visualbell
-
-" Don't parse modelines (for security reasons).
-set nomodeline
-
-" Disable auto folding on open.
-set nofoldenable
-
-" Enable mouse for scrolling and window resizing.
-set mouse=nicr
-
-" For autocompletion, complete as much as you can.
-set wildmode=longest,full
-
-" Disable output, vcs, archive, rails, temp and backup files.
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-set wildignore+=*.swp,*~,._*
-
-" Disable swap to prevent annoying messages.
-set noswapfile
-
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -67,8 +19,6 @@ let NERDTreeChDirMode = 2
 let NERDTreeQuitOnOpen = 1
 let NERDTreeHijackNetrw = 1
 
-" Add gems.tags to files searched for tags.
-set tags+=gems.tags
 
 " Options for taglist.vim plugin
 nnoremap <silent> <F8> :TlistToggle<CR>
@@ -111,7 +61,17 @@ function WrapForTmux(s)
   return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
 endfunction
 
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+" populate the argument list with each of the files named in the quickfix list
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
 " Use dash as word separator.
+
 set iskeyword+=-
 
 " Use arrows for scrolling instead of moving cursor.

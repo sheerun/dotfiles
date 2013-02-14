@@ -13,7 +13,7 @@ if [[ -z $commands[brew] ]]; then
   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 fi
 
-if [[ -n $commands[brew] ]]; then
+if [[ -n $commands[brew] && ! -z "$UPGRADE" ]]; then
   e_header "Updating Homebrew..."
   brew update
 

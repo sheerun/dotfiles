@@ -1,5 +1,5 @@
 # OSX-only stuff. Abort if not OSX.
-[[ "$OSTYPE" =~ ^darwin ]] || return 1
+[[ "$OSTYPE" =~ ^darwin ]] || return 0
 
 # Some tools look for XCode, even though they don't need it.
 # https://github.com/joyent/node/issues/3681

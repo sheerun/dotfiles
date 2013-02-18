@@ -4,10 +4,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # Ensure locale settings are properly set-up.
-if [[ -z "$LANG" ]]; then
-  eval "$(locale)"
-fi
-
+eval "$(locale)"
 
 # Set the list of directories that Zsh searches for programs.
 path=(

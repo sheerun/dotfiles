@@ -75,10 +75,14 @@ endfunction
 set iskeyword+=-
 
 " Use arrows for scrolling instead of moving cursor.
-map <Down> <c-e>
-map <Up> <c-y>
-map <Left> z<Left>
-map <Right> z<Right>
+nnoremap <Down> <c-f>
+nnoremap <Up> <c-b>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+inoremap <Down> <c-f>
+inoremap <Up> <c-b>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
 
 " Automatically strip whitespace on exit.
 " autocmd BufWritePre *.rb :%s/\s\+$//e

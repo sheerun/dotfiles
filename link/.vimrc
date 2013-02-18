@@ -14,6 +14,15 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Yank/Paste to the OS clipboard with ,y and ,p and Ctrl-V
+nnoremap <Leader>y "+Y
+vnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+
+" Visually select the text that was last edited/pasted (Vimcast#26)
+noremap gV `[v`]
+
 let NERDTreeCaseSensitiveSort = 1
 let NERDTreeChDirMode = 2
 let NERDTreeQuitOnOpen = 1

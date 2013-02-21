@@ -128,6 +128,7 @@ Bundle 'spolu/dwm.vim'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/gitignore'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'vim-scripts/YankRing.vim'
 map <F5> <plug>NERDTreeTabsToggle<CR>
 
 if vundle_just_installed == 1

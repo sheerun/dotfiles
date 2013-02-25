@@ -18,7 +18,7 @@
 				"name": "branch",
 				"exclude_modes": ["nc"],
 				"priority": 60,
-				"before": " "
+				"before": " "
 			},
 			{
 				"name": "file_directory",

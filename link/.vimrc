@@ -4,7 +4,7 @@ let mapleader = ","
 source ~/.vim/vundle.vim
 
 " Load Vim defaults everyone agrees on.
-runtime! plugin/sensible.vim
+runtime! plugin/vimrc.vim
 
 " Use wombat256 as default color scheme.
 colorscheme wombat256mod

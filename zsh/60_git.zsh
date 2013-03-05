@@ -16,3 +16,5 @@ alias staged='git diff --cached'
 alias up="git up"
 alias stash='git stash'
 alias clone='git clone'
+alias fetch='git fetch'
+alias merge='git merge'

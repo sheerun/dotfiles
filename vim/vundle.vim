@@ -52,21 +52,12 @@ Bundle 'briandoll/change-inside-surroundings.vim'
 
 " Ctrl-p to go to any file. Enable index caching.
 Bundle 'kien/ctrlp.vim'
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
 
 " `,u` for undo tree.
 Bundle 'sjl/gundo.vim'
-nnoremap <silent> <Leader>u :GundoToggle<CR> 
 
 " Better autocompletion system.
 Bundle 'Shougo/neocomplcache'
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_max_list = 5
-let g:neocomplcache_auto_completion_start_length = 3
 
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'honza/snipmate-snippets'
@@ -76,7 +67,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'nathanaelkane/vim-command-w.git'
@@ -128,8 +118,15 @@ Bundle 'spolu/dwm.vim'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/gitignore'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'vim-scripts/YankRing.vim'
-map <F5> <plug>NERDTreeTabsToggle<CR>
+Bundle 'derekwyatt/vim-scala'
+Bundle 'jrk/vim-ocaml'
+Bundle 'Shougo/vimproc'
+Bundle 'wlangstroth/vim-haskell'
+Bundle 'dag/vim2hs'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'slim-template/vim-slim'
+Bundle 'skwp/vim-conque'
+Bundle 'skwp/vim-ruby-conque'
 
 if vundle_just_installed == 1
     echo "Installing Bundles, please ignore key map error messages"

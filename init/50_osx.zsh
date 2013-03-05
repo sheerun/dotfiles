@@ -33,4 +33,4 @@ if [[ -n $commands[brew] && ! -z "$UPGRADE" ]]; then
 fi
 
 mkdir -p ~/.rbenv/versions
-cd $HOME/.rbenv/versions && ln -sf /usr/local/opt/ruby "1.9.3-stable"
+cd $HOME/.rbenv/versions && ln -sf /usr/local/opt/ruby "2.0"

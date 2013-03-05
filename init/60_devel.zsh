@@ -1,5 +1,5 @@
 # Make 1.9.3 default ruby installation.
-rbenv global 1.9.3-stable
+rbenv global 2.0
 
 # Install most important ruby gems.
 if [[ -z $commands[gem] ]]; then

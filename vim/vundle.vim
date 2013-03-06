@@ -27,7 +27,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Defaults everyone agrees on.
-Bundle 'sheerun/vim-sensible'
+Bundle 'sheerun/vimrc'
 
 " An awesome dark theme.
 Bundle 'vim-scripts/wombat256.vim'
@@ -43,9 +43,6 @@ Bundle 'vim-scripts/ZoomWin'
 
 " Populate quicklist using ack search tool.
 Bundle 'mileszs/ack.vim'
-
-" Close buffers instead of windows. Browse them.
-Bundle 'vim-scripts/bufkill.vim'
 
 " `,ci` instead of `c{`, `c"`, etc.
 Bundle 'briandoll/change-inside-surroundings.vim'
@@ -115,7 +112,6 @@ Bundle 'vim-scripts/AutoComplPop'
 Bundle 'vim-scripts/UnconditionalPaste'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'spolu/dwm.vim'
-Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/gitignore'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'derekwyatt/vim-scala'
@@ -126,6 +122,7 @@ Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'slim-template/vim-slim'
 Bundle 'skwp/vim-conque'
+Bundle 'duff/vim-bufonly'
 Bundle 'skwp/vim-ruby-conque'
 
 if vundle_just_installed == 1

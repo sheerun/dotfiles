@@ -1,18 +1,3 @@
-source ~/.dotfiles/lib/antigen/antigen.zsh
-
-# Load the oh-my-zsh's library.
-antigen-lib
-antigen-bundle git
-antigen-bundle rbenv
-antigen-bundle sprunge
-antigen-bundle bundler
-antigen-bundle git-extras
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zaw
-antigen-bundle zsh-users/zsh-history-substring-search
-antigen-theme robbyrussell
-antigen-apply
-
 # disable autocorrection as it's extremely annoying
 unsetopt correct_all
 

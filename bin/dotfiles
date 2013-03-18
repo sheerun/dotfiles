@@ -70,7 +70,7 @@ function get_dotfiles() {
 function link_dotfiles() {
   e_header "Linking files into home directory..."
 
-  for file in $DOTHOME/link/.*; do
+  for file in $DOTHOME/home/.*; do
     local base="$(basename $file)"
     local dest="$HOME/$base"
 

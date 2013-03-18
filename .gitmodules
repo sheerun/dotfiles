@@ -22,3 +22,6 @@
 [submodule "lib/powerline"]
 	path = lib/powerline
 	url = git://github.com/Lokaltog/powerline.git
+[submodule "lib/mosh"]
+	path = lib/mosh
+	url = https://github.com/keithw/mosh.git

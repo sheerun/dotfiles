@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 set -e
 
+CURRENT_DIR="$PWD"
 DOTHOME=$HOME/.dotfiles
 
 function run() {
@@ -120,3 +121,5 @@ function print_messages() {
 }
 
 run
+
+cd $CURRENT_DIR && exec zsh

@@ -96,9 +96,14 @@ function link_dotfiles() {
 function run_init_scripts() {
   e_header "Executing init scripts..."
 
+  TRAPERR() {
+    e_error $SOURCED_FILE
+  }
+
   for file in $DOTHOME/init/*; do
+    SOURCED_FILE="$(basename $file)"
     source $file
-    e_success $(basename $file)
+    e_success $SOURCED_FILE
   done
 }
 

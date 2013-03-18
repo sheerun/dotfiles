@@ -1,8 +1,13 @@
-# Make 1.9.3 default ruby installation.
-rbenv global 2.0
-
 # Install ruby-build
-mkdir ~/.rbenv/plugins && cd ~/.rbenv/plugins && ln -sf ~/.dotfiles/lib/ruby-build
+mkdir -p ~/.rbenv/plugins && cd ~/.rbenv/plugins && ln -sf ~/.dotfiles/lib/ruby-build
+
+# Install ruby if not installed
+if [[ ! -d ~/.rbenv/versions/2.0.0 ]]; then
+  ruby-build 2.0.0-rc1 ~/.rbenv/versions/2.0.0
+fi
+
+# Make ruby 2.0.0 the default installation.
+rbenv global 2.0.0
 
 # Install most important ruby gems.
 if [[ -z $commands[gem] ]]; then

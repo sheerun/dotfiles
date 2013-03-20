@@ -16,12 +16,12 @@
 [submodule "lib/antigen"]
 	path = lib/antigen
 	url = git://github.com/zsh-users/antigen.git
-[submodule "lib/vundle"]
-	path = lib/vundle
-	url = git://github.com/gmarik/vundle.git
 [submodule "lib/powerline"]
 	path = lib/powerline
 	url = git://github.com/Lokaltog/powerline.git
 [submodule "lib/mosh"]
 	path = lib/mosh
 	url = https://github.com/keithw/mosh.git
+[submodule "lib/neobundle.vim"]
+	path = lib/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim.git

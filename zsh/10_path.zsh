@@ -5,6 +5,6 @@ export PATH=$PATH:$HOME/.dotfiles/lib/git-extras/bin
 export PATH=$PATH:$HOME/.cabal/bin
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-    export PATHTH=$(brew --prefix postgresql)/bin:$PATH
+    export PATH=$(brew --prefix postgresql)/bin:$PATH
     export PATH="$(brew --prefix coreutils)/libexec/gnubin":$PATH
 fi

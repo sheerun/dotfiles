@@ -12,6 +12,6 @@ antigen-bundle git-extras
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zaw
 antigen-bundle zsh-users/zsh-history-substring-search
-antigen-theme robbyrussell
+antigen-theme sheerun/oh-my-zsh-powerline-theme powerline
 
 antigen-apply

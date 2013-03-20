@@ -1,17 +1,21 @@
 # Antigen is "package manager" for zsh
+export ANTIGEN_DEFAULT_REPO_URL=https://github.com/sheerun/oh-my-zsh.git
 source ~/.dotfiles/lib/antigen/antigen.zsh
 
-antigen-bundle ~/.zsh
+antigen lib
 
-antigen-lib
-antigen-bundle git
-antigen-bundle rbenv
-antigen-bundle sprunge
-antigen-bundle bundler
-antigen-bundle git-extras
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zaw
-antigen-bundle zsh-users/zsh-history-substring-search
-antigen-theme sheerun/oh-my-zsh-powerline-theme powerline
+antigen bundles <<EOB
+  git
+  rbenv
+  sprunge
+  bundler
+  git-extras
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zaw
+  zsh-users/zsh-history-substring-search
+  ~/.zsh
+EOB
 
-antigen-apply
+antigen theme sheerun/oh-my-zsh-powerline-theme powerline
+
+antigen apply

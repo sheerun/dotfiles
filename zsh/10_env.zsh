@@ -8,3 +8,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     export PATH=$(brew --prefix postgresql)/bin:$PATH
     export PATH="$(brew --prefix coreutils)/libexec/gnubin":$PATH
 fi
+# Editing
+
+export EDITOR="vim"
+export LESSOPEN="| src-hilite-lesspipe.sh %s"

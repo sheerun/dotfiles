@@ -1,3 +1,0 @@
-# Editing
-
-export EDITOR="vim"

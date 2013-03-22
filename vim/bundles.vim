@@ -5,13 +5,26 @@ if has('vim_starting')
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
+let g:neobundle#types#git#default_protocol = 'https'
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet.git'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+call neobundle#config('vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ })
+
 NeoBundle 'sheerun/vimrc'
-NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'christoomey/vim-space'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'vim-scripts/ZoomWin'
@@ -19,11 +32,8 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'briandoll/change-inside-surroundings.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'honza/snipmate-snippets'
 NeoBundle 'AndrewRadev/splitjoin.vim'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tomtom/tlib_vim'
@@ -42,7 +52,6 @@ NeoBundle 'edsono/vim-matchit'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-rsi'
 NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'garbas/vim-snipmate'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'skalnik/vim-vroom'
@@ -72,7 +81,6 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'vim-scripts/SmartCase'
 NeoBundle 'tpope/vim-scriptease'
 NeoBundle 'vim-scripts/AutoTag'
-NeoBundle 'vim-scripts/AutoComplPop'
 NeoBundle 'vim-scripts/UnconditionalPaste'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'spolu/dwm.vim'
@@ -80,11 +88,10 @@ NeoBundle 'vim-scripts/gitignore'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'jrk/vim-ocaml'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'wlangstroth/vim-haskell'
-NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : 'haskell' }}
+NeoBundleLazy 'ujihisa/neco-ghc', { 'autoload' : { 'filetypes' : 'haskell' }}
+
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'skwp/vim-conque'

@@ -5,15 +5,13 @@ source ~/.dotfiles/lib/antigen/antigen.zsh
 antigen lib
 
 antigen bundles <<EOB
-  git
   rbenv
-  sprunge
   bundler
   git-extras
   zsh-users/zsh-syntax-highlighting
   zsh-users/zaw
   zsh-users/zsh-history-substring-search
-  ~/.zsh
+  ~/.zsh --no-local-clone
 EOB
 
 antigen theme sheerun/oh-my-zsh-powerline-theme powerline

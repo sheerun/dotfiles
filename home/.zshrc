@@ -6,7 +6,6 @@ antigen lib
 
 antigen bundles <<EOB
   rbenv
-  bundler
   git-extras
   zsh-users/zsh-syntax-highlighting
   zsh-users/zaw

@@ -2,7 +2,7 @@
 set -e
 
 CURRENT_DIR="$PWD"
-DOTHOME=$HOME/.dotfiles
+DOTHOME="$( cd "$( dirname "$0" )/.." && pwd )"
 
 function run() {
   ensure_git
@@ -44,28 +44,10 @@ function ensure_git() {
 }
 
 function get_dotfiles() {
-  if [[ ! -d $DOTHOME ]]; then
-    first_run=1
-
-    echo -n "Please enter your Github username: " && read LOGIN
-    e_arrow git://github.com/${LOGIN}/dotfiles.git
-
-    e_header "Downloading dotfiles..."
-    git clone git://github.com/${LOGIN}/dotfiles.git $DOTHOME || {
-      e_error "Cannot fetch your dotfiles. Did you fork them?"
-      exit 1
-    }
-
-    e_header "Downloading submodules..."
-    cd $DOTHOME && git submodule update --init --recursive --quiet
-
-    sed -i.bak 's/git:\/\/\github.com\/\(.*\)dotfiles/git@github\.com\:\1dotfiles/' \
-     $DOTHOME/.git/config
-  else
-    e_header "Updating dotfiles..."
-    cd $DOTHOME && git pull
-    git submodule update --init --recursive --quiet
-  fi
+  e_header "Updating dotfiles..."
+echo $DOTHOME
+  cd $DOTHOME && git pull
+  git submodule update --init --recursive --quiet
 }
 
 function link_dotfiles() {

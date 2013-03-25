@@ -295,7 +295,7 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Put Dock on the left
-defaults write com.apple.dock pinning -string start
+defaults write com.apple.dock orientation -string left
 
 # Enable the 2D Dock
 defaults write com.apple.dock no-glass -bool true

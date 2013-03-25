@@ -1,6 +1,3 @@
-# Install ruby-build
-mkdir -p ~/.rbenv/plugins && cd ~/.rbenv/plugins && ln -sf ~/.dotfiles/lib/ruby-build
-
 # Install ruby if not installed
 if [[ ! -d ~/.rbenv/versions/2.0.0 ]]; then
   ruby-build 2.0.0-rc1 ~/.rbenv/versions/2.0.0

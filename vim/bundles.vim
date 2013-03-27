@@ -10,9 +10,9 @@ let g:neobundle#types#git#default_protocol = 'https'
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet.git'
+" NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 call neobundle#config('vimproc', {

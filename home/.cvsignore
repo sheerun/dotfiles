@@ -9,7 +9,8 @@ GPATH
 GTAGS
 GRTAGS
 
-bin/
+log/
+log
 
 link/.config/hub
 

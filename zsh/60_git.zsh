@@ -8,13 +8,18 @@ alias st='git st'
 alias ci='git ci'
 alias lg='git log'
 alias co='git co'
-alias add='git add'
+alias br='git branch'
+alias dc='git diff --cached'
+
+alias add='git add --all'
+alias log='git log'
 alias push='git push'
 alias pull='git pull'
-alias cached='git diff --cached'
-alias staged='git diff --cached'
-alias up="git up"
 alias stash='git stash'
 alias clone='git clone'
 alias fetch='git fetch'
 alias merge='git merge'
+alias branch='git branch'
+alias rebase='git rebase'
+
+alias up="git up"

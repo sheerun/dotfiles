@@ -10,3 +10,4 @@ link/.vim/.*
 .cache/
 vim/bundle/
 home/.config/hub
+*INBOX

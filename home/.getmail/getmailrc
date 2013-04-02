@@ -1,6 +1,6 @@
 [retriever]
 type = SimpleIMAPSSLRetriever
-server = pop.gmail.com
+server = imap.gmail.com
 username = sheerun@sher.pl
 
 [destination]

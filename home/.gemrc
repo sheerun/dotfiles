@@ -3,7 +3,7 @@
 :update_sources: true
 :sources:
 - http://rubygems.org/
-gem: --no-rdoc --no-ri
+gem: --no-rdoc --no-ri --executables --all
 :bulk_threshold: 1000
 :backtrace: false
 :benchmark: false

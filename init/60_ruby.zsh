@@ -1,12 +1,3 @@
-# Install ruby if not installed
-if [[ ! -d ~/.rbenv/versions/2.0.0 ]]; then
-  ruby-build 2.0.0-rc1 ~/.rbenv/versions/2.0.0
-fi
-
-# Make ruby 2.0.0 the default installation.
-rbenv global 2.0.0
-
-# Install most important ruby gems.
 if [[ -z $commands[gem] ]]; then
   gems=(bundler awesome_print git-up)
 

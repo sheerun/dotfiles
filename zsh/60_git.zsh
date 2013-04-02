@@ -21,5 +21,6 @@ alias fetch='git fetch'
 alias merge='git merge'
 alias branch='git branch'
 alias rebase='git rebase'
+alias amend='git commit -C HEAD --amend'
 
 alias up="git up"

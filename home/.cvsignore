@@ -16,3 +16,5 @@ link/.config/hub
 
 .ruby-version
 .rbenv-version
+
+.idea

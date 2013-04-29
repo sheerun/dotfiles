@@ -2,19 +2,9 @@
 
 # Sheerun's dotfiles
 
-## Requirements and installation
+# Installation
 
-The only requirements are `zsh` and `curl` installed.
-
-    zsh <(curl -s dotfiles.sher.pl)
-
-You can also setup remote host in one step:
-
-    ssh remote@host.com 'zsh <(curl -s dotfiles.sher.pl)'
-
-## Updating
-
-Just run `dotfiles` command. It will appply changes from your fork.
+Fork this repository, clone it and run `make install` command.
 
 ## Thanks!
 

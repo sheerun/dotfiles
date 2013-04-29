@@ -1,1 +1,0 @@
-../../lib/neobundle.vim

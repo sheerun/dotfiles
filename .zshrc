@@ -1,8 +1,8 @@
 # Antigen is "package manager" for zsh
 export ANTIGEN_DEFAULT_REPO_URL=https://github.com/sheerun/oh-my-zsh.git
-source ~/.dotfiles/lib/antigen/antigen.zsh
+source ~/.gitmodules/antigen/antigen.zsh
 
-antigen lib
+antigen use oh-my-zsh
 
 antigen bundles <<EOB
   rbenv
@@ -16,3 +16,5 @@ EOB
 antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 
 antigen apply
+
+autoload -U zmv

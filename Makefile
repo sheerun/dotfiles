@@ -1,0 +1,2 @@
+install:
+	.bin/dotfiles .

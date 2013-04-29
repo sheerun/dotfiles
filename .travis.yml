@@ -3,4 +3,4 @@ language: cpp
 before_script:
   - 'sudo apt-get install zsh'
 
-script: bin/dotfiles
+script: .bin/dotfiles .

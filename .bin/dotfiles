@@ -15,37 +15,8 @@ fi
 BACKDIR="$HOME/.backup/dotfiles/$(date "+%Y_%m_%d-%H_%M_%S")/"
 
 run() {
-  ensure_git
-  get_dotfiles
   link_dotfiles
   print_messages
-}
-
-ensure_git() {
-  if [[ -z $commands[git] && "$OSTYPE" =~ ^darwin ]]; then
-    if [[ -n $commands[brew] ]]; then
-      e_header "Installing Homebrew..."
-      ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-    fi
-
-    if [[ -n $commands[brew] ]]; then
-      e_header "Updating Homebrew..."
-      brew update
-      e_header "Installing Git..."
-      brew install git
-    fi
-  fi
-
-  # If Git isn't installed by now, something exploded. 
-  if [[ -z $commands[git] ]]; then
-    e_error "Git should be installed. It isn't. Aborting."
-    exit 1
-  fi
-}
-
-get_dotfiles() {
-  e_header "Updating dotfiles..."
-  cd $DOTHOME && git pull
 }
 
 link_dotfiles() {

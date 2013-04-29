@@ -2,7 +2,7 @@ set nocompatible
 let mapleader = ","
 
 set runtimepath+=~/.gitmodules/neobundle.vim/
-call neobundle#rc(expand('~/.vim/plugin/'))
+call neobundle#rc(expand('~/.vim/bundle/'))
 
 " " NeoBundle 'Shougo/unite.vim'
 " NeoBundle 'Shougo/neocomplcache'

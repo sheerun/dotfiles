@@ -1,2 +1,2 @@
 install:
-	.bin/dotfiles .
+	@.bin/dotfiles .

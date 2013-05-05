@@ -6,10 +6,11 @@ e_success()  { echo -e " \033[1;32m✔\033[0m  $@"; }
 e_error()    { echo -e " \033[1;31m✖\033[0m  $@"; }
 e_arrow()    { echo -e " \033[1;33m➜\033[0m  $@"; }
 
-if test -e "$1"; then
+if test -n "$1"; then
   DOTHOME="$(cd "$1" && pwd -P)"
 else
-  echo "Usage: dotfiles DOTHOME"
+  echo "Usage: dotfiles <template_dir>"
+  exit 1
 fi
 
 BACKDIR="$HOME/.backup/dotfiles/$(date "+%Y_%m_%d-%H_%M_%S")/"

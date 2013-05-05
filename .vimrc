@@ -92,6 +92,7 @@ NeoBundle 'slim-template/vim-slim'
 NeoBundle 'skwp/vim-conque'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'skwp/vim-ruby-conque'
+NeoBundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on
 NeoBundleCheck

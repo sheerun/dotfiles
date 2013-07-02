@@ -32,3 +32,5 @@ homebrew_recipes=(
   vim ssh-copy-id ctags mobile-shell ack
   source-highlight
 )
+
+xquartz

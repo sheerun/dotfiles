@@ -1,13 +1,4 @@
-!bin/
-!link/.*
-caches/
-backups/
-link/.ssh/authorized_keys
-link/.ssh/id_*
-link/.ssh/known_hosts
-*LOCAL*
-link/.vim/.*
-.cache/
+cache/
+backup/
 vim/bundle/
-home/.config/hub
-*INBOX
+config/hub

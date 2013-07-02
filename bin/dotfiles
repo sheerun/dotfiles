@@ -24,14 +24,9 @@ link_dotfiles() {
   e_header "Linking files into home directory..."
 
   cd "$HOME"
-  for file in $DOTHOME/.*; do
+  for file in $DOTHOME/[a-z]*; do
     local base="$(basename $file)"
-    local dest="$HOME/$base"
-
-    # Don't link .git directory
-    if test "$base" = ".git"; then
-      continue;
-    fi 
+    local dest="$HOME/.$base"
 
     # Skip if link is the same.
     if test "$file" -ef "$dest"; then
@@ -47,7 +42,7 @@ link_dotfiles() {
       mv "$dest" "$BACKDIR"
     fi
 
-    ln -sf "${file#$HOME/}" "$base"
+    ln -sf "${file#$HOME/}" ".$base"
     e_success "$base"
   done
 }

@@ -18,3 +18,19 @@ antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 antigen apply
 
 autoload -U zmv
+:only() { 
+    ps -ao pid,ppid,comm= | \
+    awk '!'"/^$$|ack/&&/$(basename $SHELL)"'$/{print $2}' | \
+    xargs kill
+}
+
+if [[ "$SHELL" == *zsh ]]; then
+  zle -N :only
+  # bindkey "^Wo" :only
+  # bindkey "^W^O" :only
+fi
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+export LANG="en_GB.UTF-8"

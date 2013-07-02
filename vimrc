@@ -20,6 +20,7 @@ call neobundle#config('vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ })
+
 NeoBundle 'christoomey/vim-space'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'vim-scripts/ZoomWin'
@@ -93,8 +94,15 @@ NeoBundle 'skwp/vim-conque'
 NeoBundle 'duff/vim-bufonly'
 NeoBundle 'skwp/vim-ruby-conque'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/vdbi-vim'
 
 filetype plugin indent on
 NeoBundleCheck
+
+" On OSX
+vmap <D-c> "+y<CR>
+nmap <D-v> "+p<CR>
 
 runtime! plugin/vimrc.vim

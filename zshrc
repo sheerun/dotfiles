@@ -1,6 +1,6 @@
 # Antigen is "package manager" for zsh
 export ANTIGEN_DEFAULT_REPO_URL=https://github.com/sheerun/oh-my-zsh.git
-source ~/.gitmodules/antigen/antigen.zsh
+source ~/.dotfiles/modules/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 

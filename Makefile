@@ -1,9 +1,10 @@
 .PHONY: build install
 
-build: modules/rbenv
+build:
+	bin/setup
 
 install: build
 	@bin/dotfiles .
 
-modules/rbenv:
-	git clone https://github.com/sstephenson/rbenv.git modules/rbenv
+clean:
+	rm -rf modules

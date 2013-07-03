@@ -1,0 +1,2 @@
+git@github.com:sheerun/rbenv.git modules/rbenv
+https://github.com/zsh-users/antigen.git modules/antigen

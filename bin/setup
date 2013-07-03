@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+cat .modules | while read url dir; do
+  test -d "$dir" || git clone "$url" "$dir"
+  (cd "$dir" && git submodule update --recursive)
+done

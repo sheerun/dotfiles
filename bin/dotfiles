@@ -13,7 +13,7 @@ else
   exit 1
 fi
 
-BACKDIR="$HOME/.backup/dotfiles/$(date "+%Y_%m_%d-%H_%M_%S")/"
+BACKDIR="$DOTHOME/backup/dotfiles/$(date "+%Y_%m_%d-%H_%M_%S")/"
 
 run() {
   link_dotfiles

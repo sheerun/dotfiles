@@ -1,7 +1,7 @@
 set nocompatible
 let mapleader = ","
 
-set runtimepath+=~/.dotfiles/modules/neobundle.vim/
+set runtimepath+=~/.modules/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 

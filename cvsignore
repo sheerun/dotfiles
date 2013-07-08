@@ -10,7 +10,7 @@ GTAGS
 GRTAGS
 
 log/
-log
+bin/
 
 link/.config/hub
 

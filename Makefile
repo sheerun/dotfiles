@@ -4,7 +4,8 @@ build:
 	bin/setup
 
 install: build
-	@bin/dotfiles .
+	@ln -sfv "${PWD}/zshrc" "${HOME}/.zshrc"
+	@echo "Please restart zsh..."
 
 clean:
 	rm -rf modules

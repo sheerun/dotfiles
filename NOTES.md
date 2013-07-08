@@ -34,3 +34,6 @@ homebrew_recipes=(
 )
 
 xquartz
+
+brew install reattach-to-user-namespace --wrap-pbcopy-and-pbpaste
+brew install https://raw.github.com/derekprior/tmux-vim-select-pane/master/tmux-vim-select-pane.rb

@@ -22,3 +22,7 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 
+zstyle ':filter-select:highlight' matched fg=red
+zstyle ':filter-select' max-lines 10
+zstyle ':filter-select' rotate-list yes
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive search

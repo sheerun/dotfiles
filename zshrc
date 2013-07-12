@@ -1,4 +1,5 @@
 export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/share/npm/bin:$PATH"
 
 source ~/.zstyle
@@ -6,19 +7,23 @@ source ~/.zalias
 source ~/.zfunction
 
 # Antigen is "package manager" for zsh
-export ANTIGEN_DEFAULT_REPO_URL=https://github.com/sheerun/oh-my-zsh.git
 source ~/.modules/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 antigen bundles <<EOB
-  rbenv
-  git-extras
+  # git-extras
   zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-completions
   zsh-users/zaw
-  zsh-users/zsh-history-substring-search
 EOB
 antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 antigen apply
+
+eval "$(rbenv init - --no-rehash)"
+fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
+
+bindkey '^R' zaw-history
+bindkey '^O' zaw-git-files-legacy
 
 autoload -U zmv
 

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# make hub an alias for git
-eval "$(hub alias -s)"
-
 # create shell aliases for most used git commands
 alias st='git st'
 alias ci='git ci'

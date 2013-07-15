@@ -1,10 +1,7 @@
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/share/npm/bin:$PATH"
-
-source ~/.zstyle
-source ~/.zalias
-source ~/.zfunction
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # Antigen is "package manager" for zsh
 source ~/.modules/antigen/antigen.zsh
@@ -41,3 +38,8 @@ unsetopt correct_all
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export LANG="en_US.UTF-8"
+
+source ~/.zstyle
+source ~/.zalias
+source ~/.zfunction
+

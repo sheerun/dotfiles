@@ -21,3 +21,10 @@ alias rebase='git rebase'
 alias amend='git commit -C HEAD --amend'
 
 alias up="git up"
+
+# Enable grouping directories if available
+if ls --grop-directories-first 2> /dev/null; then
+  alias ls="ls --group-directories-first --color=tty --ignore node_modules"
+else
+  alias ls="ls --color=tty --ignore node_modules"
+fi

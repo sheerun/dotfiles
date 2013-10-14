@@ -1,0 +1,11 @@
+set editing-mode vi
+Control-a: beginning-of-line
+Control-e: end-of-line
+Control-l: clear-screen
+Control-b: "backward-word backward-char"
+Control-f: forward-word
+Control-k: kill-line
+Control-p: previous-history
+Control-n: next-history
+"\C=.": insert-last-argument
+"\C-x\C-e": edit-and-execute-command

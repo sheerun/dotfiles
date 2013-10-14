@@ -1,86 +1,104 @@
-set nocompatible
-let mapleader = ","
+let mapleader = "\<space>"
+call vimrc#before()
 
-set runtimepath+=~/.modules/neobundle.vim/
-call neobundle#rc(expand('~/.vim/bundle/'))
+set gfn=Menlo:h15
 
+match ErrorMsg /\%>80v.\+/
 
-" Unobstructive plugins
-NeoBundle 'sheerun/vimrc'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'christoomey/vim-space' " Maybe change to tab?
-NeoBundle 'vim-scripts/ZoomWin'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'briandoll/change-inside-surroundings.vim' " <Leader>ci
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'AndrewRadev/splitjoin.vim' " sj and sk
-NeoBundle 'scrooloose/syntastic' " ??
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'michaeljsmith/vim-indent-object' " ii / ai
-NeoBundle 'edsono/vim-matchit'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-rsi'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'vim-scripts/vimwiki'
-NeoBundle 'milkypostman/vim-togglelist' " <leader>q
-NeoBundle 'AndrewRadev/switch.vim' " -
-NeoBundle 'vim-scripts/IndexedSearch'
-NeoBundle 'vim-scripts/SmartCase'
-NeoBundle 'vim-scripts/gitignore'
-NeoBundle 'vim-scripts/UnconditionalPaste' " glp
-
-NeoBundle 'benmills/vimux'
-NeoBundle 'skalnik/vim-vroom'
 
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'nelstrom/vim-textobj-rubyblock' " var, vir
 
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'rking/ag.vim'
+
+NeoBundle 'AndrewRadev/splitjoin.vim' " sj and sk
+
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-rsi'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-sleuth'
+
+NeoBundle 'vim-scripts/IndexedSearch'
+NeoBundle 'vim-scripts/SmartCase'
+NeoBundle 'vim-scripts/gitignore'
+
+NeoBundle 'airblade/vim-rooter'
+
 NeoBundle 'christoomey/vim-tmux-navigator'
 
-" Possibly obstructive plugins
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'vim-scripts/AutoTag' " can case problems
-NeoBundle 'spolu/dwm.vim' " conflicting with multiline cursor
-NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'Valloric/YouCompleteMe', {
+      \ 'build' : {
+      \     'mac' : './install.sh',
+      \    },
+      \ } 
 
-" Language packs
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-rake'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'leshill/vim-json'
-NeoBundle 'mutewinter/tomdoc.vim'
-NeoBundle 'jc00ke/vim-tomdoc'
-NeoBundle 'mutewinter/nginx.vim'
-NeoBundle 'timcharper/textile.vim'
-NeoBundle 'mutewinter/vim-css3-syntax'
-NeoBundle 'acustodioo/vim-tmux'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'jrk/vim-ocaml'
-NeoBundle 'wlangstroth/vim-haskell'
-NeoBundle 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : 'haskell' }}
-NeoBundleLazy 'ujihisa/neco-ghc', { 'autoload' : { 'filetypes' : 'haskell' }}
-NeoBundle 'slim-template/vim-slim'
+NeoBundle 'mikewest/vimroom'
 
-filetype plugin indent on
-NeoBundleCheck
+let g:vroom_use_vimux = 11
 
-" On OSX
-vmap <D-c> "+y<CR>
-nmap <D-v> "+p<CR>
+NeoBundle 'benmills/vimux'
+NeoBundle 'skalnik/vim-vroom'
+nnoremap <silent> <Leader>o <Plug>VimroomToggle
+
+NeoBundle 'rking/pry-de', {'rtp': 'vim/'}
+
+" I haven't found how to hide this function (yet)
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+
+" NB: this supports "rp that replaces the selection by the contents of @r
+vnoremap <silent> <expr> p <sid>Repl()
+
+nnoremap <silent> = V`]=
+
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+nnoremap - :Switch<cr>
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
-nnoremap - :Switch<cr>
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
-runtime! plugin/vimrc.vim
+vmap <Leader>y "+y
+nmap <Leader>p "+p`[v`]=
+nmap <Leader>P "+P`[v`]=
+vmap <Leader>p "+p`[v`]=
+vmap <Leader>P "+P`[v`]=
+
+nmap <Leader><Leader> V
+nmap <Leader>j Vj
+nmap <Leader>k Vk
+
+nmap J Vj
+nmap K Vk
+nmap L vl
+nmap H vh
+vmap J j
+vmap K k
+vmap H h
+vmap L l
+
+
+nnoremap <CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+call vimrc#after()

@@ -1,4 +1,6 @@
 --ignore-dir=.idea
+--ignore-dir=log
+--ignore-dir=tmp
 
 --type-add=ruby=rake,haml
 --type-add=vim=vimrc

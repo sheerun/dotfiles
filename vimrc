@@ -41,7 +41,8 @@ NeoBundle 'Valloric/YouCompleteMe', {
 
 NeoBundle 'mikewest/vimroom'
 
-let g:vroom_use_vimux = 11
+let g:vroom_use_vimux = 1
+let g:VimuxHeight = "40"
 
 NeoBundle 'benmills/vimux'
 NeoBundle 'skalnik/vim-vroom'
@@ -78,6 +79,15 @@ nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
+
+" We don't want to use Ctrl-p as the mapping because
+" it interferes with YankRing (paste, then hit `ctrl-p`)
+map <Leader>o :CtrlP<CR>
+map <Leader>O :CtrlP %%<CR>
+
+" Jump to a method
+map <Leader>/ :CloseSingleConque<CR>:CtrlPBufTag<CR>
 
 vmap <Leader>y "+y
 nmap <Leader>p "+p`[v`]=

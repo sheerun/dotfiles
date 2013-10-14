@@ -1,18 +1,22 @@
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="~/.bin:$PATH"
+export PATH="~/.rbenv/bin:$PATH"
+export PATH="~/.rbenv/shims:$PATH"
 
 # Antigen is "package manager" for zsh
 source ~/.modules/antigen/antigen.zsh
 
 antigen use oh-my-zsh
+
 antigen bundles <<EOB
   # git-extras
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions
   zsh-users/zaw
 EOB
+
 antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 antigen apply
 

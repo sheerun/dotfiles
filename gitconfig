@@ -16,7 +16,7 @@
 [push]
 	default = current
 [git-up "bundler"]
-	check = true
+	check = false
 	autoinstall = true
 [git-up "fetch"]
 	all = true

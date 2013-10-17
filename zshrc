@@ -1,4 +1,5 @@
 export PATH="$HOME/.bin:$PATH"
+export GOPATH="$HOME/Source/go"
 
 # Antigen is "package manager" for zsh
 source ~/.modules/antigen/antigen.zsh

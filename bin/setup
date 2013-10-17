@@ -4,5 +4,5 @@ set -e
 
 cat .modules | while read url dir; do
   test -d "$dir" || git clone "$url" "$dir"
-  (cd "$dir" && git submodule update --recursive)
+  (cd "$dir" && git submodule update --recursive --init)
 done

@@ -7,6 +7,9 @@ BONJOUR_NAME="$USER-mac"
 set -e
 sudo -v
 
+git config --global user.name "Adam Stankiewicz"
+git config --global user.email "sheerun@sher.pl"
+
 CURRENT_SHELL="$(dscl . -read /Users/$USER UserShell | cut -d " " -f 2)"
 if test "$CURRENT_SHELL" != $DEFAULT_SHELL; then
   echo "Changing default shell to $DEFAULT_SHELL..."
@@ -106,9 +109,6 @@ chflags nohidden ~/Library
 
 # Put Dock on the left
 defaults write com.apple.dock orientation -string left
-
-# Add iOS Simulator to Launchpad
-ln -s /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.app
 
 for app in "Dashboard" "Dock" "Finder"; do
   killall "$app" > /dev/null 2>&1

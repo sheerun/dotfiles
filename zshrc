@@ -1,5 +1,10 @@
+export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export GOPATH="$HOME/Source/go"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
 
 # Antigen is "package manager" for zsh
 source ~/.modules/antigen/antigen.zsh
@@ -16,7 +21,7 @@ EOB
 antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 antigen apply
 
-# eval "$(rbenv init - --no-rehash)"
+eval "$(rbenv init - --no-rehash)"
 fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 bindkey '^R' zaw-history
@@ -43,4 +48,3 @@ source ~/.zstyle
 source ~/.zalias
 source ~/.zfunction
 
-source /opt/boxen/env.sh

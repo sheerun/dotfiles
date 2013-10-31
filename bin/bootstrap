@@ -1,11 +1,23 @@
 #!/bin/sh
 
+set -e
+sudo -v
+
+if test "$(echo $SHELL | rev | cut -d '/' -f 1 | rev)" != "zsh"; then
+  zsh -i -c $0
+  exit 0
+fi
+
 DEFAULT_SHELL=`which zsh`
 HOST_NAME="$USER.dev"
 BONJOUR_NAME="$USER-mac"
 
-set -e
-sudo -v
+
+echo "Updating submodules..."
+cat .modules | while read url dir; do
+  test -d "$dir" || git clone "$url" "$dir"
+  (cd "$dir" && git submodule update --recursive --init)
+done
 
 git config --global user.name "Adam Stankiewicz"
 git config --global user.email "sheerun@sher.pl"
@@ -27,89 +39,96 @@ if test "$(sudo scutil --get LocalHostName)" != "$BONJOUR_NAME"; then
   sudo scutil --set LocalHostName "$BONJOUR_NAME"
 fi
 
-# Expand save panel by default
+echo Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-# Expand print panel by default
+echo Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
-# Automatically quit printer app once the print jobs complete
+echo Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
+echo Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Trackpad: enable tap to click for this user and for the login screen
+echo Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Enable full keyboard access for all controls
-# (e.g. enable Tab in modal dialogs)
+echo Enable full keyboard access for all controls
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Use scroll gesture with the Ctrl (^) modifier key to zoom
+echo Use scroll gesture with the Ctrl modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-# Follow the keyboard focus while zoomed in
+echo Follow the keyboard focus while zoomed in
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
-# Locale settings
+echo Locale settings
 defaults write NSGlobalDomain AppleLanguages -array "en" "pl"
 defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=PLN"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
-# Disable shadow in screenshots
+echo Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
-# Finder: show all filename extensions
+echo Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Finder: show status bar
+echo Finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# Finder: show path bar
+echo Finder: show path bar
 defaults write com.apple.finder ShowPathBar -bool true
 
-# Display full POSIX path as Finder window title
+echo Display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# When performing a search, search the current folder by default
+echo When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# Disable the warning when changing a file extension
+echo Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Avoid creating .DS_Store files on network volumes
+echo Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# Disable disk image verification
+echo Disable disk image verification
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# Automatically open a new Finder window when a volume is mounted
+echo Automatically open a new Finder window when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+echo Use list view in all Finder windows by default
+echo Four-letter codes for the other view modes: icnv, clmv, Flwv
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# Disable the warning before emptying the Trash
+echo Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Empty Trash securely by default
+echo Empty Trash securely by default
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
-# Show the ~/Library folder
+echo Show the ~/Library folder
 chflags nohidden ~/Library
 
-# Put Dock on the left
+echo Put Dock on the left
 defaults write com.apple.dock orientation -string left
 
-for app in "Dashboard" "Dock" "Finder"; do
-  killall "$app" > /dev/null 2>&1
-done
+echo "Installing Homebrew..."
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" 2> /dev/null || true
+
+echo "Running brew doctor..."
+brew doctor
+
+brew install ctags vim
+
+echo Linking dotfiles...
+bin/dotfiles .
+

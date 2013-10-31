@@ -6,6 +6,8 @@ export GOPATH="$HOME/Source/go"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Antigen is "package manager" for zsh
 source ~/.modules/antigen/antigen.zsh
 

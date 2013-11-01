@@ -12,7 +12,6 @@ DEFAULT_SHELL=`which zsh`
 HOST_NAME="$USER.dev"
 BONJOUR_NAME="$USER-mac"
 
-
 echo "Updating submodules..."
 cat .modules | while read url dir; do
   test -d "$dir" || git clone "$url" "$dir"
@@ -121,8 +120,17 @@ chflags nohidden ~/Library
 echo Put Dock on the left
 defaults write com.apple.dock orientation -string left
 
+echo Minimize to app icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+echo Restarting Finder
+killall Finder
+
 echo "Installing Homebrew..."
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" 2> /dev/null || true
+
+echo "Updating Homebrew..."
+brew update
 
 echo "Running brew doctor..."
 brew doctor
@@ -132,3 +140,95 @@ brew install ctags vim
 echo Linking dotfiles...
 bin/dotfiles .
 
+
+echo Installing applications...
+
+brew tap phinze/homebrew-cask || true
+
+brew install brew-cask || true
+
+brew cask install  --appdir="/Applications" bettertouchtool caffeine dropbox  \
+  f-lux firefox google-chrome harvest heroku-toolbelt hip-chat iterm2 \
+  sequel-pro steam virtualbox alfred || true
+
+autostart_hidden() {
+  osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$1.app\", hidden:true}"
+}
+
+run_app() {
+  if test "$(osascript -e "tell application \"System Events\" to (name of processes) contains \"$1\"")" = "false"; then
+    open -a "$1"
+  fi
+}
+
+clear_dock() {
+  defaults write com.apple.dock persistent-apps -array ''
+}
+
+permament_dock() {
+  defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+}
+
+clear_dock
+permament_dock "/Applications/App Store.app"
+permament_dock "/Applications/Google Chrome.app"
+permament_dock "/Applications/iTerm.app"
+
+allow_control() {
+  APP_ID="$(osascript -e "id of app \"$1\"")"
+
+  if [[ -n "$APP_ID" ]]; then
+    sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT or REPLACE INTO access values ('kTCCServiceAccessibility', '$APP_ID', 0, 1, 0, NULL);"
+  fi
+}
+
+allow_control BetterTouchTool
+allow_control Terminal
+allow_control iTerm
+
+autostart_hidden Caffeine
+autostart_hidden BetterTouchTool
+autostart_hidden Flux
+autostart_hidden Dropbox
+autostart_hidden 'Alfred 2'
+
+defaults write com.lightheadsw.Caffeine SuppressLaunchMessage 1
+
+run_app Caffeine
+run_app BetterTouchTool
+run_app Flux
+run_app Dropbox
+run_app 'Alfred 2'
+
+echo "Switching option and command keys..."
+osascript -e 'tell application "System Preferences"
+    reveal anchor "keyboardTab" of pane "com.apple.preference.keyboard"
+end tell
+tell application "System Events" to tell window 1 of process "System Preferences"
+    click button 1 of tab group 1
+    tell sheet 1
+        click pop up button 1
+        click menu item 3 of menu 1 of pop up button 1
+
+        click pop up button 2
+        click menu item 4 of menu 1 of pop up button 2
+
+        click button "OK"
+    end tell
+end tell
+tell application "System Events"
+    tell application "System Preferences"
+        reveal anchor "keyboardTab" of pane "com.apple.preference.keyboard"
+    end tell
+    set theCheckbox to checkbox 1 of tab group 1 of window 1 of application process "System Preferences"
+    tell theCheckbox
+        if not (its value as boolean) then click theCheckbox
+    end tell
+end tell
+quit application "System Preferences"'
+
+# Disable dashboard to free F12 shortcut
+defaults write com.apple.dashboard mcx-disabled -boolean true
+
+killall Dock
+open -a iTerm && killall Terminal

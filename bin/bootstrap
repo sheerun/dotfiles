@@ -19,12 +19,6 @@ killall iTerm
 
 sudo -v
 
-echo "Updating submodules..."
-cat .modules | while read url dir; do
-  test -d "$dir" || git clone "$url" "$dir"
-  (cd "$dir" && git submodule update --recursive --init)
-done
-
 git config --global user.name "Adam Stankiewicz"
 git config --global user.email "sheerun@sher.pl"
 

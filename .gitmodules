@@ -1,0 +1,9 @@
+[submodule "modules/rbenv"]
+	path = modules/rbenv
+	url = https://github.com/sheerun/rbenv.git
+[submodule "modules/antigen"]
+	path = modules/antigen
+	url = https://github.com/zsh-users/antigen.git
+[submodule "modules/vimrc"]
+	path = modules/vimrc
+	url = https://github.com/sheerun/vimrc.git

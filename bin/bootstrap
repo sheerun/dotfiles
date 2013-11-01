@@ -1,16 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
-sudo -v
-
-if test "$(echo $SHELL | rev | cut -d '/' -f 1 | rev)" != "zsh"; then
-  zsh -i -c $0
-  exit 0
-fi
 
 DEFAULT_SHELL=`which zsh`
 HOST_NAME="$USER.dev"
 BONJOUR_NAME="$USER-mac"
+
+DOTDIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+ppids() { echo $1; ppid=$(ps -o ppid= $1) && ppids ${ppid// /} || true; }
+
+if ! ppids $$ | xargs ps | grep Terminal > /dev/null; then
+  open -a Terminal $DOTDIR/bin/bootstrap && exit 0
+fi
+
+echo "Closing iTerm..."
+killall iTerm
+
+sudo -v
 
 echo "Updating submodules..."
 cat .modules | while read url dir; do
@@ -138,8 +145,7 @@ brew doctor
 brew install ctags vim
 
 echo Linking dotfiles...
-bin/dotfiles .
-
+"$DOTDIR/bin/dotfiles" $DOTDIR
 
 echo Installing applications...
 
@@ -230,5 +236,9 @@ quit application "System Preferences"'
 # Disable dashboard to free F12 shortcut
 defaults write com.apple.dashboard mcx-disabled -boolean true
 
+defaults import com.googlecode.iterm2 "$DOTDIR/.defaults/com.googlecode.iterm2"
+
+open -a iTerm --args $DOTDIR
+
 killall Dock
-open -a iTerm && killall Terminal
+killall Terminal

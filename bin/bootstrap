@@ -2,11 +2,29 @@
 
 set -e
 
+resolve_link() {
+  $(type -p greadlink readlink | head -1) "$1"
+}
+
+abs_dirname() {
+  local cwd="$(pwd)"
+  local path="$1"
+
+  while [ -n "$path" ]; do
+    cd "${path%/*}"
+    local name="${path##*/}"
+    path="$(resolve_link "$name" || true)"
+  done
+
+  pwd
+  cd "$cwd"
+}
+
 DEFAULT_SHELL=`which zsh`
 HOST_NAME="$USER.dev"
 BONJOUR_NAME="$USER-mac"
 
-DOTDIR="$(cd "$(dirname "$0")/.." && pwd)"
+DOTDIR="$(abs_dirname "$0")/.."
 
 ppids() { echo $1; ppid=$(ps -o ppid= $1) && ppids ${ppid// /} || true; }
 
@@ -14,8 +32,8 @@ if ! ppids $$ | xargs ps | grep Terminal > /dev/null; then
   open -a Terminal $DOTDIR/bin/bootstrap && exit 0
 fi
 
-echo "Closing iTerm..."
-killall iTerm
+# echo "Closing iTerm..."
+# killall iTerm || true
 
 sudo -v
 
@@ -136,7 +154,7 @@ brew update
 echo "Running brew doctor..."
 brew doctor
 
-brew install ctags vim
+brew install ctags vim ack node
 
 echo Linking dotfiles...
 "$DOTDIR/bin/dotfiles" $DOTDIR
@@ -185,6 +203,7 @@ allow_control() {
 allow_control BetterTouchTool
 allow_control Terminal
 allow_control iTerm
+allow_control Steam
 
 autostart_hidden Caffeine
 autostart_hidden BetterTouchTool

@@ -25,8 +25,5 @@
 [rerere]
 	enabled = true
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
-
 [hub]
-protocol = https
+  protocol = https

@@ -37,7 +37,7 @@ NeoBundle 'Valloric/YouCompleteMe', {
       \ 'build' : {
       \     'mac' : './install.sh',
       \    },
-      \ } 
+      \ }
 
 NeoBundle 'mikewest/vimroom'
 
@@ -110,5 +110,27 @@ vmap L l
 
 
 nnoremap <CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+fun! StripTrailingWhitespaces()
+    let original_cursor = getpos('.')
+    exe b:insert_start . ',.s/\s\+$//e'
+    call setpos('.', original_cursor)
+endfun
+
+fun! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfun
+
+autocmd InsertEnter * :let b:insert_start = line('.')
+autocmd InsertLeave * :call <SID>StripTrailingWhitespaces()
+
 
 call vimrc#after()

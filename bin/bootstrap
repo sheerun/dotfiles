@@ -145,29 +145,48 @@ defaults write com.apple.dock minimize-to-application -bool true
 echo Restarting Finder
 killall Finder
 
-echo "Installing Homebrew..."
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" 2> /dev/null || true
-
-echo "Updating Homebrew..."
-brew update
-
-echo "Running brew doctor..."
-brew doctor
-
-brew install ctags vim ack node
+# Homebrew
+if !(which brew > /dev/null); then
+  echo 'Installing brew...'
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+fi
 
 echo Linking dotfiles...
 "$DOTDIR/bin/dotfiles" $DOTDIR
 
 echo Installing applications...
 
-brew tap phinze/homebrew-cask || true
+if !(brew tap | grep cask > /dev/null); then
+  echo "Tap hombrew-cask"
+  brew tap phinze/homebrew-cask
+fi
 
-brew install brew-cask || true
+if !(brew list | grep brew-cask > /dev/null); then
+  echo "Installing brew-cask"
+  brew install brew-cask
+fi
 
-brew cask install  --appdir="/Applications" bettertouchtool caffeine dropbox  \
-  f-lux firefox google-chrome harvest heroku-toolbelt hip-chat iterm2 \
-  sequel-pro steam virtualbox alfred || true
+brew_cask_install() {
+  for app; do
+    local app_name="$(echo $app | sed 's/-/ /')"
+    if (ls /Applications/ | grep -i "$app_name" > /dev/null) || (brew cask list | grep $app > /dev/null); then
+      echo "Already installed: $app_name"
+    else
+      echo "Installing: $app"
+      brew cask install --appdir="/Applications" $app || true
+    fi
+  done
+}
+
+brew_install() {
+  for app; do
+    if !(brew list | grep $app > /dev/null); then
+      echo "Installing: $app"
+      brew install $app || true
+    fi
+  done
+}
+
 
 autostart_hidden() {
   osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$1.app\", hidden:true}"
@@ -187,11 +206,6 @@ permament_dock() {
   defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 }
 
-clear_dock
-permament_dock "/Applications/App Store.app"
-permament_dock "/Applications/Google Chrome.app"
-permament_dock "/Applications/iTerm.app"
-
 allow_control() {
   APP_ID="$(osascript -e "id of app \"$1\"")"
 
@@ -199,6 +213,18 @@ allow_control() {
     sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT or REPLACE INTO access values ('kTCCServiceAccessibility', '$APP_ID', 0, 1, 0, NULL);"
   fi
 }
+
+brew_cask_install bettertouchtool caffeine dropbox \
+  f-lux firefox google-chrome harvest heroku-toolbelt hip-chat iterm2 \
+  sequel-pro steam virtualbox alfred
+
+brew_install ctags vim ack node htop
+
+clear_dock
+
+permament_dock "/Applications/App Store.app"
+permament_dock "/Applications/Google Chrome.app"
+permament_dock "/Applications/iTerm.app"
 
 allow_control BetterTouchTool
 allow_control Terminal
@@ -259,6 +285,13 @@ sudo pow --install-system
 pow --install-local
 sudo launchctl load -w /Library/LaunchDaemons/cx.pow.firewall.plist
 launchctl load -w ~/Library/LaunchAgents/cx.pow.powd.plist
+
+brew install tmux || true
+
+brew install postgresql || true
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+
 
 open -a iTerm --args $DOTDIR
 

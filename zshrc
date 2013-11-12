@@ -48,7 +48,9 @@ unsetopt correct_all
 export PATH="/usr/local/heroku/bin:$PATH"
 export LANG="en_US.UTF-8"
 
+# Pass aliases to root account
+alias sudo='sudo '
+
 source ~/.zstyle
 source ~/.zalias
 source ~/.zfunction
-

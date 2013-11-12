@@ -36,7 +36,9 @@ export EDITOR="vim"
 
 # Less
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
+
 ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
+ls --group-directories-first &> /dev/null && alias ls='ls --group-directories-first'
 
 # Readline
 export WORDCHARS='*?[]~&;!$%^<>'

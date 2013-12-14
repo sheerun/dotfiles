@@ -3,8 +3,6 @@ call vimrc#before()
 
 set gfn=Menlo:h15
 
-match ErrorMsg /\%>80v.\+/
-
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'michaeljsmith/vim-indent-object' " ii / ai
@@ -110,5 +108,8 @@ vmap L l
 
 
 nnoremap <CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+execute "set colorcolumn=" . join(range(81,335), ',')
+hi ColorColumn guibg=#262626 ctermbg=235
 
 call vimrc#after()

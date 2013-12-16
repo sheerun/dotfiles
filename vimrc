@@ -117,6 +117,12 @@ vmap K k
 vmap H h
 vmap L l
 
+" I made that mistake too many times...
+map q: :q
+
+" What does ; anyway?
+nnoremap ; :
+
 
 nnoremap <CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 

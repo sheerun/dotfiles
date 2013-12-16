@@ -39,6 +39,9 @@ NeoBundle 'Valloric/YouCompleteMe', {
 
 NeoBundle 'mikewest/vimroom'
 
+NeoBundle 'jnwhiteh/vim-golang'
+NeoBundle 'Blackrush/vim-gocode'
+
 let g:vroom_use_vimux = 1
 let g:VimuxHeight = "40"
 

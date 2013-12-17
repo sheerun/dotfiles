@@ -37,3 +37,7 @@ fi
 if ls --group-directories-first &> /dev/null; then
   alias ls='ls --group-directories-first'
 fi
+
+if ls --color=tty --group-directories-first &> /dev/null; then
+  alias ls='ls --color=tty --group-directories-first'
+fi

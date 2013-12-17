@@ -38,9 +38,6 @@ export EDITOR="vim"
 # Less
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 
-ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
-ls --group-directories-first &> /dev/null && alias ls='ls --group-directories-first'
-
 # Readline
 export WORDCHARS='*?[]~&;!$%^<>'
 unsetopt correct_all
@@ -49,8 +46,6 @@ unsetopt correct_all
 export PATH="/usr/local/heroku/bin:$PATH"
 export LANG="en_US.UTF-8"
 
-# Pass aliases to root account
-alias sudo='sudo '
 
 source ~/.zstyle
 source ~/.zalias

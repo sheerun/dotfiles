@@ -22,7 +22,18 @@ alias amend='git commit -C HEAD --amend'
 
 alias up="git up"
 
-# Enable grouping directories if available
-if ls --group-directories-first 2> /dev/null; then
-  alias ls="ls --group-directories-first --color=tty --ignore node_modules"
+# Pass aliases to root account
+alias sudo='sudo '
+
+if command -v reattach-to-user-namespace > /dev/null; then
+  alias vim="reattach-to-user-namespace vim"
+  alias mvim="reattach-to-user-namespace mvim"
+fi
+
+if ls --color -d . &> /dev/null; then
+  alias ls='ls --color=tty' || alias ls='ls -G'
+fi
+
+if ls --group-directories-first &> /dev/null; then
+  alias ls='ls --group-directories-first'
 fi

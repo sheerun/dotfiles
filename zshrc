@@ -40,7 +40,6 @@ export LESSOPEN="| src-hilite-lesspipe.sh %s"
 
 # Readline
 export WORDCHARS='*?[]~&;!$%^<>'
-unsetopt correct_all
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

@@ -53,11 +53,17 @@ NeoBundle 'rking/pry-de', {'rtp': 'vim/'}
 
 NeoBundle 'bling/vim-airline'
 
+NeoBundle 'tpope/vim-vinegar'
+
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
+
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+  \ }
 
 " I haven't found how to hide this function (yet)
 function! RestoreRegister()
@@ -79,7 +85,7 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-nnoremap - :Switch<cr>
+" nnoremap - :Switch<cr>
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -105,8 +111,6 @@ vmap <Leader>p "+p`[v`]=
 vmap <Leader>P "+P`[v`]=
 
 nmap <Leader><Leader> V
-nmap <Leader>j Vj
-nmap <Leader>k Vk
 
 nmap J Vj
 nmap K Vk
@@ -120,9 +124,30 @@ vmap L l
 " I made that mistake too many times...
 map q: :q
 
+map <Leader>m :make<CR>
+
 nnoremap <CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 execute "set colorcolumn=" . join(range(81,335), ',')
 hi ColorColumn guibg=#262626 ctermbg=235
 
+" Make a simple "search" text object.
+" http://vim.wikia.com/wiki/Copy_or_change_search_hit
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
 call vimrc#after()
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Enter> G
+nnoremap <bs> gg
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>s :wq<CR>
+nnoremap <Leader><Enter> o
+nnoremap <Leader>v V
+
+inoremap <Leader><Enter> <Esc>
+vnoremap <Leader><Enter> <Esc>
+inoremap <Space><Space> <Esc>

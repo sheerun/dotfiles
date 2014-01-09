@@ -18,6 +18,8 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOB
   # git-extras
+  rbenv
+  safe-paste
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions
   zsh-users/zaw
@@ -33,7 +35,6 @@ export EDITOR="vim"
 # Less
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 
-eval "$(rbenv init - --no-rehash)"
 fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 
 bindkey '^R' zaw-history

@@ -22,6 +22,9 @@ alias amend='git commit -C HEAD --amend'
 
 alias up="git up"
 
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+
 # Pass aliases to root account
 alias sudo='sudo '
 

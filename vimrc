@@ -1,4 +1,4 @@
-let mapleader = "\<space>"
+let mapleader = "\<Space>"
 call vimrc#before()
 
 set gfn=Menlo:h15

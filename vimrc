@@ -42,6 +42,10 @@ NeoBundle 'mikewest/vimroom'
 NeoBundle 'jnwhiteh/vim-golang'
 NeoBundle 'Blackrush/vim-gocode'
 
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mmozuras/vim-github-comment'
+let g:github_user = 'sheerun'
+
 let g:vroom_use_vimux = 1
 let g:VimuxHeight = "40"
 

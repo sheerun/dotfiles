@@ -109,10 +109,11 @@ map <Leader>O :CtrlP %%<CR>
 map <Leader>/ :CloseSingleConque<CR>:CtrlPBufTag<CR>
 
 vmap <Leader>y "+y
-nmap <Leader>p "+p`[v`]=
-nmap <Leader>P "+P`[v`]=
-vmap <Leader>p "+p`[v`]=
-vmap <Leader>P "+P`[v`]=
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 nmap <Leader><Leader> V
 

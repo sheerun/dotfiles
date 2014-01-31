@@ -5,7 +5,7 @@ alias st='git st'
 alias ci='git ci'
 alias lg='git log'
 alias co='git co'
-alias br='git branch'
+alias br='git br'
 alias dc='git diff --cached'
 
 alias add='git add --all'

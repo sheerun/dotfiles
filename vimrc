@@ -150,9 +150,4 @@ nnoremap <bs> gg
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :wq<CR>
-nnoremap <Leader><Enter> o
 nnoremap <Leader>v V
-
-inoremap <Leader><Enter> <Esc>
-vnoremap <Leader><Enter> <Esc>
-inoremap <Space><Space> <Esc>

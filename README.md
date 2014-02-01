@@ -11,7 +11,7 @@ git clone --recursive https://github.com/sheerun/dotfiles.git ~/.dotfiles
 ~/.dotfiles/bin/dotfiles
 ```
 
-It's going to backup your current dotfiles, symlink new ones and generate report.
+The `dotfiles` command is going to backup your current dotfiles, symlink new ones and generate report.
 
 You can also use `bin/bootstrap` for initial environment setup on OSX.
 

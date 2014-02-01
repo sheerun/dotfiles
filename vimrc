@@ -37,8 +37,6 @@ NeoBundle 'Valloric/YouCompleteMe', {
       \    },
       \ }
 
-NeoBundle 'mikewest/vimroom'
-
 NeoBundle 'jnwhiteh/vim-golang'
 NeoBundle 'Blackrush/vim-gocode'
 
@@ -46,12 +44,10 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mmozuras/vim-github-comment'
 let g:github_user = 'sheerun'
 
-let g:vroom_use_vimux = 1
-let g:VimuxHeight = "40"
-
 NeoBundle 'benmills/vimux'
 NeoBundle 'skalnik/vim-vroom'
-nnoremap <silent> <Leader>o <Plug>VimroomToggle
+let g:vroom_use_vimux = 1
+let g:VimuxHeight = "40"
 
 NeoBundle 'rking/pry-de', {'rtp': 'vim/'}
 

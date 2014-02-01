@@ -1,10 +1,20 @@
 let mapleader = "\<Space>"
+
 call vimrc#before()
 
 set gfn=Menlo:h15
 
 NeoBundle 'kien/ctrlp.vim'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+  \ }
+
 NeoBundle 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 NeoBundle 'michaeljsmith/vim-indent-object' " ii / ai
 
 NeoBundle 'kana/vim-textobj-user'
@@ -13,7 +23,9 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock' " var, vir
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'rking/ag.vim'
 
-NeoBundle 'AndrewRadev/splitjoin.vim' " sj and sk
+NeoBundle 'AndrewRadev/splitjoin.vim'
+nmap sj :SplitjoinSplit<cr>
+nmap sk :SplitjoinJoin<cr>
 
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-commentary'
@@ -52,57 +64,28 @@ let g:VimuxHeight = "40"
 NeoBundle 'rking/pry-de', {'rtp': 'vim/'}
 
 NeoBundle 'bling/vim-airline'
-
-NeoBundle 'tpope/vim-vinegar'
-
-" let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-  \ }
-
-" I haven't found how to hide this function (yet)
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-
-" NB: this supports "rp that replaces the selection by the contents of @r
-vnoremap <silent> <expr> p <sid>Repl()
-
-nnoremap <silent> = V`]=
+NeoBundle 'tpope/vim-vinegar'
 
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-" nnoremap - :Switch<cr>
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
-
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-let g:ctrlp_use_caching = 0
-
-" We don't want to use Ctrl-p as the mapping because
-" it interferes with YankRing (paste, then hit `ctrl-p`)
-map <Leader>o :CtrlP<CR>
-map <Leader>O :CtrlP %%<CR>
-
-" Jump to a method
-map <Leader>/ :CloseSingleConque<CR>:CtrlPBufTag<CR>
 
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -113,22 +96,12 @@ vmap <Leader>P "+P
 
 nmap <Leader><Leader> V
 
-nmap J Vj
-nmap K Vk
-nmap L vl
-nmap H vh
-vmap J j
-vmap K k
-vmap H h
-vmap L l
-
 " I made that mistake too many times...
 map q: :q
 
-map <Leader>m :make<CR>
+map <Leader>b :make<CR>
 
-nnoremap <CR> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
+" Asesome 80-character limiter
 execute "set colorcolumn=" . join(range(81,335), ',')
 hi ColorColumn guibg=#262626 ctermbg=235
 
@@ -141,8 +114,8 @@ omap s :normal vs<CR>
 call vimrc#after()
 
 nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Enter> G
-nnoremap <bs> gg
+nnoremap <CR> G
+nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :wq<CR>

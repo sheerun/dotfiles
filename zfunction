@@ -1,7 +1,7 @@
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
-    fg
-    zle redisplay
+    BUFFER="fg"
+    zle accept-line
   else
     zle push-input
     zle clear-screen

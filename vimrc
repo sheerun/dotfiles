@@ -20,8 +20,10 @@ NeoBundle 'michaeljsmith/vim-indent-object' " ii / ai
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'nelstrom/vim-textobj-rubyblock' " var, vir
 
+NeoBundle 'AndrewRadev/switch.vim'
+nmap <Leader><Tab> :Switch<CR>
+
 NeoBundle 'mileszs/ack.vim'
-NeoBundle 'rking/ag.vim'
 
 NeoBundle 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
@@ -34,6 +36,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-unimpaired'
 
 NeoBundle 'vim-scripts/IndexedSearch'
 NeoBundle 'vim-scripts/SmartCase'
@@ -71,6 +74,22 @@ let g:airline_section_z=''
 
 NeoBundle 'tpope/vim-vinegar'
 
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol = '>'
+let g:syntastic_warning_symbol = '>'
+let g:syntastic_enable_balloons = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 2
+let g:syntastic_enable_signs = 0
+
+NeoBundle 'bitc/vim-hdevtools'
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+NeoBundle 'xuhdev/SingleCompile'
+nmap <Leader>d :SCCompile<cr>
+nmap <Leader>e :SCCompileRun<cr>
+
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
@@ -104,6 +123,9 @@ map <Leader>b :make<CR>
 " Asesome 80-character limiter
 execute "set colorcolumn=" . join(range(81,335), ',')
 hi ColorColumn guibg=#262626 ctermbg=235
+
+set foldmethod=indent
+set fillchars="fold: "
 
 " Make a simple "search" text object.
 " http://vim.wikia.com/wiki/Copy_or_change_search_hit

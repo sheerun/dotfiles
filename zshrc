@@ -5,6 +5,8 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="./bin:./node_modules/.bin:$PATH"
 
 export GOPATH="$HOME/Source/go"
 export PATH="$GOPATH/bin:$PATH"

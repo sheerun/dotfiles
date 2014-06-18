@@ -16,6 +16,7 @@ link/.config/hub
 
 .ruby-version
 .rbenv-version
+node_modules/
 
 .idea
 .DS_Store

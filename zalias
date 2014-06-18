@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+if command -v gh > /dev/null; then
+  eval "$(gh alias -s)"
+fi
 
 # create shell aliases for most used git commands
 alias st='git st'

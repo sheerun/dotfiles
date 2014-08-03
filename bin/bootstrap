@@ -214,8 +214,8 @@ allow_control() {
   fi
 }
 
-brew_cask_install bettertouchtool caffeine dropbox \
-  f-lux firefox google-chrome harvest heroku-toolbelt hip-chat iterm2 \
+brew_cask_install caffeine dropbox \
+  flux firefox google-chrome harvest heroku-toolbelt hipchat iterm2 \
   sequel-pro steam virtualbox alfred
 
 brew_install ctags vim ack node htop
@@ -226,24 +226,19 @@ permament_dock "/Applications/App Store.app"
 permament_dock "/Applications/Google Chrome.app"
 permament_dock "/Applications/iTerm.app"
 
-allow_control BetterTouchTool
 allow_control Terminal
 allow_control iTerm
 allow_control Steam
 
 autostart_hidden Caffeine
-autostart_hidden BetterTouchTool
 autostart_hidden Flux
 autostart_hidden Dropbox
-autostart_hidden 'Alfred 2'
 
 defaults write com.lightheadsw.Caffeine SuppressLaunchMessage 1
 
 run_app Caffeine
-run_app BetterTouchTool
 run_app Flux
 run_app Dropbox
-run_app 'Alfred 2'
 
 echo "Switching option and command keys..."
 osascript -e 'tell application "System Preferences"

@@ -95,6 +95,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_enable_signs = 0
 
+NeoBundle 'moll/vim-node'
+
 NeoBundle 'bitc/vim-hdevtools'
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>

@@ -1,6 +1,7 @@
 --ignore-dir=.idea
 --ignore-dir=log
 --ignore-dir=tmp
+--ignore-dir=vendor
 
 --type-add=ruby=rake,haml
 --type-add=vim=vimrc

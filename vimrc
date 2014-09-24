@@ -105,6 +105,8 @@ NeoBundle 'xuhdev/SingleCompile'
 nmap <Leader>d :SCCompile<cr>
 nmap <Leader>e :SCCompileRun<cr>
 
+NeoBundle 'godlygeek/tabular'
+
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]

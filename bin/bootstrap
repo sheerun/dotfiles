@@ -148,7 +148,7 @@ killall Finder
 # Homebrew
 if !(which brew > /dev/null); then
   echo 'Installing brew...'
-  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 echo Linking dotfiles...

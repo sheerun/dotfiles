@@ -7,6 +7,7 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="./bin:./node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 export GOPATH="$HOME/Source/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -19,17 +20,20 @@ source ~/.modules/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundles <<EOB
-  # git-extras
   rbenv
   safe-paste
+  extract
   zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-completions
   zsh-users/zaw
+  zsh-users/zsh-completions
 EOB
 
 antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 
 antigen apply
+
+# Refresh completions
+# rm -f ~/.zcompdump; compinit
 
 # Editor
 export EDITOR="vim"

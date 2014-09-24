@@ -40,6 +40,10 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-unimpaired'
 
+NeoBundle 'JuliaLang/julia-vim'
+
+NeoBundle 'danro/rename.vim'
+
 NeoBundle 'vim-scripts/IndexedSearch'
 NeoBundle 'vim-scripts/SmartCase'
 NeoBundle 'vim-scripts/gitignore'

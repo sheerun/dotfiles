@@ -52,6 +52,13 @@ NeoBundle 'airblade/vim-rooter'
 
 NeoBundle 'christoomey/vim-tmux-navigator'
 
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
 NeoBundle 'Valloric/YouCompleteMe', {
       \ 'build' : {
       \     'mac' : './install.sh',

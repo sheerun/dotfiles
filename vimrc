@@ -163,3 +163,5 @@ nnoremap <Leader>v V
 " Enable Spell Checking for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
+
+nnoremap <Leader>g gf

@@ -30,6 +30,8 @@ nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-rake'
+NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-rsi'
 NeoBundle 'tpope/vim-endwise'

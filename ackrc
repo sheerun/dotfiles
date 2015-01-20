@@ -2,6 +2,9 @@
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=vendor
+--ignore-dir=release
+--ignore-dir=releases
+--ignore-dir=demo
 
 --type-add=ruby=rake,haml
 --type-add=vim=vimrc

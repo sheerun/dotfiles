@@ -1,17 +1,3 @@
-export PATH="/usr/local/share/npm/bin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.cabal/bin:$PATH"
-export PATH="./bin:./node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-
-export GOPATH="$HOME/Source/go"
-export PATH="$GOPATH/bin:$PATH"
-
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Antigen is "package manager" for zsh
@@ -20,7 +6,6 @@ source ~/.modules/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundles <<EOB
-  rbenv
   safe-paste
   extract
   zsh-users/zsh-syntax-highlighting
@@ -52,6 +37,13 @@ autoload -U zmv
 export WORDCHARS='*?[]~&;!$%^<>'
 
 export LANG="en_US.UTF-8"
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/sheerun/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
+source /Users/sheerun/.nix-profile/etc/profile.d/nix.sh
+
 
 source ~/.zstyle
 source ~/.zalias

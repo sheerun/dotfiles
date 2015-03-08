@@ -33,7 +33,7 @@ fi
 
 
 # Less
-export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESSSECURE=1
 
 fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
 

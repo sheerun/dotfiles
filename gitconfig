@@ -3,8 +3,8 @@
   email = sheerun@sher.pl
 
 [core]
-	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-	excludesfile = ~/.cvsignore
+  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  excludesfile = ~/.cvsignore
 
 [alias]
   st = status -sb
@@ -29,34 +29,31 @@
 
 [git-up "rebase"]
   arguments = --preserve-merges
-	st = status -sb
-	ci = commit
-	br = branch -vv
-	co = checkout
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	cp = cherry-pick
+  st = status -sb
+  ci = commit
+  br = branch -vv
+  co = checkout
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  cp = cherry-pick
 
 [color]
-	ui = true
+  ui = true
 
 [push]
-	default = current
+  default = current
 
 [git-up "bundler"]
-	check = false
-	autoinstall = true
+  check = false
+  autoinstall = true
 
 [git-up "fetch"]
-	all = true
+  all = true
 
 [git-up "rebase"]
-	arguments = --preserve-merges
+  arguments = --preserve-merges
 
 [rerere]
   enabled = true
-
-[hub]
-  protocol = https
 
 [url "git@github.com:"]
   pushInsteadOf = "git://github.com/"

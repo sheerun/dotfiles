@@ -31,8 +31,9 @@ alias vimrc="vim ~/.vimrc"
 alias sudo='sudo '
 
 if command -v reattach-to-user-namespace > /dev/null; then
-  alias vim="reattach-to-user-namespace vim"
-  alias mvim="reattach-to-user-namespace mvim"
+  alias vim="reattach-to-user-namespace $EDITOR"
+else
+  echo "WARN: Remember to install reattach-to-user-namespace..."
 fi
 
 if ls --color -d . &> /dev/null; then

@@ -1,5 +1,9 @@
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+if [[ ! -d $HOME/.modules/antigen ]]; then
+  git clone https://github.com/sheerun/antigen.git ~/.modules/antigen
+fi
+
 # Antigen is "package manager" for zsh
 source ~/.modules/antigen/antigen.zsh
 

@@ -51,8 +51,9 @@ export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/sheerun/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
-source /Users/sheerun/.nix-profile/etc/profile.d/nix.sh
-
+if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
+  source ~/.nix-profile/etc/profile.d/nix.sh
+fi
 
 source ~/.zstyle
 source ~/.zalias

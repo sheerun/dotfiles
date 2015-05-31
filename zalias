@@ -30,10 +30,12 @@ alias vimrc="vim ~/.vimrc"
 # Pass aliases to root account
 alias sudo='sudo '
 
-if command -v reattach-to-user-namespace > /dev/null; then
-  alias vim="reattach-to-user-namespace $EDITOR"
-else
-  echo "WARN: Remember to install reattach-to-user-namespace..."
+if [[ "$(uname)" == 'Darwin' ]]; then
+  if command -v reattach-to-user-namespace > /dev/null; then
+    alias vim="reattach-to-user-namespace $EDITOR"
+  else
+    echo "WARN: Remember to install reattach-to-user-namespace..."
+  fi
 fi
 
 if ls --color -d . &> /dev/null; then

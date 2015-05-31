@@ -26,9 +26,15 @@ path=(
   /usr/local/opt/llvm/bin
   /usr/local/opt/coreutils/libexec/gnubin
   /usr/local/share/npm/bin
-  $(brew --prefix homebrew/php/php56)/bin
   /usr/local/{bin,sbin}
   $path
 )
+
+if command -v foo >/dev/null 2>&1; then
+  path=(
+    $(brew --prefix homebrew/php/php56)/bin
+    $path
+  )
+fi
 
 export LESS='-R -F -X -n'

@@ -1,6 +1,9 @@
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
+let g:python_host_skip_check=1
+let g:loaded_python3_provider=1
+
 source ~/.plugrc
 
 call plug#begin()
@@ -8,7 +11,8 @@ call plug#begin()
 Plug 'sheerun/vimrc'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/vitality.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'grassdog/tagman.vim'
 
 " Really nice prompt
 Plug 'bling/vim-airline'
@@ -58,7 +62,7 @@ nmap sk :SplitjoinJoin<cr>
 " Plug 'JuliaLang/julia-vim', { 'for': 'julia' }
 Plug 'jnwhiteh/vim-golang', { 'for': 'go' }
 Plug 'Blackrush/vim-gocode', { 'for': 'go' }
-Plug 'moll/vim-node', { 'for': 'node' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
 
 Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
@@ -148,15 +152,12 @@ nmap <Leader>b :make<CR>
 nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>y :!annotate expand('%:p') " what?
 
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>i :CtrlPBuffer<CR>
+nnoremap <Leader>o :FZF<CR>
 
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-
-nnoremap <Leader>o :CtrlP<CR>
 nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
@@ -174,3 +175,10 @@ nnoremap L $
 " Enable Spell Checking for markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.markdown setlocal spell
+
+colorscheme wombat256mod
+
+command! -bar Tags if !empty(tagfiles()) | call fzf#run({
+\   'source': "sed '/^\\!/d;s/\t.*//' " . join(tagfiles()) . ' | uniq',
+\   'sink':   'tag',
+\ }) 

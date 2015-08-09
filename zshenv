@@ -38,3 +38,6 @@ if command -v foo >/dev/null 2>&1; then
 fi
 
 export LESS='-R -F -X -n'
+
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

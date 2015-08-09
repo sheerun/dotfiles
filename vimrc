@@ -29,6 +29,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " Awesome autocompletion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+
 " Lightning fast :Ag searcher
 Plug 'rking/ag.vim'
 
@@ -52,6 +54,8 @@ Plug 'danro/rename.vim'
 
 " Automatically find root project directory
 Plug 'airblade/vim-rooter'
+let g:rooter_disable_map = 1
+let g:rooter_silent_chdir = 1
 
 " Expand / wrap hashes etc.
 Plug 'AndrewRadev/splitjoin.vim'
@@ -161,7 +165,8 @@ nnoremap <silent> p p`]
 nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q :Sayonara<CR>
+nnoremap <Leader>c :Sayonara!<CR>
 nnoremap <Leader>s :wq<CR>
 nnoremap <Leader>v V
 nnoremap <Leader>g gf
@@ -172,13 +177,9 @@ nnoremap <silent> <Leader><BS> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:n
 nnoremap H 0
 nnoremap L $
 
-" Enable Spell Checking for markdown files
-autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNewFile *.markdown setlocal spell
-
 colorscheme wombat256mod
 
 command! -bar Tags if !empty(tagfiles()) | call fzf#run({
 \   'source': "sed '/^\\!/d;s/\t.*//' " . join(tagfiles()) . ' | uniq',
 \   'sink':   'tag',
-\ }) 
+\ })

@@ -177,7 +177,7 @@ nnoremap <silent> <Leader><BS> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:n
 nnoremap H 0
 nnoremap L $
 
-colorscheme wombat256mod
+silent! colorscheme wombat256mod
 
 command! -bar Tags if !empty(tagfiles()) | call fzf#run({
 \   'source': "sed '/^\\!/d;s/\t.*//' " . join(tagfiles()) . ' | uniq',

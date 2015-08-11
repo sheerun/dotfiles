@@ -130,9 +130,6 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 echo Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-echo Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
-
 echo Show the ~/Library folder
 chflags nohidden ~/Library
 
@@ -156,14 +153,9 @@ echo Linking dotfiles...
 
 echo Installing applications...
 
-if !(brew tap | grep cask > /dev/null); then
-  echo "Tap hombrew-cask"
-  brew tap phinze/homebrew-cask
-fi
-
 if !(brew list | grep brew-cask > /dev/null); then
   echo "Installing brew-cask"
-  brew install brew-cask
+  brew install caskroom/cask/brew-cask
 fi
 
 brew_cask_install() {
@@ -214,11 +206,11 @@ allow_control() {
   fi
 }
 
-brew_cask_install caffeine dropbox \
-  flux firefox google-chrome harvest heroku-toolbelt hipchat iterm2 \
-  sequel-pro steam virtualbox alfred
+brew_cask_install caffeine dropbox iterm2 skype \
+  flux firefox google-chrome harvest heroku-toolbelt \
+  sequel-pro steam virtualbox slack transmission vlc multibit \
 
-brew_install ctags vim ack node htop
+brew_install ctags vim ack node htop reattach-to-user-namespace
 
 clear_dock
 
@@ -272,21 +264,11 @@ defaults write com.apple.dashboard mcx-disabled -boolean true
 
 defaults import com.googlecode.iterm2 "$DOTDIR/.defaults/com.googlecode.iterm2"
 
-# Setup pow
-brew install pow || true
-mkdir -p ~/Library/Application\ Support/Pow/Hosts
-ln -sf ~/Library/Application\ Support/Pow/Hosts ~/.pow
-sudo pow --install-system
-pow --install-local
-sudo launchctl load -w /Library/LaunchDaemons/cx.pow.firewall.plist
-launchctl load -w ~/Library/LaunchAgents/cx.pow.powd.plist
-
 brew install tmux || true
 
 brew install postgresql || true
 ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-
 
 open -a iTerm --args $DOTDIR
 

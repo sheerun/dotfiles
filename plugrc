@@ -2,7 +2,7 @@ if !exists("g:editor")
   let g:editor = "vim"
 end
 
-let base = 'git@github.com:junegunn/vim-plug.git'
+let base = 'https://github.com/junegunn/vim-plug.git'
 let home = $HOME.'/.'.g:editor.'/autoload'
 
 if !isdirectory(g:home)

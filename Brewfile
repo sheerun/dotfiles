@@ -7,6 +7,9 @@ brew "reattach-to-user-namespace"
 brew "cmake"
 brew "fzf"
 
+brew 'redis', restart_service: true
+brew 'imagemagick'
+
 cask "caffeine"
 cask "dropbox"
 cask "iterm2"

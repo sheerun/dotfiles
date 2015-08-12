@@ -64,3 +64,5 @@ source $(brew --prefix nvm)/nvm.sh
 source ~/.zstyle
 source ~/.zalias
 source ~/.zfunction
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

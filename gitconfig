@@ -1,6 +1,6 @@
 [user]
-  name = Adam Stankiewicz
-  email = sheerun@sher.pl
+	name = Adam Stankiewicz
+	email = sheerun@sher.pl
 
 [core]
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space

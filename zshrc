@@ -1,10 +1,13 @@
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-if [[ ! -d $HOME/.modules/antigen ]]; then
-  git clone https://github.com/sheerun/antigen.git ~/.modules/antigen
+if [[ ! -d $HOME/.modules/tpm ]]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.modules/tpm
 fi
 
 # Antigen is "package manager" for zsh
+if [[ ! -d $HOME/.modules/antigen ]]; then
+  git clone https://github.com/sheerun/antigen.git ~/.modules/antigen
+fi
 source ~/.modules/antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -54,6 +57,9 @@ export DOCKER_TLS_VERIFY=1
 if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 source ~/.zstyle
 source ~/.zalias

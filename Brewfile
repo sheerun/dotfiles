@@ -6,6 +6,7 @@ brew "reattach-to-user-namespace"
 brew "cmake"
 brew "fzf"
 brew "nvm"
+brew "the_silver_searcher"
 
 brew 'redis', restart_service: true
 brew 'imagemagick'

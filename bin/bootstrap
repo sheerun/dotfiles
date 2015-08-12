@@ -206,11 +206,9 @@ allow_control() {
   fi
 }
 
-brew_cask_install caffeine dropbox iterm2 skype \
-  flux firefox google-chrome harvest heroku-toolbelt \
-  sequel-pro steam virtualbox slack transmission vlc multibit \
+brew tap Homebrew/bundle
 
-brew_install ctags vim ack node htop reattach-to-user-namespace
+(cd "$DOTDIR" && brew bundle)
 
 clear_dock
 

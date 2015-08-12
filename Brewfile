@@ -1,11 +1,11 @@
 brew "ctags"
 brew "vim"
 brew "ack"
-brew "node"
 brew "htop"
 brew "reattach-to-user-namespace"
 brew "cmake"
 brew "fzf"
+brew "nvm"
 
 brew 'redis', restart_service: true
 brew 'imagemagick'
@@ -26,3 +26,4 @@ cask "slack"
 cask "transmission"
 cask "vlc"
 cask "multibit"
+cask "carbon-copy-cloner"

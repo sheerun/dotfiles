@@ -20,8 +20,6 @@ for module in $MODULES; do
   fi
 done
 
-wait
-
 echo bundler >> ~/.modules/rbenv/default-gems
 
 source ~/.modules/antigen/antigen.zsh

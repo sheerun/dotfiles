@@ -1,8 +1,8 @@
-# My lovely dotfiles [![endorse](https://api.coderwall.com/sheerun/endorsecount.png)](https://coderwall.com/sheerun)
+# My lovely dotfiles [![Build Status](https://secure.travis-ci.org/sheerun/dotfiles.png?branch=master)](http://travis-ci.org/sheerun/dotfiles)
 
-## Installation [![Build Status](https://secure.travis-ci.org/sheerun/dotfiles.png?branch=master)](http://travis-ci.org/sheerun/dotfiles)
+## Installation
 
-This dotfiles are meant to be used with zsh.
+These dotfiles are meant to be used with zsh.
 
 Please fork this repository and configure it for yourself:
 

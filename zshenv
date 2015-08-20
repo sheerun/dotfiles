@@ -16,7 +16,7 @@ export GOPATH="$HOME/Source/go"
 # Set the list of directories that Zsh searches for programs.
 path=(
   ./bin
-  /node_modules/.bin
+  ./node_modules/.bin
   $HOME/.cabal/bin
   /usr/local/heroku/bin
   $HOME/.rbenv/shims

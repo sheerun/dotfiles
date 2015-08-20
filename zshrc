@@ -8,6 +8,7 @@ MODULES=(
   "rbenv/plugins/rbenv-ctags:tpope/rbenv-ctags"
   "rbenv/plugins/rbenv-default-gems:sstephenson/rbenv-default-gems"
   "rbenv/plugins/ruby-build:sstephenson/ruby-build"
+  "rbenv/plugins/rvm-download:garnieretienne/rvm-download"
 )
 
 for module in $MODULES; do

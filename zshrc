@@ -1,13 +1,29 @@
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-if [[ ! -d $HOME/.modules/tpm ]]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.modules/tpm
-fi
+MODULES=(
+  "tpm:tmux-plugins/tpm"
+  "antigen:sheerun/antigen"
+  "rbenv:sstephenson/rbenv"
+  "rbenv/plugins/rbenv-binstubs:ianheggie/rbenv-binstubs"
+  "rbenv/plugins/rbenv-ctags:tpope/rbenv-ctags"
+  "rbenv/plugins/rbenv-default-gems:sstephenson/rbenv-default-gems"
+  "rbenv/plugins/ruby-build:sstephenson/ruby-build"
+)
 
-# Antigen is "package manager" for zsh
-if [[ ! -d $HOME/.modules/antigen ]]; then
-  git clone https://github.com/sheerun/antigen.git ~/.modules/antigen
-fi
+for module in $MODULES; do
+  ddir="$HOME/.modules/$(printf "$module" | cut -d ':' -f 1)"
+  ppath="$(printf "$module" | cut -d ':' -f 2)"
+  
+  if [[ ! -d $ddir ]]; then
+    (mkdir -p "$ddir" &&
+      git clone --depth 1 https://github.com/$ppath.git "$ddir" && printf '.')
+  fi
+done
+
+wait
+
+echo bundler >> ~/.modules/rbenv/default-gems
+
 source ~/.modules/antigen/antigen.zsh
 
 antigen use oh-my-zsh

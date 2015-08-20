@@ -11,7 +11,11 @@ git clone https://github.com/sheerun/dotfiles.git ~/.dotfiles
 ~/.dotfiles/bin/setup
 ```
 
-The `setup` command is going to backup your current dotfiles, symlink new ones and generate report.
+The `setup` command is going to:
+
+* backup changed dotfiles
+* symlink new ones
+* show info what were installed
 
 You can also use `bin/bootstrap` for initial environment setup on OSX.
 

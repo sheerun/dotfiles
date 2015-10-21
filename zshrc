@@ -81,3 +81,7 @@ source ~/.zalias
 source ~/.zfunction
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="./bin:$PATH"
+
+eval "$(rbenv init -)"

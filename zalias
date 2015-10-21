@@ -47,3 +47,5 @@ if ls --group-directories-first &> /dev/null; then
 fi
 
 eval "$(alias -L ls)' -h'"
+
+alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'

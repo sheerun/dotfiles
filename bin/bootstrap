@@ -158,28 +158,6 @@ if !(brew list | grep brew-cask > /dev/null); then
   brew install caskroom/cask/brew-cask
 fi
 
-brew_cask_install() {
-  for app; do
-    local app_name="$(echo $app | sed 's/-/ /')"
-    if (ls /Applications/ | grep -i "$app_name" > /dev/null) || (brew cask list | grep $app > /dev/null); then
-      echo "Already installed: $app_name"
-    else
-      echo "Installing: $app"
-      brew cask install --appdir="/Applications" $app || true
-    fi
-  done
-}
-
-brew_install() {
-  for app; do
-    if !(brew list | grep $app > /dev/null); then
-      echo "Installing: $app"
-      brew install $app || true
-    fi
-  done
-}
-
-
 autostart_hidden() {
   osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$1.app\", hidden:true}"
 }
@@ -208,7 +186,7 @@ allow_control() {
 
 brew tap Homebrew/bundle
 
-(cd "$DOTDIR" && brew bundle)
+(cd "$DOTDIR" && brew bundle) || true
 
 clear_dock
 
@@ -220,13 +198,9 @@ allow_control Terminal
 allow_control iTerm
 allow_control Steam
 
-autostart_hidden Caffeine
 autostart_hidden Flux
 autostart_hidden Dropbox
 
-defaults write com.lightheadsw.Caffeine SuppressLaunchMessage 1
-
-run_app Caffeine
 run_app Flux
 run_app Dropbox
 
@@ -264,9 +238,9 @@ defaults import com.googlecode.iterm2 "$DOTDIR/.defaults/com.googlecode.iterm2"
 
 brew install tmux || true
 
-brew install postgresql || true
-ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+brew install postgresql &&
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents &&
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist || true
 
 open -a iTerm --args $DOTDIR
 

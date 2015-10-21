@@ -12,7 +12,7 @@ brew "the_silver_searcher"
 brew 'redis', restart_service: true
 brew 'imagemagick'
 
-cask "caffeine"
+cask "spectacle"
 cask "dropbox"
 cask "iterm2"
 cask "skype"

@@ -149,7 +149,7 @@ if !(which brew > /dev/null); then
 fi
 
 echo Linking dotfiles...
-"$DOTDIR/bin/dotfiles" $DOTDIR
+"$DOTDIR/bin/setup"
 
 echo Installing applications...
 

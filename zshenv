@@ -17,10 +17,10 @@ export GOPATH="$HOME/Source/go"
 path=(
   ./bin
   ./node_modules/.bin
-  $HOME/.cabal/bin
-  /usr/local/heroku/bin
   $HOME/.rbenv/shims
   $HOME/.rbenv/bin
+  $HOME/.cabal/bin
+  /usr/local/heroku/bin
   $HOME/.bin
   $GOPATH/bin
   /usr/local/opt/llvm/bin
@@ -41,3 +41,5 @@ export LESS='-R -F -X -n'
 
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export SHELL=$(which zsh)

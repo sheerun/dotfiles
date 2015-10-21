@@ -1,3 +1,4 @@
+brew "zsh"
 brew "ctags"
 brew "vim"
 brew "ack"

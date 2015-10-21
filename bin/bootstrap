@@ -197,6 +197,7 @@ permament_dock "/Applications/iTerm.app"
 allow_control Terminal
 allow_control iTerm
 allow_control Steam
+allow_control Spectacle
 
 autostart_hidden Flux
 autostart_hidden Dropbox

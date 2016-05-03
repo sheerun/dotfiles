@@ -49,3 +49,6 @@ fi
 eval "$(alias -L ls)' -h'"
 
 alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'
+
+alias k='kubectl'
+alias ks='kubectl --namespace=kube-system'

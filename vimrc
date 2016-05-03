@@ -3,18 +3,20 @@ let maplocalleader = ","
 
 let g:python_host_skip_check=1
 let g:loaded_python3_provider=1
+let g:targets_aiAI = 'aIAi'
 
 source ~/.plugrc
 
 call plug#begin()
 
 Plug 'sheerun/vimrc'
+Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/vitality.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'grassdog/tagman.vim'
-
 " Really nice prompt
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
@@ -67,10 +69,6 @@ nmap sk :SplitjoinJoin<cr>
 Plug 'jnwhiteh/vim-golang', { 'for': 'go' }
 Plug 'Blackrush/vim-gocode', { 'for': 'go' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
-
-Plug 'bitc/vim-hdevtools', { 'for': 'haskell' }
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
 Plug 'derekelkins/agda-vim', { 'for': 'agda' }
 imap <buffer> \forall ∀
@@ -143,6 +141,8 @@ Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/SmartCase'
 Plug 'vim-scripts/gitignore'
 
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
 vmap <Leader>y "+y
@@ -172,7 +172,7 @@ nnoremap <Leader>v V
 nnoremap <Leader>g gf
 
 " Remove trailing whitespaces
-nnoremap <silent> <Leader><BS> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
+nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
 nnoremap H 0
 nnoremap L $

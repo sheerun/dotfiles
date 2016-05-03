@@ -43,7 +43,7 @@ Plug 'kana/vim-textobj-user', { 'for': 'ruby' }
 " var, vir
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -99,24 +99,8 @@ Plug 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 
-" I need to revisit those plugins before enabling:
-" Plug 'tpope/vim-projectionist'
-" Plug 'SirVer/ultisnips'
-" let g:UltiSnipsExpandTrigger="<C-j>"
-" let g:UltiSnipsJumpForwardTrigger="<C-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-" Plug 'honza/vim-snippets'
-" Plug 'xuhdev/SingleCompile'
-" nmap <Leader>d :SCCompile<cr>
-" nmap <Leader>e :SCCompileRun<cr>
-" Vim flow caused some issues with parsing last time
-" Plug 'facebook/vim-flow'
-" Plug 'vim-scripts/SyntaxRange'
-" Plug 'rking/pry-de', { 'rtp': 'vim' }
-" Plug 'AndrewRadev/switch.vim'
-" nmap <Leader><Tab> :Switch<CR>
-
-Plug 'michaeljsmith/vim-indent-object' " ii / ai
+" ii / ai
+Plug 'michaeljsmith/vim-indent-object'
 
 " For more reliable indenting and performance
 set foldmethod=indent

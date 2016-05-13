@@ -1,0 +1,709 @@
+#!/usr/bin/env bash
+
+#
+# Setup.
+#
+
+VERSION="2.1.0"
+UP=$'\033[A'
+DOWN=$'\033[B'
+N_PREFIX=${N_PREFIX-/usr/local}
+BASE_VERSIONS_DIR=$N_PREFIX/n/versions
+
+#
+# Log <type> <msg>
+#
+
+log() {
+  printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" $1 $2
+}
+
+#
+# Exit with the given <msg ...>
+#
+
+abort() {
+  printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
+}
+
+#
+# All Bin(node/io) configurations
+#
+
+BINS=("node"
+      "io")
+MIRROR=(${NODE_MIRROR-https://nodejs.org/dist/}
+        ${IO_MIRROR-https://iojs.org/dist/})
+BIN_NAME=("node"
+          "iojs")
+VERSIONS_DIR=($BASE_VERSIONS_DIR/node
+              $BASE_VERSIONS_DIR/io)
+
+if [ -n "$PROJECT_NAME" ]; then
+  BINS+=($PROJECT_NAME)
+  BIN_NAME+=($PROJECT_NAME)
+  if [ -z "$PROJECT_URL" ]; then
+    abort "Must specify PROJECT_URL when supplying PROJECT_NAME"
+  fi
+  MIRROR+=(${PROJECT_URL})
+  VERSIONS_DIR+=($BASE_VERSIONS_DIR/$PROJECT_NAME)
+fi
+
+#
+# Ensure we have curl or wget support.
+#
+
+CURL_PARAMS=( "-L"
+              "-#")
+
+WGET_PARAMS=( "--no-check-certificate"
+              "-q"
+              "-O-")
+
+if [ -n "$HTTP_USER" ];then
+  if [ -z "$HTTP_PASSWORD" ]; then
+    abort "Must specify HTTP_PASSWORD when supplying HTTP_USER"
+  fi
+  CURL_PARAMS+=("-u $HTTP_USER:$HTTP_PASSWORD")
+  WGET_PARAMS+=("--http-password=$HTTP_PASSWORD"
+                "--http-user=$HTTP_USER")
+elif [ -n "$HTTP_PASSWORD" ]; then
+  abort "Must specify HTTP_USER when supplying HTTP_PASSWORD"
+fi
+
+GET=
+
+# wget support
+command -v wget > /dev/null && GET="wget ${WGET_PARAMS[@]}"
+
+command -v curl > /dev/null && GET="curl ${CURL_PARAMS[@]}" && QUIET=false
+
+test -z "$GET" && abort "curl or wget required"
+
+#
+# State
+#
+
+DEFAULT=0
+QUIET=true
+ACTIVATE=true
+ARCH=
+
+#
+# set_default <BIN_NAME>
+#
+
+
+set_default() {
+  for (( i=0 ; i<${#BINS[@]} ; i++ )); do
+    if test ${BINS[$i]} = $1; then
+      DEFAULT=$i
+    fi
+  done
+}
+
+for dir in ${VERSIONS_DIR[@]}; do
+  test -d $dir || mkdir -p $dir
+done
+
+#
+# set_arch <arch> to override $(uname -a)
+#
+
+set_arch() {
+  if test ! -z $1; then
+    ARCH=$1
+  else
+    abort "missing -a|--arch value"
+  fi
+}
+
+#
+# Functions used when showing versions installed
+#
+
+enter_fullscreen() {
+  tput smcup
+  stty -echo
+}
+
+leave_fullscreen() {
+  tput rmcup
+  stty echo
+}
+
+handle_sigint() {
+  leave_fullscreen
+  exit $?
+}
+
+handle_sigtstp() {
+  leave_fullscreen
+  kill -s SIGSTOP $$
+}
+
+#
+# Output usage information.
+#
+
+display_help() {
+  cat <<-EOF
+
+  Usage: n [options/env] [COMMAND] [args]
+
+  Environments:
+    n [COMMAND] [args]            Uses default env (node)
+    n io [COMMAND]                Sets env as io
+    n project [COMMAND]           Uses custom env-variables to use non-official sources
+
+  Commands:
+
+    n                              Output versions installed
+    n latest                       Install or activate the latest node release
+    n -a x86 latest                As above but force 32 bit architecture
+    n stable                       Install or activate the latest stable node release
+    n lts                          Install or activate the latest LTS node release
+    n <version>                    Install node <version>
+    n use <version> [args ...]     Execute node <version> with [args ...]
+    n bin <version>                Output bin path for <version>
+    n rm <version ...>             Remove the given version(s)
+    n --latest                     Output the latest node version available
+    n --stable                     Output the latest stable node version available
+    n --lts                        Output the latest LTS node version available
+    n ls                           Output the versions of node available
+
+  (iojs):
+    n io latest                    Install or activate the latest iojs release
+    n io -a x86 latest             As above but force 32 bit architecture
+    n io <version>                 Install iojs <version>
+    n io use <version> [args ...]  Execute iojs <version> with [args ...]
+    n io bin <version>             Output bin path for <version>
+    n io rm <version ...>          Remove the given version(s)
+    n io --latest                  Output the latest iojs version available
+    n io ls                        Output the versions of iojs available
+
+  Options:
+
+    -V, --version   Output current version of n
+    -h, --help      Display help information
+    -q, --quiet     Disable curl output (if available)
+    -d, --download  Download only
+    -a, --arch      Override system architecture
+
+  Aliases:
+
+    which   bin
+    use     as
+    list    ls
+    -       rm
+
+EOF
+}
+
+err_no_installed_print_help() {
+  printf "\n  \033[31mError: no installed version\033[0m\n"
+  display_help
+  exit 1
+}
+
+#
+# Hide cursor.
+#
+
+hide_cursor() {
+  printf "\e[?25l"
+}
+
+#
+# Show cursor.
+#
+
+show_cursor() {
+  printf "\e[?25h"
+}
+
+#
+# Output version after selected.
+#
+
+next_version_installed() {
+  list_versions_installed | grep $selected -A 1 | tail -n 1
+}
+
+#
+# Output version before selected.
+#
+
+prev_version_installed() {
+  list_versions_installed | grep $selected -B 1 | head -n 1
+}
+
+#
+# Output n version.
+#
+
+display_n_version() {
+  echo $VERSION && exit 0
+}
+
+#
+# Check for installed version, and populate $active
+#
+
+check_current_version() {
+  command -v node &> /dev/null
+  if test $? -eq 0; then
+    local current=$(node --version)
+    if [ -n "$PROJECT_VERSION_CHECK" ]; then
+      current=$(node -p "$PROJECT_VERSION_CHECK || process.exit(1)" || node --version)
+    fi
+    current=${current#v}
+    for bin in ${BINS[@]}; do
+      if diff &> /dev/null \
+        $BASE_VERSIONS_DIR/$bin/$current/bin/node \
+        $(which node) ; then
+        active=$bin/$current
+      fi
+    done
+  fi
+}
+
+#
+# Check the operation is supported for io.
+#
+
+check_io_supported() {
+  test $DEFAULT -eq 1 && abort "$1 not supported for io.js"
+}
+
+#
+# Display sorted versions directories paths.
+#
+
+versions_paths() {
+  find $BASE_VERSIONS_DIR -maxdepth 2 -type d \
+    | sed 's|'$BASE_VERSIONS_DIR'/||g' \
+    | egrep "/[0-9]+\.[0-9]+\.[0-9]+$" \
+    | sort -k 1 -k 2,2n -k 3,3n -t .
+}
+
+#
+# Display installed versions with <selected>
+#
+
+display_versions_with_selected() {
+  selected=$1
+  echo
+  for version in $(versions_paths); do
+    if test "$version" = "$selected"; then
+      printf "  \033[36mο\033[0m $version\033[0m\n"
+    else
+      printf "    \033[90m$version\033[0m\n"
+    fi
+  done
+  echo
+}
+
+#
+# List installed versions.
+#
+
+list_versions_installed() {
+  for version in $(versions_paths); do
+    echo $version
+  done
+}
+
+#
+# Display current node --version and others installed.
+#
+
+display_versions() {
+  enter_fullscreen
+  check_current_version
+  clear
+  display_versions_with_selected $active
+
+  trap handle_sigint INT
+  trap handle_sigtstp SIGTSTP
+
+  while true; do
+    read -n 3 c
+    case "$c" in
+      $UP)
+        clear
+        display_versions_with_selected $(prev_version_installed)
+        ;;
+      $DOWN)
+        clear
+        display_versions_with_selected $(next_version_installed)
+        ;;
+      *)
+        activate $selected
+        leave_fullscreen
+        exit
+        ;;
+    esac
+  done
+}
+
+#
+# Move up a line and erase.
+#
+
+erase_line() {
+  printf "\033[1A\033[2K"
+}
+
+#
+# Check if the HEAD response of <url> is 200.
+#
+
+is_ok() {
+  if command -v curl > /dev/null; then
+    $GET -Is $1 | head -n 1 | grep 200 > /dev/null
+  else
+    $GET -S --spider 2>&1 $1 | head -n 1 | grep 200 > /dev/null
+  fi
+}
+
+#
+# Determine tarball url for <version>
+#
+
+tarball_url() {
+  local version=$1
+  local uname="$(uname -a)"
+  local arch=x86
+  local os=
+
+  # from nave(1)
+  case "$uname" in
+    Linux*) os=linux ;;
+    Darwin*) os=darwin ;;
+    SunOS*) os=sunos ;;
+  esac
+
+  case "$uname" in
+    *x86_64*) arch=x64 ;;
+    *armv6l*) arch=armv6l ;;
+    *armv7l*) arch=armv7l ;;
+  esac
+
+  if [ ${arch} = "armv6l" -a ${BIN_NAME[$DEFAULT]} = node ]; then
+    local semver=${version//./ }
+    local major=$(echo $semver | grep -o -E '[0-9]+' | head -1 | sed -e 's/^0\+//')
+    local minor=$(echo $semver | awk '{print $2}' | grep -o -E '[0-9]+' | head -1 | sed -e 's/^0\+//')
+    [[ $major -eq "" && $minor -lt 12 ]] && arch=arm-pi
+  fi
+
+  [ ! -z $ARCH ] && arch=$ARCH
+
+  echo "${MIRROR[$DEFAULT]}v${version}/${BIN_NAME[$DEFAULT]}-v${version}-${os}-${arch}.tar.gz"
+
+}
+
+#
+# Disable PaX mprotect for <binary>
+#
+
+disable_pax_mprotect() {
+  test -z $1 && abort "binary required"
+  local binary=$1
+
+  # try to disable mprotect via XATTR_PAX header
+  local PAXCTL=$(PATH="/sbin:/usr/sbin:$PATH" which paxctl-ng 2>&1)
+  local PAXCTL_ERROR=1
+  if [ -x "$PAXCTL" ]; then
+    $PAXCTL -l && $PAXCTL -m "$binary" >/dev/null 2>&1
+    PAXCTL_ERROR="$?"
+  fi
+
+  # try to disable mprotect via PT_PAX header
+  if [ $PAXCTL_ERROR != 0 ]; then
+    PAXCTL=$(PATH="/sbin:/usr/sbin:$PATH" which paxctl 2>&1)
+    if [ -x "$PAXCTL" ]; then
+      $PAXCTL -Cm "$binary" >/dev/null 2>&1
+    fi
+  fi
+}
+
+#
+# Activate <version>
+#
+
+activate() {
+  local version=$1
+  check_current_version
+  if test "$version" != "$active"; then
+    local dir=$BASE_VERSIONS_DIR/$version
+    for subdir in bin lib include share; do
+      if test -L "$N_PREFIX/$subdir"; then
+        find "$dir/$subdir" -mindepth 1 -maxdepth 1 -exec cp -fR "{}" "$N_PREFIX/$subdir" \;
+      else
+        cp -fR "$dir/$subdir" $N_PREFIX
+      fi
+    done
+    disable_pax_mprotect "$N_PREFIX/bin/node"
+  fi
+}
+
+#
+# Install latest version.
+#
+
+install_latest() {
+  install $(display_latest_version)
+}
+
+#
+# Install latest stable version.
+#
+
+install_stable() {
+  check_io_supported "stable"
+  install $(display_latest_stable_version)
+}
+
+#
+# Install latest LTS version.
+#
+
+install_lts() {
+  check_io_supported "lts"
+  install $(display_latest_lts_version)
+}
+
+#
+# Install <version>
+#
+
+install() {
+  local version=${1#v}
+
+  local dots=$(echo $version | sed 's/[^.]*//g')
+  if test ${#dots} -eq 1; then
+    version=$($GET 2> /dev/null ${MIRROR[DEFAULT]} \
+      | egrep "</a>" \
+      | egrep -o '[0-9]+\.[0-9]+\.[0-9]+' \
+      | egrep -v '^0\.[0-7]\.' \
+      | egrep -v '^0\.8\.[0-5]$' \
+      | sort -u -k 1,1n -k 2,2n -k 3,3n -t . \
+      | egrep ^$version \
+      | tail -n1)
+
+    test $version || abort "invalid version ${1#v}"
+  fi
+
+  local dir=${VERSIONS_DIR[$DEFAULT]}/$version
+
+  if test -d $dir; then
+    if [[ ! -e $dir/n.lock ]] ; then
+      if $ACTIVATE ; then
+        activate ${BINS[$DEFAULT]}/$version
+      fi
+      exit
+    fi
+  fi
+
+  echo
+  log install ${BINS[$DEFAULT]}-v$version
+
+  local url=$(tarball_url $version)
+  is_ok $url || abort "invalid version $version"
+
+  log mkdir $dir
+  mkdir -p $dir
+  if [ $? -ne 0 ] ; then
+    abort "sudo required"
+  else
+    touch $dir/n.lock
+  fi
+
+  cd $dir
+
+  log fetch $url
+  $GET $url | tar -zx --strip-components=1
+  [ $QUIET == false ] && erase_line
+  rm -f $dir/n.lock
+
+  disable_pax_mprotect bin/node
+
+  if $ACTIVATE ; then
+    activate ${BINS[$DEFAULT]}/$version
+    log installed $(node --version)
+  fi
+  echo
+}
+
+#
+# Set curl to quiet (silent) mode.
+#
+
+set_quiet() {
+  command -v curl > /dev/null && GET="$GET -s" && QUIET=true
+}
+
+#
+# Remove <version ...>
+#
+
+remove_versions() {
+  test -z $1 && abort "version(s) required"
+  check_current_version
+  while test $# -ne 0; do
+    local version=${1#v}
+    [ "${BINS[$DEFAULT]}/$version" == "$active" ] && abort "cannot remove currently active version ($active)"
+    rm -rf ${VERSIONS_DIR[$DEFAULT]}/$version
+    shift
+  done
+}
+
+#
+# Output bin path for <version>
+#
+
+display_bin_path_for_version() {
+  test -z $1 && abort "version required"
+  local version=${1#v}
+  local bin=${VERSIONS_DIR[$DEFAULT]}/$version/bin/node
+  if test -f $bin; then
+    printf "$bin \n"
+  else
+    abort "$1 is not installed"
+  fi
+}
+
+#
+# Execute the given <version> of node with [args ...]
+#
+
+execute_with_version() {
+  test -z $1 && abort "version required"
+  local version=${1#v}
+
+  if [ "$version" = "latest" ]; then
+    version=$(display_latest_version)
+  fi
+
+  if [ "$version" = "stable" ]; then
+    version=$(display_latest_stable_version)
+  fi
+
+  local bin=${VERSIONS_DIR[$DEFAULT]}/$version/bin/node
+
+  shift # remove version
+
+  if test -f $bin; then
+    $bin "$@"
+  else
+    abort "$version is not installed"
+  fi
+}
+
+#
+# Display the latest release version.
+#
+
+display_latest_version() {
+  $GET 2> /dev/null ${MIRROR[$DEFAULT]} \
+    | egrep "</a>" \
+    | egrep -o '[0-9]+\.[0-9]+\.[0-9]+' \
+    | egrep -v '^0\.[0-7]\.' \
+    | egrep -v '^0\.8\.[0-5]$' \
+    | sort -u -k 1,1n -k 2,2n -k 3,3n -t . \
+    | tail -n1
+}
+
+#
+# Display the latest stable release version.
+#
+
+display_latest_stable_version() {
+  check_io_supported "--stable"
+  $GET 2> /dev/null ${MIRROR[$DEFAULT]} \
+    | egrep "</a>" \
+    | egrep -o '[0-9]+\.[0-9]*[02468]\.[0-9]+' \
+    | sort -u -k 1,1n -k 2,2n -k 3,3n -t . \
+    | tail -n1
+}
+
+#
+# Display the latest lts release version.
+#
+
+display_latest_lts_version() {
+  check_io_supported "--lts"
+  local folder_name=$($GET 2> /dev/null ${MIRROR[$DEFAULT]} \
+    | egrep "</a>" \
+    | egrep -o 'latest-[a-z]{2,}' \
+    | sort \
+    | tail -n1)
+
+  $GET 2> /dev/null ${MIRROR[$DEFAULT]}/$folder_name/ \
+    | egrep "</a>" \
+    | egrep -o '[0-9]+\.[0-9]+\.[0-9]+' \
+    | head -n1
+}
+
+#
+# Display the versions available.
+#
+
+display_remote_versions() {
+  check_current_version
+  local versions=""
+  versions=$($GET 2> /dev/null ${MIRROR[$DEFAULT]} \
+    | egrep "</a>" \
+    | egrep -o '[0-9]+\.[0-9]+\.[0-9]+' \
+    | sort -u -k 1,1n -k 2,2n -k 3,3n -t . \
+    | awk '{ print "  " $1 }')
+
+  echo
+  local bin=${BINS[$DEFAULT]}
+  for v in $versions; do
+    if test "$active" = "$bin/$v"; then
+      printf "  \033[36mο\033[0m $v \033[0m\n"
+    else
+      if test -d $BASE_VERSIONS_DIR/$bin/$v; then
+        printf "    $v \033[0m\n"
+      else
+        printf "    \033[90m$v\033[0m\n"
+      fi
+    fi
+  done
+  echo
+}
+
+#
+# Handle arguments.
+#
+
+if test $# -eq 0; then
+  test -z "$(versions_paths)" && err_no_installed_print_help
+  display_versions
+else
+  while test $# -ne 0; do
+    case $1 in
+      -V|--version) display_n_version ;;
+      -h|--help|help) display_help; exit ;;
+      -q|--quiet) set_quiet ;;
+      -d|--download) ACTIVATE=false ;;
+      --latest) display_latest_version; exit ;;
+      --stable) display_latest_stable_version; exit ;;
+      --lts) display_latest_lts_version; exit ;;
+      io) set_default $1 ;; # set bin and continue
+      project) DEFAULT=2 ;;
+      -a|--arch) shift; set_arch $1;; # set arch and continue
+      bin|which) display_bin_path_for_version $2; exit ;;
+      as|use) shift; execute_with_version $@; exit ;;
+      rm|-) shift; remove_versions $@; exit ;;
+      latest) install_latest; exit ;;
+      stable) install_stable; exit ;;
+      lts) install_lts; exit ;;
+      ls|list) display_remote_versions; exit ;;
+      *) install $1; exit ;;
+    esac
+    shift
+  done
+fi

@@ -6,7 +6,7 @@ MODULES=(
 for module in $MODULES; do
   ddir="$HOME/.modules/$(printf "$module" | cut -d ':' -f 1)"
   ppath="$(printf "$module" | cut -d ':' -f 2)"
-  
+
   if [[ ! -d $ddir ]]; then
     (mkdir -p "$ddir" &&
       git clone --depth 1 https://github.com/$ppath.git "$ddir" && printf '.')
@@ -25,9 +25,10 @@ antigen bundles <<EOB
   zsh-users/zsh-completions
 EOB
 
-antigen theme sheerun/oh-my-zsh-powerline-theme powerline
-
 antigen apply
+
+RPROMPT="%f%k%(?..%K{235} %F{red}✘ %?) %f%k"
+PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 

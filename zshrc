@@ -1,5 +1,3 @@
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 MODULES=(
   "tpm:tmux-plugins/tpm"
   "antigen:zsh-users/antigen"
@@ -31,8 +29,9 @@ antigen theme sheerun/oh-my-zsh-powerline-theme powerline
 
 antigen apply
 
-# Refresh completions
-# rm -f ~/.zcompdump; compinit
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+compinit
 
 # Editor
 if command -v nvim > /dev/null; then

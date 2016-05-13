@@ -27,7 +27,7 @@ EOB
 
 antigen apply
 
-RPROMPT="%f%k%(?..%K{235} %F{red}✘ %?) %f%k"
+RPROMPT="%f%k%(?.. %F{red}✘ %?) %f%k"
 PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"

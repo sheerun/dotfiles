@@ -44,6 +44,10 @@ PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+bindkey -v
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
 compinit
 
 # Editor

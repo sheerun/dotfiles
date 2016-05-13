@@ -2,13 +2,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 MODULES=(
   "tpm:tmux-plugins/tpm"
-  "antigen:sheerun/antigen"
-  "rbenv:sstephenson/rbenv"
-  "rbenv/plugins/rbenv-binstubs:ianheggie/rbenv-binstubs"
-  "rbenv/plugins/rbenv-ctags:tpope/rbenv-ctags"
-  "rbenv/plugins/rbenv-default-gems:sstephenson/rbenv-default-gems"
-  "rbenv/plugins/ruby-build:sstephenson/ruby-build"
-  "rbenv/plugins/rvm-download:garnieretienne/rvm-download"
+  "antigen:zsh-users/antigen"
 )
 
 for module in $MODULES; do
@@ -20,8 +14,6 @@ for module in $MODULES; do
       git clone --depth 1 https://github.com/$ppath.git "$ddir" && printf '.')
   fi
 done
-
-echo bundler >> ~/.modules/rbenv/default-gems
 
 source ~/.modules/antigen/antigen.zsh
 
@@ -65,16 +57,9 @@ export WORDCHARS='*?[]~&;!$%^<>'
 
 export LANG="en_US.UTF-8"
 
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/sheerun/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
 if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
 
 source ~/.zstyle
 source ~/.zalias
@@ -84,11 +69,11 @@ source ~/.zfunction
 
 export PATH="./bin:$PATH"
 
-eval "$(rbenv init -)"
-
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-  source ~/.gnupg/.gpg-agent-info
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+if command -v gpg-agent > /dev/null; then
+  if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+  else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+  fi
 fi

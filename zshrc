@@ -1,31 +1,43 @@
-MODULES=(
-  "tpm:tmux-plugins/tpm"
-  "antigen:zsh-users/antigen"
-)
+register-plugins() {
+  zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
+  zplug "plugins/safe-paste", from:oh-my-zsh
+  zplug "plugins/extract", from:oh-my-zsh
+  zplug "plugins/colored-man-pages", from:oh-my-zsh
+  zplug "zsh-users/zsh-syntax-highlighting"
+  zplug "zsh-users/zaw"
+  zplug "zsh-users/zsh-completions"
+}
 
-for module in $MODULES; do
-  ddir="$HOME/.modules/$(printf "$module" | cut -d ':' -f 1)"
-  ppath="$(printf "$module" | cut -d ':' -f 2)"
+if [[ ! $TERM =~ screen && -z $TMUX ]]; then
+  MODULES=(
+    "tpm:tmux-plugins/tpm"
+    "zplug:zplug/zplug"
+  )
 
-  if [[ ! -d $ddir ]]; then
-    (mkdir -p "$ddir" &&
-      git clone --depth 1 https://github.com/$ppath.git "$ddir" && printf '.')
+  for module in $MODULES; do
+    ddir="$HOME/.modules/$(printf "$module" | cut -d ':' -f 1)"
+    ppath="$(printf "$module" | cut -d ':' -f 2)"
+
+    if [[ ! -d $ddir ]]; then
+      (mkdir -p "$ddir" &&
+        git clone --depth 1 https://github.com/$ppath.git "$ddir" && printf '.')
+    fi
+  done
+
+  source ~/.modules/zplug/init.zsh
+
+  register-plugins
+
+  zplug check || zplug install
+
+  if command -v tmux>/dev/null; then
+    exec tmux
   fi
-done
+fi
 
-source ~/.modules/antigen/antigen.zsh
-
-antigen use oh-my-zsh
-
-antigen bundles <<EOB
-  safe-paste
-  extract
-  zsh-users/zsh-syntax-highlighting
-  zsh-users/zaw
-  zsh-users/zsh-completions
-EOB
-
-antigen apply
+source ~/.modules/zplug/init.zsh
+register-plugins
+zplug load
 
 RPROMPT="%f%k%(?.. %F{red}✘ %?) %f%k"
 PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "

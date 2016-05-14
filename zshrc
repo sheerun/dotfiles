@@ -90,6 +90,6 @@ if command -v gpg-agent > /dev/null; then
     source ~/.gnupg/.gpg-agent-info
     export GPG_AGENT_INFO
   else
-    eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info)
+    eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info 2> /dev/null)
   fi
 fi

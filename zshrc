@@ -77,9 +77,7 @@ if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-source ~/.zstyle
-source ~/.zalias
-source ~/.zfunction
+source ~/.zsh/*
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -93,3 +91,9 @@ if command -v gpg-agent > /dev/null; then
     eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info 2> /dev/null)
   fi
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/sheerun/Source/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/sheerun/Source/google-cloud-sdk/completion.zsh.inc'

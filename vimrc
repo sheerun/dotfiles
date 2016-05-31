@@ -23,13 +23,15 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
+Plug 'scrooloose/nerdtree'
+
 " Press v over and over again to expand selection
 Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " Awesome autocompletion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer --tern-completer' }
 
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
@@ -64,21 +66,11 @@ Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
+Plug 'fatih/vim-go', { 'for': 'go' }
+let g:go_fmt_command = "goimports"
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for': 'go' }
 
-" Plug 'JuliaLang/julia-vim', { 'for': 'julia' }
-Plug 'jnwhiteh/vim-golang', { 'for': 'go' }
-Plug 'Blackrush/vim-gocode', { 'for': 'go' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
-
-Plug 'derekelkins/agda-vim', { 'for': 'agda' }
-imap <buffer> \forall ∀
-imap <buffer> \to →
-imap <buffer> \lambda λ
-imap <buffer> \Sigma Σ
-imap <buffer> \exists ∃
-imap <buffer> \equiv ≡
-imap <buffer> \then ⇒
-imap <buffer> \N ℕ
 
 " Navitate freely between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'

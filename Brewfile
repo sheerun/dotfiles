@@ -11,6 +11,7 @@ brew "the_silver_searcher"
 
 brew 'redis', restart_service: true
 brew 'imagemagick'
+brew "git-extras"
 
 cask "spectacle"
 cask "dropbox"

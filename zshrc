@@ -41,10 +41,10 @@ zplug load
 
 RPROMPT="%f%k%(?.. %F{red}✘ %?) %f%k"
 PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "
+export GO15VENDOREXPERIMENT=1
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
@@ -77,7 +77,9 @@ if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-source ~/.zsh/*
+export NVM_DIR="$HOME/.nvm"
+
+for i in ~/.zsh/*.sh; do source $i; done
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -88,7 +90,7 @@ if command -v gpg-agent > /dev/null; then
     source ~/.gnupg/.gpg-agent-info
     export GPG_AGENT_INFO
   else
-    eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info 2> /dev/null)
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
   fi
 fi
 
@@ -97,3 +99,6 @@ source '/Users/sheerun/Source/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/sheerun/Source/google-cloud-sdk/completion.zsh.inc'
+
+export PATH="$PATH:./node_modules/.bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rbenv/bin:$PATH"

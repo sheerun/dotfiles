@@ -5,6 +5,8 @@ let g:python_host_skip_check=1
 let g:loaded_python3_provider=1
 let g:targets_aiAI = 'aIAi'
 
+let g:flow#enable = 0
+
 source ~/.plugrc
 
 call plug#begin()
@@ -33,17 +35,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " Awesome autocompletion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer --tern-completer' }
 
-Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
-
 " Lightning fast :Ag searcher
 Plug 'rking/ag.vim'
-
-" Ruby extensions
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'tpope/vim-rake', { 'for': 'ruby' }
-Plug 'kana/vim-textobj-user', { 'for': 'ruby' }
-" var, vir
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-rsi'
@@ -55,6 +48,8 @@ Plug 'tpope/vim-unimpaired'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
+
+Plug 'flowtype/vim-flow'
 
 " Automatically find root project directory
 Plug 'airblade/vim-rooter'
@@ -74,17 +69,6 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 
 " Navitate freely between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'
-
-" Run ruby tests with vimux
-Plug 'benmills/vimux'
-Plug 'skalnik/vim-vroom'
-Plug 'tpope/vim-dispatch'
-let g:vroom_use_vimux = 1
-let g:vroom_write_all = 1
-let g:vroom_use_binstubs = 1
-let g:vroom_use_colors = 0
-let g:vroom_rspec_version = "3.x"
-let g:VimuxHeight = "40"
 
 " Nice column aligning with <Enter>
 Plug 'junegunn/vim-easy-align'
@@ -106,11 +90,6 @@ Plug 'tpope/vim-vinegar'
 " Set nice 80-characters limiter
 " execute "set colorcolumn=" . join(range(81,335), ',')
 " hi ColorColumn guibg=#262626 ctermbg=235
-
-" Allow for adding github comments
-Plug 'mattn/webapi-vim'
-Plug 'moznion/github-commit-comment.vim'
-command! -nargs=* Comment call github_commit_comment#comment_line(<f-args>)
 
 " Better search tools
 Plug 'vim-scripts/IndexedSearch'
@@ -141,8 +120,6 @@ nnoremap <silent> p p`]
 nnoremap <CR> G
 nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :Sayonara<CR>
-nnoremap <Leader>c :Sayonara!<CR>
 nnoremap <Leader>s :wq<CR>
 nnoremap <Leader>v V
 nnoremap <Leader>g gf

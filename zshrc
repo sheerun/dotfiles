@@ -43,8 +43,6 @@ RPROMPT="%f%k%(?.. %F{red}✘ %?) %f%k"
 PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "
 export GO15VENDOREXPERIMENT=1
 
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
@@ -70,12 +68,7 @@ autoload -U zmv
 
 # Readline
 export WORDCHARS='*?[]~&;!$%^<>'
-
 export LANG="en_US.UTF-8"
-
-if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
-  source ~/.nix-profile/etc/profile.d/nix.sh
-fi
 
 export NVM_DIR="$HOME/.nvm"
 

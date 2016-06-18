@@ -8,16 +8,16 @@ Please fork this repository and configure it for yourself:
 
 ```
 git clone https://github.com/sheerun/dotfiles.git ~/.dotfiles
-~/.dotfiles/bin/setup
+~/.dotfiles/bin/dotfiles install
 ```
 
-The `setup` command is going to:
+The `dotfiles install` command is going to:
 
 * backup changed dotfiles
 * symlink new ones
 * show info what were installed
 
-You can also use `bin/bootstrap` for initial environment setup on OSX.
+You can also use `bin/setup-darwin` for initial environment setup on OSX.
 
 ## License
 

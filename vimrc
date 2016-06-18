@@ -25,7 +25,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
-Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-dirvish'
 
 " Press v over and over again to expand selection
 Plug 'terryma/vim-expand-region'

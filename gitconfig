@@ -7,8 +7,9 @@
   gpgsign = true
 
 [core]
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  whitespace = warn,space-before-tab,trailing-space
   excludesfile = ~/.cvsignore
+	pager = less -x3,2
 
 [alias]
   st = status -sb

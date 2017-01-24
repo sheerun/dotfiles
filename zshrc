@@ -1,70 +1,35 @@
-register-plugins() {
-  zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
-  zplug "plugins/safe-paste", from:oh-my-zsh
-  zplug "plugins/extract", from:oh-my-zsh
-  zplug "plugins/colored-man-pages", from:oh-my-zsh
-  zplug "zsh-users/zsh-syntax-highlighting"
-  zplug "zsh-users/zaw"
-  zplug "zsh-users/zsh-completions"
-}
-
-if [[ ! $TERM =~ screen && -z $TMUX ]]; then
-  MODULES=(
-    "tpm:tmux-plugins/tpm"
-    "zplug:zplug/zplug"
-  )
-
-  for module in $MODULES; do
-    ddir="$HOME/.modules/$(printf "$module" | cut -d ':' -f 1)"
-    ppath="$(printf "$module" | cut -d ':' -f 2)"
-
-    if [[ ! -d $ddir ]]; then
-      (mkdir -p "$ddir" &&
-        git clone --depth 1 https://github.com/$ppath.git "$ddir" && printf '.')
-    fi
-  done
-
-  source ~/.modules/zplug/init.zsh
-
-  register-plugins
-
-  zplug check || zplug install
-
-  if command -v tmux>/dev/null; then
-    exec tmux
-  fi
+if [[ ! -d ~/.modules ]]; then
+  mkdir -p ~/.modules
 fi
 
-source ~/.modules/zplug/init.zsh
-register-plugins
-zplug load
+if [[ ! -f ~/.modules/antigen.zsh ]]; then
+  curl -s https://cdn.rawgit.com/zsh-users/antigen/v1.3.4/bin/antigen.zsh > ~/.modules/antigen.zsh
+fi
+
+if [[ ! -d ~/.modules/tpm ]]; then
+  git clone  https://github.com/tmux-plugins/tpm.git -b v3.0.0 --depth 1 ~/.modules/tpm 2> /dev/null
+fi
+
+source ~/.modules/antigen.zsh
+
+antigen use oh-my-zsh
+antigen bundle safe-paste
+antigen bundle extract
+antigen bundle colored-man-pages
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen apply
 
 RPROMPT="%f%k%(?.. %F{red}✘ %?) %f%k"
-PROMPT="$FG[022]$BG[148] ⌂ $FG[255]$BG[236] %1~ %k%f "
-export GO15VENDOREXPERIMENT=1
+PROMPT="$FG[000]$BG[148] ⌂ $FG[249]$BG[236] %1~ %k%f "
 
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-
-compinit
-
-# Editor
-if command -v nvim > /dev/null; then
-  export EDITOR=nvim
-else
-  export EDITOR=vim
-fi
-
 
 # Less
 export LESSSECURE=1
 
 fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
-
-bindkey '^R' zaw-history
-bindkey '^O' zaw-git-files-legacy
-
-autoload -U zmv
 
 # Readline
 export WORDCHARS='*?[]~&;!$%^<>'
@@ -87,11 +52,4 @@ if command -v gpg-agent > /dev/null; then
   fi
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/sheerun/Source/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/sheerun/Source/google-cloud-sdk/completion.zsh.inc'
-
-export PATH="$PATH:./node_modules/.bin" # Add RVM to PATH for scripting
-export PATH="$HOME/.rbenv/bin:$PATH"
+. ~/.env

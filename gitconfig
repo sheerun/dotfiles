@@ -1,65 +1,67 @@
 [user]
-  name = Adam Stankiewicz
-  email = sheerun@sher.pl
-  signingkey = FB78CBD7
+	name = Adam Stankiewicz
+	email = sheerun@sher.pl
+	signingkey = FB78CBD7
 
 [commit]
-  gpgsign = true
+	gpgsign = true
 
 [core]
-  whitespace = warn,space-before-tab,trailing-space
-  excludesfile = ~/.cvsignore
+	whitespace = warn,space-before-tab,trailing-space
+	excludesfile = ~/.cvsignore
 	pager = less -x3,2
 
 [alias]
-  st = status -sb
-  ci = commit
-  br = branch -vv
-  co = checkout
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  cp = cherry-pick
+	st = status -sb
+	ci = commit
+	br = branch -vv
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	cp = cherry-pick
+	create-pull-request = !sh -c 'stash pull-request $0 $@'
 
 [color]
-  ui = true
+	ui = true
 
 [push]
-  default = current
+	default = current
 
 [git-up "bundler"]
-  check = false
-  autoinstall = true
+	check = false
+	autoinstall = true
 
 [git-up "fetch"]
-  all = true
+	all = true
 
 [git-up "rebase"]
-  arguments = --preserve-merges
-  st = status -sb
-  ci = commit
-  br = branch -vv
-  co = checkout
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  cp = cherry-pick
+	arguments = --preserve-merges
+	st = status -sb
+	ci = commit
+	br = branch -vv
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	cp = cherry-pick
 
 [color]
-  ui = true
+	ui = true
 
 [push]
-  default = current
+	default = current
+	followTags = true
 
 [git-up "bundler"]
-  check = false
-  autoinstall = true
+	check = false
+	autoinstall = true
 
 [git-up "fetch"]
-  all = true
+	all = true
 
 [git-up "rebase"]
-  arguments = --preserve-merges
+	arguments = --preserve-merges
 
 [rerere]
-  enabled = true
+	enabled = true
 
 [url "git@github.com:"]
-  pushInsteadOf = "git://github.com/"
-  pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "git://github.com/"
+	pushInsteadOf = "https://github.com/"

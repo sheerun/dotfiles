@@ -8,7 +8,7 @@
 
 [core]
 	whitespace = warn,space-before-tab,trailing-space
-	excludesfile = ~/.cvsignore
+	excludesfile = ~/.gitignore
 	pager = less -x3,2
 
 [alias]

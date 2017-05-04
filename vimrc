@@ -3,7 +3,6 @@ let maplocalleader = ","
 
 let g:python_host_skip_check=1
 let g:loaded_python3_provider=1
-let g:targets_aiAI = 'aIAi'
 
 let g:flow#enable = 0
 
@@ -12,11 +11,10 @@ source ~/.plugrc
 call plug#begin()
 
 Plug 'sheerun/vimrc'
-Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/vitality.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'grassdog/tagman.vim'
+
 " Really nice prompt
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-airline'
@@ -25,13 +23,16 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
-Plug 'justinmk/vim-dirvish'
+Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
-" Press v over and over again to expand selection
+Plug 'jparise/vim-graphql'
+Plug 'justinmk/vim-dirvish'
+"
+" " Press v over and over again to expand selection
 Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
+"
 " Awesome autocompletion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer --tern-completer' }
 
@@ -45,6 +46,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
+
+Plug 'fleischie/vim-styled-components'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
@@ -98,6 +101,8 @@ Plug 'vim-scripts/gitignore'
 
 Plug 'junegunn/goyo.vim'
 
+Plug 'vim-ruby/vim-ruby'
+
 call plug#end()
 
 vmap <Leader>y "+y
@@ -127,12 +132,11 @@ nnoremap <Leader>g gf
 " Remove trailing whitespaces
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
 nnoremap H 0
 nnoremap L $
 
 silent! colorscheme wombat256mod
 
-command! -bar Tags if !empty(tagfiles()) | call fzf#run({
-\   'source': "sed '/^\\!/d;s/\t.*//' " . join(tagfiles()) . ' | uniq',
-\   'sink':   'tag',
-\ })
+set autoread 

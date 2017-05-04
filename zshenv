@@ -8,10 +8,10 @@ if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
+export EDITOR=vim
+
 # Keep only the first occurence in path, cdpath etc.
 typeset -gU cdpath fpath mailpath path
-
-export GOPATH="$HOME/Go"
 
 # Set the list of directories that Zsh searches for programs.
 path=(
@@ -41,4 +41,4 @@ export LESS='-R -F -X -n'
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export SHELL=$(which zsh)
+export SHELL=/usr/local/bin/zsh

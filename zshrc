@@ -3,7 +3,7 @@ if [[ ! -d ~/.modules ]]; then
 fi
 
 if [[ ! -f ~/.modules/antigen.zsh ]]; then
-  curl -s https://cdn.rawgit.com/zsh-users/antigen/v1.3.4/bin/antigen.zsh > ~/.modules/antigen.zsh
+  curl -s https://cdn.rawgit.com/zsh-users/antigen/v2.2.1/bin/antigen.zsh > ~/.modules/antigen.zsh
 fi
 
 if [[ ! -d ~/.modules/tpm ]]; then
@@ -29,13 +29,9 @@ bindkey '^e' end-of-line
 # Less
 export LESSSECURE=1
 
-fpath=(~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-completions.git/src $fpath)
-
 # Readline
 export WORDCHARS='*?[]~&;!$%^<>'
 export LANG="en_US.UTF-8"
-
-export NVM_DIR="$HOME/.nvm"
 
 for i in ~/.zsh/*.sh; do source $i; done
 
@@ -48,8 +44,38 @@ if command -v gpg-agent > /dev/null; then
     source ~/.gnupg/.gpg-agent-info
     export GPG_AGENT_INFO
   else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+    eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info)
   fi
 fi
 
 . ~/.env
+
+lazy_load() {
+    local -a names
+    if [[ -n "$ZSH_VERSION" ]]; then
+        names=("${(@s: :)${1}}")
+    else
+        names=($1)
+    fi
+    unalias "${names[@]}"
+    . $2
+    shift 2
+    $*
+}
+
+group_lazy_load() {
+    local script
+    script=$1
+    shift 1
+    for cmd in "$@"; do
+        alias $cmd="lazy_load \"$*\" $script $cmd"
+    done
+}
+
+export NVM_DIR="$HOME/.nvm"
+group_lazy_load $HOME/.nvm/nvm.sh nvm node npm yarn
+
+export RSENSE_HOME=/Users/sheerun/.gem/ruby/2.3.3
+group_lazy_load $HOME/.rubyrc ruby bundle rake rails
+
+unset -f group_lazy_load

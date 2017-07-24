@@ -1,0 +1,3 @@
+. /usr/local/share/chruby/chruby.sh
+. /usr/local/share/chruby/auto.sh
+chruby ruby-2.3.3

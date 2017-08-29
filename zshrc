@@ -48,7 +48,7 @@ if command -v gpg-agent > /dev/null; then
   fi
 fi
 
-. ~/.env
+[[ -f $HOME/.env ]] && source $HOME/.env
 
 lazy_load() {
     local -a names

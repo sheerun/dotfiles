@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-if command -v gh > /dev/null; then
-  eval "$(gh alias -s)"
-fi
-
 # create shell aliases for most used git commands
 alias st='git st'
 alias ci='git ci'
@@ -30,17 +26,13 @@ alias vimrc="vim ~/.vimrc"
 # Pass aliases to root account
 alias sudo='sudo '
 
-if ls --color -d . &> /dev/null; then
-  alias ls='ls --color=tty' || alias ls='ls -G'
+if command -v gh > /dev/null; then
+  eval "$(gh alias -s)"
 fi
 
-if ls --group-directories-first &> /dev/null; then
-  eval "$(alias -L ls)' --group-directories-first'"
+if command -v gls > /dev/null; then
+   alias ls='gls --color=tty --group-directories-first'
 fi
-
-eval "$(alias -L ls)' -h'"
-
-alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'
 
 alias k='kubectl'
-alias ks='kubectl --namespace=kube-system'
+alias ks='kubectl -n kube-system'

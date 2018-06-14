@@ -11,5 +11,4 @@ tmp
 DefinitelyTyped
 deps
 Godeps
-assets
 *.xml

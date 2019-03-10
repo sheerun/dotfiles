@@ -1,11 +1,6 @@
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
-let g:python_host_skip_check=1
-let g:loaded_python3_provider=1
-
-let g:flow#enable = 0
-
 source ~/.plugrc
 
 call plug#begin()
@@ -16,16 +11,16 @@ Plug 'sjl/vitality.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " Really nice prompt
-Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-airline'
+let g:airline_extensions = []
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
-Plug 'jparise/vim-graphql'
 Plug 'justinmk/vim-dirvish'
 "
 " " Press v over and over again to expand selection
@@ -34,7 +29,15 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 "
 " Awesome autocompletion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer --tern-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --go-completer --js-completer', 'on': [] }
+let g:YouCompleteMeLazyLoaded = 0
+function! LazyLoadingYMC()
+  if g:YouCompleteMeLazyLoaded == 0
+    let g:YouCompleteMeLazyLoaded = 1
+    call plug#load('YouCompleteMe') | call youcompleteme#Enable()
+  endif
+endfunction
+autocmd BufWinEnter * call timer_start(1, {id->execute('call LazyLoadingYMC()')} )
 
 " Lightning fast :Ag searcher
 Plug 'rking/ag.vim'
@@ -44,7 +47,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'fleischie/vim-styled-components'
@@ -52,7 +55,7 @@ Plug 'fleischie/vim-styled-components'
 " Allow to :Rename files
 Plug 'danro/rename.vim'
 
-Plug 'flowtype/vim-flow'
+"Plug 'flowtype/vim-flow'
 
 " Automatically find root project directory
 Plug 'airblade/vim-rooter'
@@ -64,11 +67,12 @@ Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
-Plug 'fatih/vim-go', { 'for': 'go' }
-let g:go_fmt_command = "goimports"
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+" let g:go_fmt_command = "goimports"
+" Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for': 'go' }
 
 Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Navitate freely between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'
@@ -85,23 +89,11 @@ Plug 'michaeljsmith/vim-indent-object'
 set foldmethod=indent
 set fillchars="fold: "
 
-" Nice file browsing with -
-Plug 'eiginn/netrw'
-let g:netrw_altfile = 1
-Plug 'tpope/vim-vinegar'
-
-" Set nice 80-characters limiter
-" execute "set colorcolumn=" . join(range(81,335), ',')
-" hi ColorColumn guibg=#262626 ctermbg=235
-
 " Better search tools
 Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/SmartCase'
 Plug 'vim-scripts/gitignore'
 
-Plug 'junegunn/goyo.vim'
-
-Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -140,3 +132,6 @@ nnoremap L $
 silent! colorscheme wombat256mod
 
 set autoread 
+au CursorHold * checktime
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete

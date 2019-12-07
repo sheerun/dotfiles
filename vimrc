@@ -1,7 +1,17 @@
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
-source ~/.plugrc
+let remote = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+if has('nvim')
+  let local = $HOME.'/.local/share/nvim/site/autoload/plug.vim'
+else
+  let local = $HOME.'/.vim/autoload/plug.vim'
+endif
+
+if !filereadable(local)
+  :silent execute '!curl --create-dirs -sfLo '.local.' '.remote
+end"
 
 call plug#begin()
 

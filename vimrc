@@ -7,17 +7,23 @@ call plug#begin()
 
 Plug 'sheerun/vimrc'
 Plug 'sheerun/vim-polyglot'
+
 Plug 'sjl/vitality.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-
-" Really nice prompt
-let g:airline_extensions = []
-let g:airline_theme='powerlineish'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_z=''
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+let g:lightline = {
+      \ 'colorscheme': 'powerlineish',
+      \ 'active': {
+      \   'left': [['mode', 'paste'], ['readonly', 'relativepath', 'modified']],
+      \   'right': [ [ 'gitbranch' ], [ 'filetype' ]]
+      \ },
+      \ 'component': {
+      \   'filetype': '%{&filetype}'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \ },
+      \ }
+Plug 'sheerun/lightline.vim'
 
 Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
 
@@ -27,17 +33,6 @@ Plug 'justinmk/vim-dirvish'
 Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-"
-" Awesome autocompletion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --go-completer --js-completer', 'on': [] }
-let g:YouCompleteMeLazyLoaded = 0
-function! LazyLoadingYMC()
-  if g:YouCompleteMeLazyLoaded == 0
-    let g:YouCompleteMeLazyLoaded = 1
-    call plug#load('YouCompleteMe') | call youcompleteme#Enable()
-  endif
-endfunction
-autocmd BufWinEnter * call timer_start(1, {id->execute('call LazyLoadingYMC()')} )
 
 " Lightning fast :Ag searcher
 Plug 'rking/ag.vim'
@@ -49,8 +44,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
-
-Plug 'fleischie/vim-styled-components'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
@@ -68,10 +61,11 @@ nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
-" let g:go_fmt_command = "goimports"
-" Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for': 'go' }
+let g:go_fmt_command = "goimports"
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" https://github.com/fatih/vim-go/issues/2186
 
-Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Navitate freely between tmux and vim
@@ -94,6 +88,17 @@ Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/SmartCase'
 Plug 'vim-scripts/gitignore'
 
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --go-completer --js-completer', 'on': [] }
+" let g:YouCompleteMeLazyLoaded = 0
+" function! LazyLoadingYMC()
+"   if g:YouCompleteMeLazyLoaded == 0
+"     let g:YouCompleteMeLazyLoaded = 1
+"     call plug#load('YouCompleteMe') | call youcompleteme#Enable()
+"   endif
+" endfunction
+" autocmd BufWinEnter * call timer_start(1, {id->execute('call LazyLoadingYMC()')} )
 
 call plug#end()
 
@@ -114,24 +119,36 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-nnoremap <CR> G
-nnoremap <BS> gg
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>s :wq<CR>
 nnoremap <Leader>v V
 nnoremap <Leader>g gf
-
-" Remove trailing whitespaces
-nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 nnoremap H 0
 nnoremap L $
 
-silent! colorscheme wombat256mod
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-set autoread 
-au CursorHold * checktime
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" inoremap <silent><expr> <CR>
+"   \ pumvisible() ? coc#_select_confirm() :
+"   \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"   \ <SID>check_back_space() ? "\<TAB>" :
+"   \ coc#refresh()
+
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)

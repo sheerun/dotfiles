@@ -35,8 +35,6 @@ let g:lightline = {
       \ }
 Plug 'sheerun/lightline.vim'
 
-Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
-
 Plug 'justinmk/vim-dirvish'
 "
 " " Press v over and over again to expand selection
@@ -45,7 +43,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " Lightning fast :Ag searcher
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep --smart-case'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-rsi'
@@ -70,21 +69,14 @@ Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = "goimports"
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-" https://github.com/fatih/vim-go/issues/2186
 
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Navitate freely between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'
-
-" Nice column aligning with <Enter>
-Plug 'junegunn/vim-easy-align'
-vmap <Enter> <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
 
 " ii / ai
 Plug 'michaeljsmith/vim-indent-object'
@@ -96,19 +88,8 @@ set fillchars="fold: "
 " Better search tools
 Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/SmartCase'
-Plug 'vim-scripts/gitignore'
 
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --go-completer --js-completer', 'on': [] }
-" let g:YouCompleteMeLazyLoaded = 0
-" function! LazyLoadingYMC()
-"   if g:YouCompleteMeLazyLoaded == 0
-"     let g:YouCompleteMeLazyLoaded = 1
-"     call plug#load('YouCompleteMe') | call youcompleteme#Enable()
-"   endif
-" endfunction
-" autocmd BufWinEnter * call timer_start(1, {id->execute('call LazyLoadingYMC()')} )
 
 call plug#end()
 

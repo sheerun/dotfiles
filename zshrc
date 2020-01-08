@@ -117,6 +117,7 @@ bindkey '^Z' fancy-ctrl-z
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export SAVEHIST=100000
+export HISTSIZE=100000
 export HISTFILE=~/.zsh_history
 setopt inc_append_history share_history
 export PATH="/usr/local/opt/ruby/bin:$PATH"

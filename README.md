@@ -16,6 +16,7 @@ The `dotfiles install` command is going to:
 * backup changed dotfiles
 * symlink new ones
 * show info what were installed
+* remove broken symlinks
 
 You can also use `bin/setup-darwin` for initial environment setup on OSX.
 

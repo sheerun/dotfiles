@@ -32,3 +32,6 @@
 [url "git@github.com:"]
 	pushInsteadOf = "git://github.com/"
 	pushInsteadOf = "https://github.com/"
+
+[url "ssh://git@heroku.com/"]
+	insteadOf = https://git.heroku.com/

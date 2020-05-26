@@ -26,8 +26,6 @@ Godeps
 # Other directories
 log/
 tmp/
-.idea/
-.DS_Store/
 vendor/
 releases/
 

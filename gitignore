@@ -1,0 +1,24 @@
+# OS X
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+
+# PHP Storm, other java IDE's
+.idea
+
+# NetBeans
+nbproject
+
+# CVS
+CVS
+
+# TextMate
+.#*
+
+# Other files
+npm-debug.json
+*.log
+
+

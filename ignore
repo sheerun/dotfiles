@@ -1,14 +1,36 @@
-!compiler
-!tests
-!bin
-*.log
-node_modules
-bower_components
-vendor
-releases
+# Ruby development
+zeus.json
+.rbenv-version
+/config/database.yml
+.ruby-version
+.rbenv-version
+
+# Node development
+node_modules/
+bower_components/
+DefinitelyTyped/
+
+# Sass files
 *.scssc
-tmp
-DefinitelyTyped
+
+# CTags files
+*tags
+GPATH
+GTAGS
+GRTAGS
+
+# Go development
 deps
 Godeps
-*.xml
+
+# Other directories
+log/
+tmp/
+.idea/
+.DS_Store/
+vendor/
+releases/
+
+# Other files
+npm-debug.json
+*.log

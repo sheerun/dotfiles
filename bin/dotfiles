@@ -44,6 +44,15 @@ link_dotfiles() {
     ln -sf "${file#$HOME/}" ".$base"
     e_success "$base"
   done
+
+  e_header "Removing broken symlinks from home directory..."
+  find ~ -type l -maxdepth 1 | while read file; do
+    if [ ! -e "$file" ]; then
+      local base="$(basename $file)"
+      e_success "$file"
+      rm "$file"
+    fi
+  done
 }
 
 print_messages() {

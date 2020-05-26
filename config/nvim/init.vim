@@ -1,4 +1,4 @@
 let g:editor = "nvim"
 
-source ~/.plugrc
+" source ~/.plugrc
 source ~/.vimrc

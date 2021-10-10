@@ -1,0 +1,3 @@
+#!/bin/bash
+
+borg create --stats --progress --exclude-from=$HOME/.config/backup/excludes.txt --one-file-system /Volumes/MacBackup::base /

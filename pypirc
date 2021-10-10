@@ -1,0 +1,11 @@
+[distutils]
+index-servers =
+  pypi
+  pypitest
+
+[pypi]
+username: sheerun
+
+[pypitest]
+repository: https://test.pypi.org/legacy/
+username: sheerun

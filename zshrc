@@ -1,9 +1,5 @@
-source ~/.bin/antigen.zsh
-
-antigen bundle sheerun/home
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen apply
+source ~/.zsh/sheerun-home/home.plugin.zsh
+source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 export GPG_TTY=$(tty)

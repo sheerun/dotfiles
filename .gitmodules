@@ -7,3 +7,12 @@
 [submodule "modules/vimrc"]
 	path = modules/vimrc
 	url = https://github.com/sheerun/vimrc.git
+[submodule "zsh/sheerun-home"]
+	path = zsh/sheerun-home
+	url = https://github.com/sheerun/home
+[submodule "zsh/zsh-completions"]
+	path = zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/zsh-syntax-highlighting"]
+	path = zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting

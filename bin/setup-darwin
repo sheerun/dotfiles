@@ -29,21 +29,7 @@ DEFAULT_SHELL=`which zsh`
 HOST_NAME="$USER.dev"
 BONJOUR_NAME="$USER-mac"
 
-DOTDIR="$(abs_dirname "$0")/.."
-
-ppids() { echo $1; ppid=$(ps -o ppid= $1) && ppids ${ppid// /} || true; }
-
-if ! ppids $$ | xargs ps | grep Terminal > /dev/null; then
-  open -a Terminal $DOTDIR/bin/bootstrap && exit 0
-fi
-
-# echo "Closing iTerm..."
-# killall iTerm || true
-
 sudo -v
-
-git config --global user.name "Adam Stankiewicz"
-git config --global user.email "sheerun@sher.pl"
 
 CURRENT_SHELL="$(dscl . -read /Users/$USER UserShell | cut -d " " -f 2)"
 if test "$CURRENT_SHELL" != $DEFAULT_SHELL; then

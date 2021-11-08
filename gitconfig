@@ -2,10 +2,9 @@
 	name = Adam Stankiewicz
 	email = sheerun@sher.pl
 	signingKey = 25553913
+
 [commit]
 	gpgsign = true
-[gpg]
-	program = /usr/local/bin/gpg
 
 [core]
 	whitespace = warn,space-before-tab,trailing-space

@@ -1,31 +1,44 @@
 brew "zsh"
-brew "ctags"
+
+# For editing
 brew "vim"
-brew "ack"
-brew "htop"
-brew "reattach-to-user-namespace"
-brew "cmake"
 brew "fzf"
-brew "nvm"
-brew "the_silver_searcher"
+brew "ripgrep"
+brew "cmake"
+brew "node"
+brew "yarn"
+brew "imagemagick"
 
-brew 'redis', restart_service: true
-brew 'imagemagick'
-brew "git-extras"
+# For committing
+brew "git"
+brew "gnupg"
 
-cask "spectacle"
-cask "dropbox"
-cask "iterm2"
-cask "skype"
-cask "flux"
+# For backup
+brew "borgbackup"
+
+# For terminal
+brew "htop"
+brew "tmux"
+brew "reattach-to-user-namespace"
+
+# For storage
+brew "postgresql"
+brew "postgis"
+brew "redis"
+
+# Apps
+cask "blender"
+cask "caffeine"
+cask "discord"
+cask "docker"
 cask "firefox"
-cask "google-chrome"
-cask "harvest"
-cask "heroku-toolbelt"
-cask "sequel-pro"
+cask "iterm2"
+cask "libreoffice"
+cask "obs"
+cask "postico"
+cask "signal"
+cask "spotify"
 cask "steam"
-cask "virtualbox"
-cask "slack"
-cask "transmission"
 cask "vlc"
-cask "carbon-copy-cloner"
+cask "whatsapp"
+cask "parallels"

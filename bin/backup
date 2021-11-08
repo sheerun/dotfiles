@@ -1,3 +1,48 @@
 #!/bin/bash
 
-borg create --stats --progress --exclude-from=$HOME/.config/backup/excludes.txt --one-file-system /Volumes/MacBackup::base /
+
+VOLUME="/Volumes/MacBackup"
+
+function backup() {
+	borg create \
+		--list \
+		--filter AME \
+		--stats \
+		--progress \
+		--show-rc \
+		--compression lz4 \
+		--exclude-caches \
+		--exclude-from=$HOME/.config/backup/excludes.txt \
+		--one-file-system \
+		"$VOLUME::'{hostname}-{now}'" \
+		/
+
+	backup_exit=$?
+
+	borg prune                          \
+			--list                          \
+			--prefix '{hostname}-'          \
+			--show-rc                       \
+			--keep-last     1               \
+			--keep-daily    7               \
+			--keep-weekly   4               \
+			--keep-monthly  6               \
+			"$VOLUME"
+
+	prune_exit=$?
+
+	# use highest exit code as global exit code
+	global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+
+	if [ ${global_exit} -eq 0 ]; then
+			echo "Backup and Prune finished successfully"
+	elif [ ${global_exit} -eq 1 ]; then
+			echo "Backup and/or Prune finished with warnings"
+	else
+			echo "Backup and/or Prune finished with errors"
+	fi
+
+	exit ${global_exit}
+}
+
+backup

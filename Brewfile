@@ -1,4 +1,5 @@
 brew "zsh"
+brew "coreutils"
 
 # For editing
 brew "vim"

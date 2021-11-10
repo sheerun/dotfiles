@@ -792,7 +792,7 @@
         }
       },
       "signal": {
-        "version": "5.23.0",
+        "version": "5.23.1",
         "options": {
           "full_name": "signal"
         }
@@ -820,6 +820,12 @@
         "options": {
           "full_name": "android-studio"
         }
+      },
+      "transmission": {
+        "version": "3.00",
+        "options": {
+          "full_name": "transmission"
+        }
       }
     }
   },
@@ -828,7 +834,7 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.3.3",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "7949d844e9426e3d21c2b35e9317944c043a8297",
+        "Homebrew/homebrew-core": "0454127b489692a5bf2079a622f01595534a4007",
         "CLT": "13.1.0.0.1.1633545042",
         "Xcode": "13.0",
         "macOS": "12.0.1"

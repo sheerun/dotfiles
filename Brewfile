@@ -16,6 +16,7 @@ brew "gnupg"
 
 # For backup
 brew "borgbackup"
+brew "f3"
 
 # For terminal
 brew "htop"
@@ -45,3 +46,7 @@ cask "whatsapp"
 cask "parallels"
 cask "transmission"
 cask "the-unarchiver"
+cask "android-studio"
+cask "messenger"
+cask "anaconda"
+cask "fedora-media-writer"

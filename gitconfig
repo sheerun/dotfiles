@@ -1,10 +1,19 @@
 [user]
 	name = Adam Stankiewicz
 	email = sheerun@sher.pl
-	signingKey = 25553913
+	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF4wcx56sw3d2qkdx+aYB7bXIdJyuGmCb0tWaDYGiYY5"
 
 [commit]
 	gpgsign = true
+
+[tag]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = /Users/sheerun/.ssh/allowed_signers
 
 [core]
 	whitespace = warn,space-before-tab,trailing-space
@@ -37,7 +46,9 @@
 
 [url "ssh://git@heroku.com/"]
 	insteadOf = https://git.heroku.com/
+
 [pull]
 	rebase = false
+
 [init]
 	defaultBranch = master

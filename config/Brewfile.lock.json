@@ -893,6 +893,8 @@
             }
           }
         }
+      },
+      "electron": {
       }
     },
     "cask": {
@@ -1045,6 +1047,12 @@
         "options": {
           "full_name": "electron"
         }
+      }
+    },
+    "mas": {
+      "Microsoft To Do": {
+        "id": "1274495053",
+        "version": "2.57.1"
       }
     }
   },

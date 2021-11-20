@@ -16,7 +16,6 @@ brew "cmake"
 brew "imagemagick"
 brew "node"
 brew "yarn"
-cask "electron"
 
 # For backup
 brew "borgbackup"
@@ -53,3 +52,5 @@ cask "android-studio"
 cask "messenger"
 cask "anaconda"
 cask "raspberry-pi-imager"
+
+mas "Microsoft To Do", id: 1274495053

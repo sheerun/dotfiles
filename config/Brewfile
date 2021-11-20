@@ -1,5 +1,9 @@
+tap "homebrew/cask"
+tap "homebrew/services"
+
 brew "zsh"
 brew "coreutils"
+brew "mas"
 
 # Terminal
 brew "vim"
@@ -55,6 +59,7 @@ cask "android-studio"
 cask "messenger"
 cask "anaconda"
 cask "raspberry-pi-imager"
+cask "lulu"
 
 mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353

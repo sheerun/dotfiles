@@ -1,18 +1,17 @@
 brew "zsh"
 brew "coreutils"
 
-# For editing
+# For programming
 brew "vim"
 brew "fzf"
 brew "ripgrep"
 brew "cmake"
-brew "node"
-brew "yarn"
-brew "imagemagick"
-
-# For committing
 brew "git"
 brew "gnupg"
+brew "imagemagick"
+brew "node"
+brew "yarn"
+cask "electron"
 
 # For backup
 brew "borgbackup"
@@ -27,6 +26,10 @@ brew "reattach-to-user-namespace"
 brew "postgresql"
 brew "postgis"
 brew "redis"
+
+# Chess
+brew "lc0"
+brew "stockfish"
 
 # Apps
 cask "blender"

@@ -6,16 +6,19 @@ brew "vim"
 brew "fzf"
 brew "ripgrep"
 brew "git"
+brew "lazygit"
 brew "htop"
 brew "tmux"
 brew "reattach-to-user-namespace"
 brew "tree"
+brew "jq"
 
 # Programming
 brew "cmake"
 brew "imagemagick"
 brew "node"
 brew "yarn"
+brew "go"
 
 # For backup
 brew "borgbackup"
@@ -54,3 +57,5 @@ cask "anaconda"
 cask "raspberry-pi-imager"
 
 mas "Microsoft To Do", id: 1274495053
+mas "The Unarchiver", id: 425424353
+mas "Xcode", id: 497799835

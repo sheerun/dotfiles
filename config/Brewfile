@@ -1,13 +1,18 @@
 brew "zsh"
 brew "coreutils"
 
-# For programming
+# Terminal
 brew "vim"
 brew "fzf"
 brew "ripgrep"
-brew "cmake"
 brew "git"
-brew "gnupg"
+brew "htop"
+brew "tmux"
+brew "reattach-to-user-namespace"
+brew "tree"
+
+# Programming
+brew "cmake"
 brew "imagemagick"
 brew "node"
 brew "yarn"
@@ -16,11 +21,6 @@ cask "electron"
 # For backup
 brew "borgbackup"
 brew "f3"
-
-# For terminal
-brew "htop"
-brew "tmux"
-brew "reattach-to-user-namespace"
 
 # For storage
 brew "postgresql"

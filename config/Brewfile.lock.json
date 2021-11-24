@@ -1529,6 +1529,12 @@
         "options": {
           "full_name": "cyberduck"
         }
+      },
+      "microsoft-teams": {
+        "version": "1.4.00.29477",
+        "options": {
+          "full_name": "microsoft-teams"
+        }
       }
     },
     "mas": {

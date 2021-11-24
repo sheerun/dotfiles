@@ -66,6 +66,7 @@ cask "anaconda"
 cask "raspberry-pi-imager"
 cask "lulu"
 cask "cyberduck"
+cask "microsoft-teams"
 
 mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353

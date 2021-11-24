@@ -16,6 +16,10 @@ brew "tmux"
 brew "reattach-to-user-namespace"
 brew "tree"
 brew "jq"
+brew "nnn"
+brew "viu"
+brew "ranger"
+brew "entr"
 
 # Programming
 brew "cmake"
@@ -23,6 +27,7 @@ brew "imagemagick"
 brew "node"
 brew "yarn"
 brew "go"
+brew "podman"
 
 # For backup
 brew "borgbackup"
@@ -60,6 +65,7 @@ cask "messenger"
 cask "anaconda"
 cask "raspberry-pi-imager"
 cask "lulu"
+cask "cyberduck"
 
 mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353

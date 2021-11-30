@@ -28,6 +28,7 @@ brew "node"
 brew "yarn"
 brew "go"
 brew "podman"
+brew "rust"
 
 # For backup
 brew "borgbackup"
@@ -66,7 +67,9 @@ cask "anaconda"
 cask "raspberry-pi-imager"
 cask "lulu"
 cask "cyberduck"
-cask "microsoft-teams"
+cask "prusaslicer"
+cask "twitch"
+cask "autodesk-fusion360"
 
 mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353

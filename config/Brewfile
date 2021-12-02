@@ -20,6 +20,7 @@ brew "nnn"
 brew "viu"
 brew "ranger"
 brew "entr"
+brew "youtube-dl"
 
 # Programming
 brew "cmake"
@@ -29,6 +30,7 @@ brew "yarn"
 brew "go"
 brew "podman"
 brew "rust"
+brew "typescript"
 
 # For backup
 brew "borgbackup"
@@ -74,3 +76,4 @@ cask "autodesk-fusion360"
 mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
+mas "Pages", id: 409201541

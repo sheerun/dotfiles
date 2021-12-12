@@ -48,7 +48,6 @@ brew "stockfish"
 # Apps
 cask "anaconda"
 cask "android-studio"
-cask "autodesk-fusion360"
 cask "blender"
 cask "caffeine"
 cask "cyberduck"
@@ -75,6 +74,7 @@ cask "twitch"
 cask "ultimaker-cura"
 cask "vlc"
 cask "whatsapp"
+cask "rhino"
 
 mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353

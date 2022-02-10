@@ -21,6 +21,10 @@ brew "viu"
 brew "ranger"
 brew "entr"
 brew "youtube-dl"
+brew "curl"
+brew "wget"
+brew "nmap"
+brew "mtr"
 
 # Programming
 brew "cmake"
@@ -31,9 +35,12 @@ brew "go"
 brew "podman"
 brew "rust"
 brew "typescript"
+brew "python@3.8"
+brew "packer"
+brew "podman"
 
 # For backup
-brew "borgbackup"
+brew "restic"
 brew "f3"
 
 # For storage
@@ -45,18 +52,21 @@ brew "redis"
 brew "lc0"
 brew "stockfish"
 
+# Network
+brew "iperf"
+
 # Apps
-cask "anaconda"
 cask "android-studio"
 cask "blender"
 cask "caffeine"
 cask "cyberduck"
 cask "darktable"
+cask "deezer"
 cask "discord"
 cask "docker"
 cask "firefox"
+cask "google-chrome"
 cask "iterm2"
-cask "libreoffice"
 cask "lulu"
 cask "messenger"
 cask "obs"
@@ -65,6 +75,7 @@ cask "parallels"
 cask "postico"
 cask "prusaslicer"
 cask "raspberry-pi-imager"
+cask "rhino"
 cask "signal"
 cask "spotify"
 cask "steam"
@@ -72,11 +83,11 @@ cask "the-unarchiver"
 cask "transmission"
 cask "twitch"
 cask "ultimaker-cura"
+cask "vagrant"
 cask "vlc"
 cask "whatsapp"
-cask "rhino"
 
-mas "Microsoft To Do", id: 1274495053
+#mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
 mas "Pages", id: 409201541

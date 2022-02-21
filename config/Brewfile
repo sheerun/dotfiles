@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "homebrew/services"
+tap "buo/cask-upgrade"
 
 brew "zsh"
 brew "coreutils"
@@ -7,9 +8,11 @@ brew "mas"
 
 # Terminal
 brew "vim"
+brew "neovim"
 brew "fzf"
 brew "ripgrep"
 brew "git"
+brew "git-lfs"
 brew "lazygit"
 brew "htop"
 brew "tmux"
@@ -86,6 +89,9 @@ cask "ultimaker-cura"
 cask "vagrant"
 cask "vlc"
 cask "whatsapp"
+cask "freecad"
+cask "openscad"
+cask "visual-studio-code"
 
 #mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353

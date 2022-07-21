@@ -1,6 +1,10 @@
+cask_args appdir: "/Applications"
+
 tap "homebrew/cask"
 tap "homebrew/services"
 tap "buo/cask-upgrade"
+tap "viktomas/taps"
+tap "cirruslabs/cli"
 
 brew "zsh"
 brew "coreutils"
@@ -28,6 +32,10 @@ brew "curl"
 brew "wget"
 brew "nmap"
 brew "mtr"
+brew "kind"
+brew "qemu"
+brew "telnet"
+brew "sox"
 
 # Programming
 brew "cmake"
@@ -40,7 +48,16 @@ brew "rust"
 brew "typescript"
 brew "python@3.8"
 brew "packer"
-brew "podman"
+brew "act"
+brew "hub"
+brew "wasm3"
+cask "mqtt-explorer"
+brew "tart"
+brew "softnet"
+brew "r"
+
+# Compiling blender
+brew "svn"
 
 # For backup
 brew "restic"
@@ -57,8 +74,12 @@ brew "stockfish"
 
 # Network
 brew "iperf"
+brew "qrencode"
+brew "wireshark"
+
 
 # Apps
+cask "adium"
 cask "android-studio"
 cask "blender"
 cask "caffeine"
@@ -67,33 +88,42 @@ cask "darktable"
 cask "deezer"
 cask "discord"
 cask "docker"
+cask "figma"
 cask "firefox"
+cask "freecad"
 cask "google-chrome"
 cask "iterm2"
+cask "julia"
+cask "kap"
+cask "libreoffice"
+cask "lockdown"
 cask "lulu"
 cask "messenger"
 cask "obs"
 cask "openscad"
+cask "openscad"
 cask "parallels"
 cask "postico"
 cask "prusaslicer"
-cask "raspberry-pi-imager"
 cask "rhino"
 cask "signal"
 cask "spotify"
 cask "steam"
 cask "the-unarchiver"
 cask "transmission"
-cask "twitch"
 cask "ultimaker-cura"
+cask "utm"
 cask "vagrant"
-cask "vlc"
-cask "whatsapp"
-cask "freecad"
-cask "openscad"
 cask "visual-studio-code"
+cask "vlc"
+cask "enfusegui"
+cask "hugin"
+cask "whatsapp"
+cask "raspberry-pi-imager"
+cask "android-platform-tools"
 
 #mas "Microsoft To Do", id: 1274495053
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
 mas "Pages", id: 409201541
+mas "Microsoft Word", id: 462054704

@@ -1,7 +1,7 @@
 [user]
 	name = Adam Stankiewicz
 	email = sheerun@sher.pl
-	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF4wcx56sw3d2qkdx+aYB7bXIdJyuGmCb0tWaDYGiYY5"
+	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMtoahqj/uLntDiJicWzGGHhyxMy7yrrRmZdFdIhqJrw sheerun@sher.pl"
 
 [commit]
 	gpgsign = true
@@ -52,3 +52,8 @@
 
 [init]
 	defaultBranch = master
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

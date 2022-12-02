@@ -3,14 +3,14 @@
 	email = sheerun@sher.pl
 	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMtoahqj/uLntDiJicWzGGHhyxMy7yrrRmZdFdIhqJrw sheerun@sher.pl"
 
-[commit]
-	gpgsign = true
+#[commit]
+	#gpgsign = true
 
-[tag]
-	gpgsign = true
+#[tag]
+	#gpgsign = true
 
-[gpg]
-	format = ssh
+#[gpg]
+	#format = ssh
 
 [gpg "ssh"]
 	allowedSignersFile = /Users/sheerun/.ssh/allowed_signers

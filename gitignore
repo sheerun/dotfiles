@@ -70,7 +70,8 @@ lib/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -319,12 +320,6 @@ secring.*
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 .Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
 pyvenv.cfg
 .venv
 pip-selfcheck.json
@@ -442,16 +437,7 @@ Export/
 *.svd
 *.log
 *.zip
-## Globally Useful gitignores
 
-This directory contains globally useful gitignores,
-e.g. OS-specific and editor specific.
-
-For more on global gitignores:
-<https://help.github.com/en/github/using-git/ignoring-files#configuring-ignored-files-for-all-repositories-on-your-computer>
-
-And a good blog post about 'em:
-<http://augustl.com/blog/2009/global_gitignores>
 # Notepad++ backups #
 *.bak
 # Swap

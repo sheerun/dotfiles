@@ -3,5 +3,6 @@
 /vim/bundle
 /config
 /modules
+/zsh
 *.zwc
 *.log

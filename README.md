@@ -1,25 +1,22 @@
-# My lovely dotfiles [![Build Status](https://secure.travis-ci.org/sheerun/dotfiles.png?branch=master)](http://travis-ci.org/sheerun/dotfiles)
+# My lovely dotfiles
 
 ## Installation
 
-These dotfiles are meant to be used with zsh.
+These dotfiles are meant to be used with zsh. Please install it first.
 
 Please fork this repository and configure it for yourself:
 
 ```
 git clone https://github.com/sheerun/dotfiles.git ~/.dotfiles
-~/.dotfiles/bin/dotfiles install
+~/.dotfiles/bin/bundle
 ```
 
-The `dotfiles install` command is going to:
+This command is going to:
 
-* backup changed dotfiles
-* symlink new ones
-* show info what were installed
-* remove broken symlinks
-
-You can also use `bin/setup-darwin` for initial environment setup on OSX.
+* backup previous dotfiles
+* create symlinks to new dotfiles
+* remove broken symlinks from home directory
 
 ## License
 
-This repository is MIT-licensed. You are awesome.
+These dotfiles are MIT-licensed, and you are awesome <3
